@@ -11,4 +11,22 @@
 
 * {
     font-family: 'Inconsolata', monospace;
+
+    /* Firefox Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #6e6a86 var(--base-bg);
 }
+
+/* Chrome Safari Edge Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+  
+body::-webkit-scrollbar-track {
+    background: var(--base-bg);
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: #6e6a86;
+}
+/* ============================ */
