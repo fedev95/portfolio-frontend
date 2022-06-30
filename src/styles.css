@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --base-bg: #191724;
+    --surface-bg: #1f1d2e;
+    --overlay-bg: #26233a;
+    --text-color: #e0def4;
+    --subtle-color: #908caa;
+    --links-color: #9ccfd8;
+}
+
+* {
+    font-family: 'Inconsolata', monospace;
+}
