@@ -1,32 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
-
 :root {
-    --base-bg: #191724;
-    --surface-bg: #1f1d2e;
-    --overlay-bg: #26233a;
-    --text-color: #e0def4;
-    --subtle-color: #908caa;
-    --links-color: #9ccfd8;
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #26233a;
+    --shadow: #08080c;
+    --title: #e0def4;
+    --subtle: #9ccfd8;
+    --gold: #f6c177;
+    --text: #c4a7e7;
 }
 
 * {
     font-family: 'Inconsolata', monospace;
-
-    /* Firefox Scrollbar */
     scrollbar-width: thin;
-    scrollbar-color: #6e6a86 var(--base-bg);
+    scrollbar-color: #6e6a86 var(--base);
 }
 
-/* Chrome Safari Edge Scrollbar */
 body::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
   
 body::-webkit-scrollbar-track {
-    background: var(--base-bg);
+    background: var(--base);
 }
   
 body::-webkit-scrollbar-thumb {
-    background-color: #6e6a86;
+    background-color: var(--overlay);
 }
-/* ============================ */
+
+.base-color {
+    background-color: var(--base);
+}
+
+.surface-color {
+    background-color: var(--surface);
+}
+
+.overlay-color {
+    background-color: var(--overlay);
+}
+
+.title-color {
+    color: var(--title);
+}
+
+.subtle-color {
+    color: var(--subtle);
+}
+
+.gold-color {
+    color: var(--gold);
+}
+
+.text-color {
+    color: var(--text);
+}
+
+.gradient-bg {
+    background: linear-gradient(45deg, var(--text) 0%, var(--gold) 50%, var(--subtle) 100%);
+}

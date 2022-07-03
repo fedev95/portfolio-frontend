@@ -7,13 +7,12 @@
 }
 
 #nav-links>a {
-    color: var(--text-color);
     border: 1px solid transparent;
-    text-decoration: none;
 }
 
 #nav-links>a:hover {
-    transition: 0.5s;
     border-bottom: 1px solid;
+    color: var(--title);
+    transition: 0.5s;
 }
 

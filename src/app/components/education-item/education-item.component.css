@@ -3,12 +3,11 @@
 }
 
 .education-item>a {
-    color: #9ccfd8;
     border: 1px solid transparent;
-    text-decoration: none;
 }
 
 .education-item>a:hover {
-    transition: 0.5s;
     border-bottom: 1px solid;
+    color: var(--gold);
+    transition: 0.5s;
 }

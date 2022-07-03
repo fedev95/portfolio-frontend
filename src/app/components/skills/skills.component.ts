@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+	selector: 'app-skills',
+	templateUrl: './skills.component.html',
+	styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
 
-  constructor() { }
+	section_title = 'skills';
 
-  ngOnInit(): void {
-  }
+	frontend: string[] = [
+		'HTML / CSS / JS',
+		'Bootstrap',
+		'Angular'
+	];
+
+	backend: string[] = [
+		'MySQL',
+		'pindonga'
+	]
+
+	constructor() { }
+
+	ngOnInit(): void {
+	}
 
 }
