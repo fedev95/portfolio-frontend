@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class EducationItemComponent implements OnInit {
 
 	title = 'title';
-	date = 9999;
+	date = 'yyyy';
 	org = 'organization';
 	orgLink = '';
 	certificationLink = '';
