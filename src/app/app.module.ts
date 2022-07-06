@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { ExperienceItemComponent } from './components/experience-item/experience
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,14 @@ import { FooterComponent } from './components/footer/footer.component';
     ExperienceItemComponent,
     ProjectsComponent,
     ProjectItemComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

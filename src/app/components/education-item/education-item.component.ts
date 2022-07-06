@@ -9,7 +9,7 @@ export class EducationItemComponent implements OnInit {
 
 	title = 'title';
 	date = 'yyyy';
-	org = 'organization';
+	org = 'academy';
 	orgLink = '';
 	certificationLink = '';
 

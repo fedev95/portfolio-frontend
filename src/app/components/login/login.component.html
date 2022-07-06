@@ -1,0 +1,30 @@
+<div class="container-fluid d-flex flex-column justify-content-center vh-100 base-color">
+    <div class="row">
+        <div class="col-auto col-md-3 m-auto py-5 text-color">
+            <h3 class="title-color">Log In</h3>
+            <form [formGroup]="loginForm"  (ngSubmit)="onEnviar($event)">    
+                <div class="d-flex flex-column py-4">                          
+                    <input class="p-2 login-input surface-color title-color" type="text" formControlName="user" placeholder="User">
+                    <div *ngIf="User?.errors && User?.touched">    
+                        <p *ngIf="User?.hasError('required')" class="gold-color">
+                            User required.
+                        </p>
+                    </div>
+                    <input class="mt-4 p-2 login-input surface-color title-color" placeholder="Password" type="password" formControlName="password" [class.border-danger]="UserValid">
+                    <div *ngIf="Password?.errors  && Password?.touched">
+                        <p *ngIf="Password?.hasError('required')" class="gold-color">
+                            El password es requerido.
+                        </p>
+                        <p *ngIf="Password?.errors?.['minlength']" class="gold-color">
+                            El password debe ser de 8 o más caracteres.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <button class="my-btn border-0 surface-color title-color p-2 px-3 me-3" type="submit">Log In</button>
+                    <button class="my-btn border-0 surface-color title-color p-2 px-3" routerLink="/portfolio">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

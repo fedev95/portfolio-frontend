@@ -1,0 +1,13 @@
+.login-input {
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.login-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--gold) ;
+}
+
+.login-input::placeholder {
+    color: var(--text);
+}

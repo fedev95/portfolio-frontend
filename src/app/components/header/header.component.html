@@ -4,5 +4,6 @@
     </div>
     <div id="nav-links" class="col-sm-auto d-flex align-items-center justify-content-evenly p-3">
         <a class="title-color text-decoration-none" *ngFor="let network of socialNetworks" [href]="network.url">{{network.name}}</a>
+        <button class="title-color text-decoration-none my-btn border-0 surface-color p-2 px-3" routerLink="/login">Log In</button>
     </div>
 </div>
