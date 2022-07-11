@@ -6,6 +6,33 @@
         <div class="d-flex flex-column">
             <h1 id="full-name" class="title-color text-center">{{name | uppercase}} {{surname | uppercase}}</h1>
             <h3 class="subtle-color text-center">{{degree}}</h3>
+            <div *ngIf="logged" class="d-flex justify-content-center mt-4">
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    Edit
+                </button>
+                <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" id="profile-modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Profile</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input [(ngModel)]="newName" type="text" class="my-input surface-color title-color p-2" placeholder="Name">
+                                <input [(ngModel)]="newSurname" type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Surname">
+                                <input [(ngModel)]="newDegree" type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Degree">
+                                <p *ngIf="incomplete" class="gold-color mt-4">
+                                    Invalid values.
+                                </p>
+                                <input type="file" accept="image/*" class="mt-4">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancel</button>
+                                <button (click)="update()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

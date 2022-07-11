@@ -1,0 +1,23 @@
+.education-item {
+    gap: 10px;
+}
+
+.education-item>a {
+    border: 1px solid transparent;
+}
+
+.education-item>a:hover {
+    border-bottom: 1px solid;
+    color: var(--gold);
+    transition: 0.25s;
+}
+
+#add-education-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#add-education-modal-content>div {
+    border: none;
+}

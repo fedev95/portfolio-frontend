@@ -1,3 +1,13 @@
 #full-name {
     letter-spacing: 15px;
 }
+
+#profile-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#profile-modal-content>div {
+    border: none;
+}

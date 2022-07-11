@@ -7,6 +7,8 @@
     --subtle: #9ccfd8;
     --gold: #f6c177;
     --text: #c4a7e7;
+    --btn: #403d52;
+    --btn-hover: #524f67;
 }
 
 * {
@@ -59,11 +61,30 @@ body::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, var(--gold) 0%, var(--text) 50%, var(--subtle) 100%);
 }
 
+.my-btn {
+    background-color: var(--btn);
+}
+
 .my-btn:hover {
-    background-color: var(--overlay);
+    background-color: var(--btn-hover);
 }
 
 .my-btn:focus {
     outline: none;
-    background-color: var(--overlay);
+    background-color: var(--btn-hover);
+}
+
+.my-input {
+    border: 1px solid transparent;
+    outline: none;
+    width: 100%;
+}
+
+.my-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--gold) ;
+}
+
+.my-input::placeholder {
+    color: var(--text);
 }

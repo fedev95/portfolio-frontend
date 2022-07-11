@@ -13,5 +13,5 @@
 #nav-links>a:hover {
     border-bottom: 1px solid;
     color: var(--title);
-    transition: 0.5s;
+    transition: 0.25s;
 }

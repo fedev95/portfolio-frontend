@@ -1,0 +1,39 @@
+.skill-item,
+.skills-gap {
+    gap: 15px;
+}
+
+#frontend-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#frontend-modal-content>div {
+    border: none;
+}
+
+#backend-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#backend-modal-content>div {
+    border: none;
+}
+
+.my-input {
+    border: 1px solid transparent;
+    outline: none;
+    width: 100%;
+}
+
+.my-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--gold) ;
+}
+
+.my-input::placeholder {
+    color: var(--text);
+}

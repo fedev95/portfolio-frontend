@@ -4,9 +4,49 @@
             <h3 class="pb-3 title-color">{{sectionTitle | uppercase}}</h3>
         </div>
         <div class="row">
-            <app-education-item class="col-md-6"></app-education-item>
-            <app-education-item class="col-md-6"></app-education-item>
-            <app-education-item class="col-md-6"></app-education-item>
+            <div *ngFor="let item of educationItems; let i = index" class="col-md-6">
+                <div class="education-item d-flex flex-column align-items-start my-4">
+                    <div class="d-flex flex-row justify-content-between w-100">
+                        <h5 class="title-color">{{item.title}} {{item.year}}</h5>
+                        <button *ngIf="logged" class="my-btn border-0 text-decoration-none title-color" (click)="deleteItem(i)">Delete</button>
+                    </div>
+                    <a class="gold-color text-decoration-none" [href]="item.institutionLink">{{item.institution}}</a>
+                    <a class="gold-color text-decoration-none" [href]="item.certificationLink">
+                        My certification
+                    </a>
+                </div>
+            </div>
+
+            <!-- boton agregar -->
+            <div *ngIf="logged" class="col-md-6 d-flex align-items-center justify-content-center py-4">
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-education-modal">
+                    +
+                </button>
+                <div class="modal fade" id="add-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" id="add-education-modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Add education</h4>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                <div class="form-group">
+                                    <div class="d-flex">
+                                        <input [(ngModel)]="inputTitle" class="my-input surface-color title-color p-2" type="text" placeholder="Title">
+                                        <input [(ngModel)]="inputYear" class="my-input surface-color title-color p-2 ms-4" type="string" placeholder="Year">
+                                    </div>
+                                    <input [(ngModel)]="inputInstitution" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Institution">
+                                    <input [(ngModel)]="inputInstitutionLink" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Institution link">
+                                    <input [(ngModel)]="inputCertificationLink" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Certification link">
+                                    <div class="mt-4 d-flex flex-row-reverse">
+                                        <button (click)="addEducation()" type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
+                                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

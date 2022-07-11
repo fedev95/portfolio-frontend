@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
+	logged = true;
+
 	section_title = 'skills';
+
+	newSkill = '';
 
 	frontend: string[] = [
 		'HTML / CSS / JS',
@@ -16,9 +20,22 @@ export class SkillsComponent implements OnInit {
 	];
 
 	backend: string[] = [
-		'MySQL',
-		'pindonga'
+		'SQL'
 	]
+
+	addSkill(type: any, skill: any) {
+		if (skill.length > 0) {
+			type.push(skill);
+			this.newSkill = '';
+		}
+	}
+
+	removeSkill(type: any[], skill: any) {
+		let i = type.indexOf(skill);
+		if (i !== -1) {
+			type.splice(i, 1);
+		}
+	}
 
 	constructor() { }
 
