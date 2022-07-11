@@ -1,0 +1,9 @@
+#add-experience-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#add-experience-modal-content>div {
+    border: none;
+}

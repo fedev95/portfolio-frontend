@@ -13,6 +13,8 @@ export class SkillsComponent implements OnInit {
 
 	newSkill = '';
 
+	incomplete = false;
+
 	frontend: string[] = [
 		'HTML / CSS / JS',
 		'Bootstrap',
@@ -27,6 +29,9 @@ export class SkillsComponent implements OnInit {
 		if (skill.length > 0) {
 			type.push(skill);
 			this.newSkill = '';
+			this.incomplete = false;
+		} else {
+			this.incomplete = true;
 		}
 	}
 

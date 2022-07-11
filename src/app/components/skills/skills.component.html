@@ -10,7 +10,7 @@
                     <div *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1">{{skill}}</p>
                         <div *ngIf="logged">
-                            <button (click)="removeSkill(frontend, skill)" class="my-btn border-0 text-decoration-none title-color">Delete</button>
+                            <button (click)="removeSkill(frontend, skill)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center" *ngIf="logged">
@@ -25,10 +25,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <input class="my-input surface-color title-color p-2" [(ngModel)]="newSkill" type="text" placeholder="New skill">
+                                        <p *ngIf="incomplete" class="mt-4 gold-color">
+                                            Invalid value.
+                                        </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2" data-bs-dismiss="modal">Cancel</button>
-                                        <button (click)="addSkill(frontend, newSkill)" data-bs-dismiss="modal" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Save</button>
+                                        <button (click)="addSkill(frontend, newSkill)" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +45,7 @@
                     <div *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1">{{skill}}</p>
                         <div *ngIf="logged">
-                            <button (click)="removeSkill(backend, skill)" class="my-btn border-0 text-decoration-none title-color">Delete</button>
+                            <button (click)="removeSkill(backend, skill)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center" *ngIf="logged">
@@ -57,10 +60,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <input class="my-input surface-color title-color p-2" [(ngModel)]="newSkill" type="text" placeholder="New skill">
+                                        <p *ngIf="incomplete" class="mt-4 gold-color">
+                                            Invalid value.
+                                        </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2" data-bs-dismiss="modal">Cancel</button>
-                                        <button (click)="addSkill(backend, newSkill)" data-bs-dismiss="modal" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 ms-3">Save</button>
+                                        <button (click)="addSkill(backend, newSkill)" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 ms-3">Save</button>
                                     </div>
                                 </div>
                             </div>

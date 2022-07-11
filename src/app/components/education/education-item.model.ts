@@ -12,5 +12,4 @@ export class EducationItem {
         this.institutionLink = institutionLink;
         this.certificationLink = certificationLink;
     }
-
 }

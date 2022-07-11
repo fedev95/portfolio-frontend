@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
 			this.surname = this.newSurname;
 			this.degree = this.newDegree;
 			this.incomplete = false;
+			this.newName = '';
+			this.newSurname = '';
+			this.newDegree = '';
 		} else {
 			this.incomplete = true;
 		}
