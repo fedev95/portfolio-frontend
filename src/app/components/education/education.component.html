@@ -37,6 +37,7 @@
                                     <input [(ngModel)]="inputInstitution" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Institution">
                                     <input [(ngModel)]="inputInstitutionLink" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Institution link">
                                     <input [(ngModel)]="inputCertificationLink" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Certification link">
+                                    <p *ngIf="incomplete" class="mt-4 gold-color">Invalid values.</p>
                                     <div class="mt-4 d-flex flex-row-reverse">
                                         <button (click)="addEducation()" type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
                                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancel</button>

@@ -25,15 +25,31 @@ export class EducationComponent implements OnInit {
     inputInstitutionLink = '';
     inputCertificationLink = '';
 
+    incomplete = false;
+
     deleteItem(item:any) {
 		if (item !== -1) {
 			this.educationItems.splice(item, 1);
 		}
     }
 
+    cleanInputs() {
+        this.inputTitle = '';
+        this.inputYear = '';
+        this.inputInstitution = '';
+        this.inputInstitutionLink = '';
+        this.inputCertificationLink = '';
+    }
+
     addEducation() {
-        let newItem = new EducationItem(this.inputTitle, this.inputYear, this.inputInstitution, this.inputInstitutionLink, this.inputCertificationLink);
-        this.educationItems.push(newItem);
+        if(this.inputTitle.length > 0 && this.inputYear.length > 0 && this.inputInstitution.length > 0 && this.inputInstitutionLink.length > 0 && this.inputCertificationLink.length > 0) {
+            let newItem = new EducationItem(this.inputTitle, this.inputYear, this.inputInstitution, this.inputInstitutionLink, this.inputCertificationLink);
+            this.educationItems.push(newItem);
+            this.cleanInputs();
+            this.incomplete = false;
+        } else {
+            this.incomplete = true;
+        }
     }
 
     constructor() { }
