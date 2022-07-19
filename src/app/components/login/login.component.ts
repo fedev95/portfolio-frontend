@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -13,10 +15,10 @@ export class LoginComponent implements OnInit {
 
 	loginForm: FormGroup;
 
-  	constructor(private formBuilder: FormBuilder){ 
+  	constructor(private formBuilder: FormBuilder, private authService: AuthService, private route:Router){ 
     	this.loginForm= this.formBuilder.group({
-      		password:['',[Validators.required, Validators.minLength(8)]],
-      		user:['', [Validators.required]],
+			user:['', [Validators.required]],
+      		password:['',[Validators.required]],
    		})
   	}
 
@@ -35,18 +37,15 @@ export class LoginComponent implements OnInit {
 	}
 
 	get UserValid() {
-		return false
+		return false;
 	}
  
-	onEnviar(event: Event){
+	onSubmit(event: Event) {
 		event.preventDefault; 
-	
-		if (this.loginForm.valid){
-			alert("Todo salio bien ¡Enviar formuario!")
-		} else {     
-			this.loginForm.markAllAsTouched(); 
-		}
-	
+		
+		this.authService.logIn(this.loginForm.value).subscribe(data => {
+			this.route.navigate(['/portfolio']);
+		})
 	}	
 
 }

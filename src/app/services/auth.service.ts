@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   	providedIn: 'root'
@@ -6,8 +9,17 @@ import { Injectable } from '@angular/core';
 
 export class AuthService {
 
-	
+	url = '';
+	currentUserSubject: BehaviorSubject<any>;
 
-	constructor() { }
+	constructor(private http:HttpClient) {
+		this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
+	}
 
+	logIn(credentials: any): Observable<any> {
+		return this.http.post(this.url, credentials).pipe(map(data => {
+			sessionStorage.setItem('currentUser', JSON.stringify(data));
+			return data; 
+		}))
+	}
 }
