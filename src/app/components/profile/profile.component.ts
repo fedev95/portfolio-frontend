@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
 	selector: 'app-profile',
@@ -7,34 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-	logged = true;
-	name = 'federico';
-	surname = 'burgos';
-	degree = 'Full Stack Developer Jr';
+	user: User = new User('','','','');
 
-	newName = '';
-	newSurname = '';
-	newDegree = '';
-
-	incomplete = false;
-
-	update() {
-		if(this.newName.length > 0 && this.newSurname.length > 0 && this.degree.length > 0) {
-			this.name = this.newName;
-			this.surname = this.newSurname;
-			this.degree = this.newDegree;
-			this.incomplete = false;
-			this.newName = '';
-			this.newSurname = '';
-			this.newDegree = '';
-		} else {
-			this.incomplete = true;
-		}
-	}
-
-	constructor() { }
+	constructor(public userService: UserService) { }
 
 	ngOnInit(): void {
+		this.userService.getUser().subscribe(data => {
+			this.user = data
+		})
 	}
 
 }

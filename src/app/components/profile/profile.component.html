@@ -1,16 +1,16 @@
 <div class="row d-flex justify-content-evenly align-items-center">
-    <div data-aos="fade-in"
-    data-aos-offset="200"
+    <div data-aos="zoom-out"
+    data-aos-offset="100"
     data-aos-delay="50"
     data-aos-duration="1000"
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
     data-aos-once="false"
     data-aos-anchor-placement="top" class="col-md-5 d-flex p-4">
-        <img class="p-2 img-fluid rounded-circle m-auto gradient-bg" src="assets/imgs/profile.jpg" alt="">
+        <img class="p-2 img-fluid rounded-circle m-auto gradient-bg" src="{{user.img}}" alt="profile picture">
     </div>
-    <div data-aos="fade-in"
-    data-aos-offset="200"
+    <div data-aos="zoom-out"
+    data-aos-offset="100"
     data-aos-delay="50"
     data-aos-duration="1000"
     data-aos-easing="ease-in-out"
@@ -18,9 +18,9 @@
     data-aos-once="false"
     data-aos-anchor-placement="top" class="col-md-5 pt-4">
         <div class="d-flex flex-column">
-            <h1 id="full-name" class="title-color text-center">{{name | uppercase}} {{surname | uppercase}}</h1>
-            <h3 class="subtle-color text-center">{{degree}}</h3>
-            <div *ngIf="logged" class="d-flex justify-content-center mt-4">
+            <h1 id="full-name" class="title-color text-center">{{user.name}} {{user.surname}}</h1>
+            <h3 class="subtle-color text-center my-3">{{user.title}}</h3>
+            <div *ngIf="" class="d-flex justify-content-center mt-4">
                 <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-toggle="modal" data-bs-target="#profileModal">
                     Edit
                 </button>
@@ -31,17 +31,17 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Profile</h4>
                             </div>
                             <div class="modal-body">
-                                <input [(ngModel)]="newName" type="text" class="my-input surface-color title-color p-2" placeholder="Name">
-                                <input [(ngModel)]="newSurname" type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Surname">
-                                <input [(ngModel)]="newDegree" type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Degree">
-                                <p *ngIf="incomplete" class="gold-color mt-4">
+                                <input type="text" class="my-input surface-color title-color p-2" placeholder="Name">
+                                <input type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Surname">
+                                <input type="text" class="my-input surface-color title-color p-2 mt-4" placeholder="Degree">
+                                <p *ngIf="" class="gold-color mt-4">
                                     Invalid values.
                                 </p>
                                 <input type="file" accept="image/*" class="mt-4">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancel</button>
-                                <button (click)="update()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
+                                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
                             </div>
                         </div>
                     </div>
