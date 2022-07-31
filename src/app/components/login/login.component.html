@@ -13,7 +13,7 @@
                     <input class="mt-4 p-2 login-input surface-color title-color" placeholder="Password" type="password" formControlName="password" [class.border-danger]="UserValid">
                     <div *ngIf="Password?.errors  && Password?.touched">
                         <p *ngIf="Password?.hasError('required')" class="gold-color">
-                            El password es requerido.
+                            Password required.
                         </p>
                     </div>
                 </div>

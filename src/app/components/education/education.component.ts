@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EducationItem } from './education-item.model';
-
+import { Education } from 'src/app/model/education.model';
+import { EducationService } from 'src/app/services/education.service';
 
 @Component({
     selector: 'app-education',
@@ -9,52 +9,73 @@ import { EducationItem } from './education-item.model';
 })
 export class EducationComponent implements OnInit {
 
-    sectionTitle = 'education';
+    sectionTitle = 'educación';
 
     logged = true;
 
-    educationItems = [
-        {title: 'Titulo', year: 'yyyy', institution: 'Institucion', institutionLink: 'Link1', certificationLink: 'Link2'},
-        {title: 'Titulo 2', year: 'yyyy', institution: 'Institucion 2', institutionLink: 'Link1', certificationLink: 'Link2'},
-        {title: 'Titulo 3', year: 'yyyy', institution: 'Institucion 3', institutionLink: 'Link1', certificationLink: 'Link2'}
-    ];
+    educationItems: Education[] = [];
 
-    inputTitle = '';
-    inputYear = '';
-    inputInstitution = '';
-    inputInstitutionLink = '';
-    inputCertificationLink = '';
+    createTitle: String = '';
+    createAcademyName: String = '';
+    createCertificationLink: String = '';
 
-    incomplete = false;
+    edToUpdate!: Education;
 
-    deleteItem(item:any) {
-		if (item !== -1) {
-			this.educationItems.splice(item, 1);
-		}
-    }
-
-    cleanInputs() {
-        this.inputTitle = '';
-        this.inputYear = '';
-        this.inputInstitution = '';
-        this.inputInstitutionLink = '';
-        this.inputCertificationLink = '';
-    }
-
-    addEducation() {
-        if(this.inputTitle.length > 0 && this.inputYear.length > 0 && this.inputInstitution.length > 0 && this.inputInstitutionLink.length > 0 && this.inputCertificationLink.length > 0) {
-            let newItem = new EducationItem(this.inputTitle, this.inputYear, this.inputInstitution, this.inputInstitutionLink, this.inputCertificationLink);
-            this.educationItems.push(newItem);
-            this.cleanInputs();
-            this.incomplete = false;
-        } else {
-            this.incomplete = true;
-        }
-    }
-
-    constructor() { }
+    constructor(private educationService: EducationService) { }
 
     ngOnInit(): void {
+        this.listEducation();
     }
 
+    listEducation(): void {
+        this.educationService.list().subscribe(
+            data => {
+                this.educationItems = data;
+            }
+        );
+    }
+
+    deleteEducation(id: any) {
+        this.educationService.delete(id).subscribe(
+            data => {
+                this.listEducation();
+            }
+        );
+    }
+
+    createEducation(): void {
+        const education = new Education(this.createTitle, this.createAcademyName, this.createCertificationLink);
+        this.educationService.add(education).subscribe(
+            data => {
+                this.listEducation();
+            }
+        );
+        this.clearForm();        
+    }
+
+    clearForm() {
+        this.createTitle = '';
+        this.createAcademyName = '';
+        this.createCertificationLink = '';
+    }
+
+    findEducation(id: any) {
+        this.educationService.detail(id).subscribe(
+            data => {
+                this.edToUpdate = data;
+                // console.log(this.edToUpdate);
+            }
+        )
+    }
+
+    update(id: any): void {
+        this.educationService.update(id, this.edToUpdate).subscribe(
+            data => {
+                this.listEducation();
+            }
+        )
+    }
+    
+
+        
 }

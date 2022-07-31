@@ -8,6 +8,8 @@
     --gold: #f6c177;
     --text: #c4a7e7;
     --btn: #403d52;
+    --btn-disabled: #21202e;
+    --btn-disabled-text: #524f67;
     --btn-hover: #524f67;
 }
 
@@ -72,6 +74,11 @@ body::-webkit-scrollbar-thumb {
 .my-btn:focus {
     outline: none;
     background-color: var(--btn-hover);
+}
+
+.my-btn:disabled {
+    background-color: var(--btn-disabled);
+    color: var(--btn-disabled-text);
 }
 
 .my-input {
