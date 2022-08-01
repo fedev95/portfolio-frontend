@@ -12,6 +12,10 @@
         </div>
         <div class="row">
 
+            <div *ngIf="experienceItems.length < 1" class="col-12 d-flex justify-content-center">
+                <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">Actualmente sin experiencia laboral :(</h4>
+            </div>
+
             <div *ngFor="let item of experienceItems; let i = index" class="col-lg-6">
                 <div class="my-4 d-flex flex-column align-items-start">
                     <div class="d-flex flex-wrap justify-content-between w-100">
@@ -41,8 +45,9 @@
                                                     <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de salida" required>
             
                                                     <input [(ngModel)]="expToUpdate.company" class="my-input surface-color title-color p-2 mt-3" name="company" id="createCompany" type="text" placeholder="Compañia" required>
-            
-                                                    <input [(ngModel)]="expToUpdate.description" class="my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription" type="text" placeholder="Descripción" required>
+
+                                                    <textarea [(ngModel)]="expToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                                                    <p class="text-color">{{expToUpdate.description.length}}/150</p>
             
                                                 </div>
                                                 <div class="mt-4 d-flex flex-row-reverse">
@@ -63,11 +68,11 @@
                 </div>
             </div>
 
-            <div *ngIf="logged" class="col-lg-6 d-flex align-items-center justify-content-center py-4">
+            <div *ngIf="logged" class="col d-flex align-items-center justify-content-center py-4">
 
                 <!-- boton agregar -->
                 <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
-                    +
+                    Agregar experiencia
                 </button>
                 
                 <!-- modal agregar -->
@@ -89,7 +94,8 @@
                                         
                                         <input [(ngModel)]="createCompany" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" required>
 
-                                        <input [(ngModel)]="createDescription" class="my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription" type="text" placeholder="Descripción" required>
+                                        <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                                        <p class="text-color">{{createDescription.length}}/150</p>
 
                                     </div>
                                     <div class="mt-4 d-flex flex-row-reverse">

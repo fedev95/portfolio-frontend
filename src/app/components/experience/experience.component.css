@@ -9,3 +9,7 @@
 #edit-experience-modal-content>div {
     border: none;
 }
+
+textarea {
+    resize: none;
+  }
