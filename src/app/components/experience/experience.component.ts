@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExperienceItem } from './experience-item.model';
-import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { Experience } from 'src/app/model/experience.model';
+import { ExperienceService } from 'src/app/services/experience.service';
 
 @Component({
 	selector: 'app-experience',
@@ -9,50 +9,76 @@ import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
 })
 export class ExperienceComponent implements OnInit {
 
-	sectionTitle = 'experience';
+	sectionTitle = 'experiencia';
 
 	logged = true;
 
-	experienceItems = [
-		{rol: 'Rol', startYear: 'yyyy', endYear: 'yyyy', company: 'Compañía', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non doloribus pariatur quibusdam, autem dolor dolore quo officia aperiam explicabo!'},
-		{rol: 'Rol 2', startYear: 'yyyy', endYear: 'yyyy', company: 'Compañía 2', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non doloribus pariatur quibusdam, autem dolor dolore quo officia aperiam explicabo!'},
-		{rol: 'Rol 3', startYear: 'yyyy', endYear: 'yyyy', company: 'Compañía 3', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non doloribus pariatur quibusdam, autem dolor dolore quo officia aperiam explicabo!'}
-	]
+	experienceItems: Experience[] = [];
 
-	
-	inputRol = '';
-	inputStartYear = '';
-	inputEndYear = '';
-	inputCompany = '';
-	inputDescription = '';
-	
-	incomplete = false;
-	
-	deleteItem(item:any) {
-		if (item !== -1) {
-			this.experienceItems.splice(item, 1);
-		}
-    }
+	// variables para crear un nuevo item
+	createRol: String = '';
+	createStartYear: number = NaN;
+	createEndYear: number = NaN;
+	createCompany: String = '';
+	createDescription: String = '';
 
-	addExperienceItem() {
-		if(this.inputRol.length > 0 && this.inputStartYear.length > 0 && this.inputEndYear.length > 0 && this.inputCompany.length > 0 && this.inputDescription.length > 0) {
-			let newItem = new ExperienceItem(this.inputRol, this.inputStartYear, this.inputEndYear, this.inputCompany, this.inputDescription);
-			this.experienceItems.push(newItem);
-			this.inputRol = '';
-			this.inputStartYear = '';
-			this.inputEndYear = '';
-			this.inputCompany = '';
-			this.inputDescription = '';
-			this.incomplete = false;
-		} else {
-			this.incomplete = true;
-		}
-	}
+	expToUpdate!: Experience;
 
-	constructor() {
+	constructor(private experienceService: ExperienceService) {
 	}
 
 	ngOnInit(): void {
+		this.experienceList();
 	}
+
+	experienceList(): void {
+        this.experienceService.list().subscribe(
+            data => {
+                this.experienceItems = data;
+            }
+        );
+    }
+
+	createExperience(): void {
+        const experience = new Experience(this.createRol, this.createStartYear, this.createEndYear, this.createCompany, this.createDescription);
+        this.experienceService.add(experience).subscribe(
+            data => {
+                this.experienceList();
+            }
+        );
+        this.clearForm();        
+    }
+
+	clearForm() {
+        this.createRol = '';
+		this.createStartYear = NaN;
+		this.createEndYear = NaN;
+        this.createCompany = '';
+        this.createDescription = '';
+    }
+
+	deleteExperience(id: any) {
+        this.experienceService.delete(id).subscribe(
+            data => {
+                this.experienceList();
+            }
+        );
+    }
+
+	findExperience(id: any) {
+        this.experienceService.detail(id).subscribe(
+            data => {
+                this.expToUpdate = data;
+            }
+        )
+    }
+
+	update(id: any): void {
+        this.experienceService.update(id, this.expToUpdate).subscribe(
+            data => {
+                this.experienceList();
+            }
+        )
+    }
 
 }

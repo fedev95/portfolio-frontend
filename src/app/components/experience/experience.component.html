@@ -12,49 +12,96 @@
         </div>
         <div class="row">
 
-            <div *ngFor="let item of experienceItems; let i = index" class="col-md-6">
+            <div *ngFor="let item of experienceItems; let i = index" class="col-lg-6">
                 <div class="my-4 d-flex flex-column align-items-start">
-                    <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
-                        <button *ngIf="logged" (click)="deleteItem(i)" class="my-btn border-0 text-decoration-none title-color">Delete</button>
+
+                        <div class="d-flex justify-content-center align-items-center">
+
+                            <!-- boton editar -->
+                            <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
+                                Editar
+                            </button>
+                            <!-- modal editar -->
+                            <div  class="modal fade" id="edit-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content" id="edit-experience-modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Editar experiencia</h4>
+                                        </div>
+                                        <div *ngIf="expToUpdate" class="modal-body d-flex flex-column">
+                                            <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
+                                                <div class="form-group">
+            
+                                                    <input [(ngModel)]="expToUpdate.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto de trabajo" required>
+
+                                                    <input [(ngModel)]="expToUpdate.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" placeholder="Año de ingreso" required>
+
+                                                    <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de salida" required>
+            
+                                                    <input [(ngModel)]="expToUpdate.company" class="my-input surface-color title-color p-2 mt-3" name="company" id="createCompany" type="text" placeholder="Compañia" required>
+            
+                                                    <input [(ngModel)]="expToUpdate.description" class="my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription" type="text" placeholder="Descripción" required>
+            
+                                                </div>
+                                                <div class="mt-4 d-flex flex-row-reverse">
+                                                    <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Actualizar</button>
+                                                    <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
+                        </div>
                     </div>
                     <p class="subtle-color">{{item.company}}</p>
                     <p class="text-color">{{item.description}}</p>
                 </div>
             </div>
 
-            <div class="col-md-6 d-flex align-items-center justify-content-center py-4">
-                <!-- Button trigger modal -->
-                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#experienceModal">
+            <div *ngIf="logged" class="col-lg-6 d-flex align-items-center justify-content-center py-4">
+
+                <!-- boton agregar -->
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
                     +
                 </button>
-  
-                <!-- Modal -->
-                <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                
+                <!-- modal agregar -->
+                <div class="modal fade" id="add-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" id="add-experience-modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Add experience</h4>
+                                <h4 class="modal-title">Agregar experiencia</h4>
                             </div>
                             <div class="modal-body d-flex flex-column">
-                                <div class="div-group">
-                                    <input [(ngModel)]="inputRol" class="my-input surface-color title-color p-2" type="text" placeholder="Rol">
-                                    <div class="d-flex mt-4">
-                                        <input [(ngModel)]="inputStartYear" class="my-input surface-color title-color p-2" type="string" placeholder="Start year">
-                                        <input [(ngModel)]="inputEndYear" class="my-input surface-color title-color p-2 ms-4" type="string" placeholder="End year">
+                                <form (ngSubmit)="createExperience()" #addExp="ngForm">
+                                    <div class="form-group">
+
+                                        <input [(ngModel)]="createRol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" required>
+
+                                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" placeholder="Año de ingreso" required>
+                                        
+                                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de salida" required>
+                                        
+                                        <input [(ngModel)]="createCompany" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" required>
+
+                                        <input [(ngModel)]="createDescription" class="my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription" type="text" placeholder="Descripción" required>
+
                                     </div>
-                                    <input [(ngModel)]="inputCompany" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Company">
-                                    <input [(ngModel)]="inputDescription" class="my-input surface-color title-color p-2 mt-4" type="text" placeholder="Description">
-                                    <p *ngIf="incomplete" class="mt-4 gold-color">Invalid values.</p>
                                     <div class="mt-4 d-flex flex-row-reverse">
-                                        <button (click)="addExperienceItem()" type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3">Save</button>
-                                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Agregar</button>
+                                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

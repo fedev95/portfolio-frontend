@@ -15,19 +15,21 @@ export class EducationComponent implements OnInit {
 
     educationItems: Education[] = [];
 
+    // variables para crear un nuevo item
     createTitle: String = '';
     createAcademyName: String = '';
     createCertificationLink: String = '';
 
     edToUpdate!: Education;
 
-    constructor(private educationService: EducationService) { }
-
-    ngOnInit(): void {
-        this.listEducation();
+    constructor(private educationService: EducationService) {
     }
 
-    listEducation(): void {
+    ngOnInit(): void {
+        this.educationList();
+    }
+
+    educationList(): void {
         this.educationService.list().subscribe(
             data => {
                 this.educationItems = data;
@@ -38,7 +40,7 @@ export class EducationComponent implements OnInit {
     deleteEducation(id: any) {
         this.educationService.delete(id).subscribe(
             data => {
-                this.listEducation();
+                this.educationList();
             }
         );
     }
@@ -47,7 +49,7 @@ export class EducationComponent implements OnInit {
         const education = new Education(this.createTitle, this.createAcademyName, this.createCertificationLink);
         this.educationService.add(education).subscribe(
             data => {
-                this.listEducation();
+                this.educationList();
             }
         );
         this.clearForm();        
@@ -63,7 +65,6 @@ export class EducationComponent implements OnInit {
         this.educationService.detail(id).subscribe(
             data => {
                 this.edToUpdate = data;
-                // console.log(this.edToUpdate);
             }
         )
     }
@@ -71,7 +72,7 @@ export class EducationComponent implements OnInit {
     update(id: any): void {
         this.educationService.update(id, this.edToUpdate).subscribe(
             data => {
-                this.listEducation();
+                this.educationList();
             }
         )
     }

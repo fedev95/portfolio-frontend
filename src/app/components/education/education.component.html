@@ -29,18 +29,18 @@
                                             <h4 class="modal-title">Editar educación</h4>
                                         </div>
                                         <div *ngIf="edToUpdate" class="modal-body d-flex flex-column">
-                                            <form #editEd="ngForm">
+                                            <form (ngSubmit)="update(edToUpdate.id)"  #editEd="ngForm">
                                                 <div class="form-group">
             
                                                     <input [(ngModel)]="edToUpdate.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
             
-                                                    <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-4" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" required>
+                                                    <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" required>
             
-                                                    <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-4" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" required>
+                                                    <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" required>
             
                                                 </div>
                                                 <div class="mt-4 d-flex flex-row-reverse">
-                                                    <button (click)="update(edToUpdate.id)" type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">Actualizar</button>
+                                                    <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">Actualizar</button>
                                                     <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
                                                 </div>
                                             </form>
@@ -61,11 +61,13 @@
                 </div>
             </div>
 
-            <!-- boton agregar -->
             <div *ngIf="logged" class="col-lg-6 d-flex align-items-center justify-content-center py-4">
+
+                <!-- boton agregar -->
                 <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-education-modal">
                     +
                 </button>
+
                 <!-- modal agregar -->
                 <div class="modal fade" id="add-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -74,18 +76,18 @@
                                 <h4 class="modal-title">Agregar educación</h4>
                             </div>
                             <div class="modal-body d-flex flex-column">
-                                <form (ngSubmit)="createEducation()" #f="ngForm">
+                                <form (ngSubmit)="createEducation()" #addEd="ngForm">
                                     <div class="form-group">
 
                                         <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
 
-                                        <input [(ngModel)]="createAcademyName" class="my-input surface-color title-color p-2 mt-4" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" required>
+                                        <input [(ngModel)]="createAcademyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" required>
 
-                                        <input [(ngModel)]="createCertificationLink" class="my-input surface-color title-color p-2 mt-4" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" required>
+                                        <input [(ngModel)]="createCertificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" required>
 
                                     </div>
                                     <div class="mt-4 d-flex flex-row-reverse">
-                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="f.form.invalid">Agregar</button>
+                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addEd.form.invalid">Agregar</button>
                                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                                     </div>
                                 </form>
