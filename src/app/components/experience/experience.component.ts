@@ -7,6 +7,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 	templateUrl: './experience.component.html',
 	styleUrls: ['./experience.component.css']
 })
+
 export class ExperienceComponent implements OnInit {
 
 	sectionTitle = 'experiencia';

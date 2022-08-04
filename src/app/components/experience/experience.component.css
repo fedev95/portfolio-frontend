@@ -1,3 +1,7 @@
+.experience-item {
+    gap: 10px;
+}
+
 #add-experience-modal-content,
 #edit-experience-modal-content {
     background-color: var(--base);
@@ -12,4 +16,4 @@
 
 textarea {
     resize: none;
-  }
+}
