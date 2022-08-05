@@ -12,9 +12,9 @@
         </div>
         <div class="row justify-content-center py-4">
             <div *ngFor="let item of projectsItems; let i = index"  class="project-item col-lg-4 col-md-6 p-0 d-flex flex-column p-0">
-                <div class="prj-item-card" (click)="goToLink('a')">
+                <div class="d-flex flex-column prj-item-card flex-fill" (click)="goToLink(item.prjLink)">
                     <div class="img-container d-flex justify-content-center align-items-center">
-                        <img class="project-img flex-fill" src="{{item.img}}" alt="project img">
+                        <img class="project-img flex-fill" [src]="item.img" alt="project img">
                     </div>                
                     <div class="project-info flex-fill surface-color p-3">
                         <h5 class="title-color">{{item.title}}</h5>
@@ -28,6 +28,57 @@
                     </button>                    
                     <button (click)="deleteProject(item.id)" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                 </div>
+            </div>
+
+            <div *ngIf="logged" class="col-12 d-flex align-items-center justify-content-center py-4">
+
+                <!-- boton agregar -->
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 my-4 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-project-modal">
+                    Agregar proyecto
+                </button>
+                
+                <!-- modal agregar -->
+                <div class="modal fade" id="add-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" id="add-project-modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Agregar proyecto</h4>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                <form (ngSubmit)="createProject()" #addPrj="ngForm">
+                                    <div class="form-group">
+
+                                        <div class="d-flex">
+                                            <img *ngIf="createImg != ''" class="img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
+                                        </div>
+
+                                        <label id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color" for="createImg">
+                                            Miniatura (.png, .jpg, .jpeg)
+                                            <input alife-file-to-base64 (onFileChanged)="onFileChanges($event)" type="file" class="d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
+                                        </label>
+
+                                        <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
+
+                                        <input [(ngModel)]="createDate" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>
+                                        
+                                        <input [(ngModel)]="createPrjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>
+
+                                        <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                                        <p class="text-color">{{createDescription.length}}/150</p>
+
+
+
+                                    </div>
+                                    <div class="mt-4 d-flex flex-row-reverse">
+                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid">Agregar</button>
+                                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

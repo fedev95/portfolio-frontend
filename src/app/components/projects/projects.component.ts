@@ -12,7 +12,7 @@ export class ProjectsComponent implements OnInit {
 
 	sectionTitle = 'proyectos';
 
-    logged = true;
+    logged = false;
 
 	projectsItems: Projects[] = [];
 
@@ -32,7 +32,11 @@ export class ProjectsComponent implements OnInit {
 		this.projectsList();
 	}
 
-	goToLink(url: string) {
+    onFileChanges(e: any) {
+        this.createImg = e[0].base64;
+    }
+
+	goToLink(url: any) {
 		window.open(url, "_blank");
 	}
 	
