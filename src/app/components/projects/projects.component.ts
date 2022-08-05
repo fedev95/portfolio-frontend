@@ -12,7 +12,7 @@ export class ProjectsComponent implements OnInit {
 
 	sectionTitle = 'proyectos';
 
-    logged = false;
+    logged = true;
 
 	projectsItems: Projects[] = [];
 
@@ -32,8 +32,12 @@ export class ProjectsComponent implements OnInit {
 		this.projectsList();
 	}
 
-    onFileChanges(e: any) {
+    onCreateImg(e: any) {
         this.createImg = e[0].base64;
+    }
+
+    onUpdateImg(a: any) {
+        this.prjToUpdate.img = a[0].base64;
     }
 
 	goToLink(url: any) {
@@ -82,7 +86,11 @@ export class ProjectsComponent implements OnInit {
         )
     }
 
-	update(id: any): void {
+	updateProject(id: any): void {
+        if (this.createImg.length > 0) {
+            this.prjToUpdate.img = this.createImg;
+            this.createImg = '';
+        }
         this.projectsService.update(id, this.prjToUpdate).subscribe(
             data => {
                 this.projectsList();

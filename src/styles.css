@@ -19,16 +19,20 @@
     scrollbar-color: #6e6a86 var(--base);
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 15px;
 }
-  
-body::-webkit-scrollbar-track {
+
+*::-webkit-scrollbar-thumb  {
+    background-color: var(--overlay);
+}
+
+*::-webkit-scrollbar-track {
     background: var(--base);
 }
-  
-body::-webkit-scrollbar-thumb {
-    background-color: var(--overlay);
+
+body {
+    background-color: var(--base);
 }
 
 .base-color {

@@ -25,15 +25,15 @@
 }
 
 .project-item:hover>.prj-item-card>.img-container>.project-img {
-    transform: scale(1);
+    transform: scale(1.01);
     transition: 3s;
     z-index: 3;
 }
 
-.project-item:hover>.project-info {
+/* .project-item:hover>.project-info {
     background-color: var(--overlay);
     z-index: 4;
-}
+} */
 
 .img-container {
     height: 200px;
@@ -58,4 +58,8 @@ textarea {
 
 #imgInput {
     cursor: pointer;
+}
+
+.thumbnail-preview {
+    max-height: 200px;
 }
