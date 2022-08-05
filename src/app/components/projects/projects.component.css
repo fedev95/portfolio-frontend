@@ -26,7 +26,7 @@
 
 .project-item:hover>.prj-item-card>.img-container>.project-img {
     transform: scale(1.01);
-    transition: 3s;
+    transition: 4s;
     z-index: 3;
 }
 

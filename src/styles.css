@@ -35,6 +35,8 @@ body {
     background-color: var(--base);
 }
 
+
+/* bg y font colors  */
 .base-color {
     background-color: var(--base);
 }
@@ -67,6 +69,8 @@ body {
     background: linear-gradient(45deg, var(--gold) 0%, var(--text) 50%, var(--subtle) 100%);
 }
 
+
+/* btn */
 .my-btn {
     background-color: var(--btn);
 }
@@ -85,6 +89,8 @@ body {
     color: var(--btn-disabled-text);
 }
 
+
+/* input */
 .my-input {
     border: 1px solid transparent;
     outline: none;
