@@ -11,7 +11,15 @@
             <h3 class="pb-3 title-color">{{sectionTitle | uppercase}}</h3>
         </div>
         <div class="row">
-            <div *ngFor="let item of educationItems; let i = index" class="col-lg-6">
+            <div data-aos="fade-in"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            data-aos-once="false"
+            data-aos-anchor-placement="top"
+             *ngFor="let item of educationItems; let i = index" class="col-lg-6">
                 <div class="education-item d-flex flex-column align-items-start my-4">
                     <div class="d-flex flex-row flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.title}}</h5>

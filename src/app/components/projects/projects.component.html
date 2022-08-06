@@ -11,28 +11,40 @@
             <h3 class="title-color pb-3">{{sectionTitle | uppercase}}</h3>
         </div>
         <div class="row justify-content-center py-4">
-            <div *ngFor="let item of projectsItems; let i = index"  class="project-item col-lg-4 col-md-6 p-0 d-flex flex-column p-0">
-                <div class="d-flex flex-column prj-item-card flex-fill" (click)="goToLink(item.prjLink)">
-                    <div class="img-container d-flex justify-content-center align-items-center">
-                        <img class="project-img flex-fill" [src]="item.img" alt="project img">
-                    </div>                
-                    <div class="project-info flex-fill surface-color p-3">
-                        <h5 class="title-color">{{item.title}}</h5>
-                        <p class="subtle-color">{{item.date}}</p>
-                        <p class="text-color">{{item.description}}</p>
+            <div data-aos="fade-in"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            data-aos-once="false"
+            data-aos-anchor-placement="top"
+             *ngFor="let item of projectsItems; let i = index" class=" col-lg-4 col-md-6 p-0 d-flex flex-column p-0">
+
+                <div class="project-item d-flex flex-column flex-fill">
+                    <div class="d-flex flex-column prj-item-card flex-fill" (click)="goToLink(item.prjLink)">
+                        <div class="img-container d-flex justify-content-center align-items-center">
+                            <img class="project-img flex-fill" [src]="item.img" alt="project img">
+                        </div>                
+                        <div class="project-info flex-fill surface-color p-3">
+                            <h5 class="title-color">{{item.title}}</h5>
+                            <p class="subtle-color">{{item.date}}</p>
+                            <p class="text-color">{{item.description}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="logged" class="d-flex flex-column">
+                        <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)">
+                            Editar
+                        </button>
+                        <!-- modal editar -->
+                                           
+                        <button (click)="deleteProject(item.id)" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                     </div>
                 </div>
-                <div *ngIf="logged" class="d-flex flex-column">
-                    <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)">
-                        Editar
-                    </button>
-                    <!-- modal editar -->
-                                       
-                    <button (click)="deleteProject(item.id)" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
-                </div>
+
             </div>
 
-            <div *ngIf="logged" class="col-12 d-flex align-items-center justify-content-center py-4">
+            <div *ngIf="logged" class="col-12 d-flex align-items-center justify-content-center pt-4">
 
                 <!-- boton agregar -->
                 <button type="button" class="my-btn border-0 text-decoration-none p-1 my-4 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-project-modal">
@@ -81,45 +93,46 @@
 
             </div>
         </div>
-    </div>
-</div>
-
-<div class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" id="edit-project-modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Editar proyecto</h4>
-            </div>
-            <div *ngIf="prjToUpdate" class="modal-body d-flex flex-column">
-                <form (ngSubmit)="updateProject(prjToUpdate.id)" #editPrj="ngForm">
-                    <div class="form-group">
-
-                        <div class="d-flex">
-                            <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
-                        </div>
-
-                        <label id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color" for="createImg">
-                            Miniatura (.png, .jpg, .jpeg)
-                            <input alife-file-to-base64 (onFileChanged)="onCreateImg($event)" type="file" class="d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
-                        </label>
-
-                        <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
-
-                        <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>
-                        
-                        <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>
-
-                        <textarea [(ngModel)]="prjToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                        <p class="text-color">{{prjToUpdate.description.length}}/150</p>
-
+        <div class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" id="edit-project-modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar proyecto</h4>
                     </div>
-                    <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Actualizar</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                    <div *ngIf="prjToUpdate" class="modal-body d-flex flex-column">
+                        <form (ngSubmit)="updateProject(prjToUpdate.id)" #editPrj="ngForm">
+                            <div class="form-group">
+        
+                                <div class="d-flex">
+                                    <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
+                                </div>
+        
+                                <label id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color" for="createImg">
+                                    Miniatura (.png, .jpg, .jpeg)
+                                    <input alife-file-to-base64 (onFileChanged)="onCreateImg($event)" type="file" class="d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
+                                </label>
+        
+                                <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
+        
+                                <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>
+                                
+                                <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>
+        
+                                <textarea [(ngModel)]="prjToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                                <p class="text-color">{{prjToUpdate.description.length}}/150</p>
+        
+                            </div>
+                            <div class="mt-4 d-flex flex-row-reverse">
+                                <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Actualizar</button>
+                                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
