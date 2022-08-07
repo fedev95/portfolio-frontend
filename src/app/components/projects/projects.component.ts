@@ -40,8 +40,8 @@ export class ProjectsComponent implements OnInit {
         this.createImg = '';
     }
 
-    editCreateImg(item: any) {
-        this.createImg = item.img
+    editCreateImg(itemImg: any) {
+        this.createImg = itemImg;
     }
 
 	goToLink(url: any) {
