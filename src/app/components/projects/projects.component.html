@@ -62,9 +62,6 @@
                                         </div>
                                         <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
 
-
-
-
                                         <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
                                         <input [(ngModel)]="createDate" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>                                        
                                         <input [(ngModel)]="createPrjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>
@@ -93,15 +90,12 @@
                             <div class="form-group">        
                                 <div class="d-flex">
                                     <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
-                                </div>   
-                                
+                                </div>                                
                                 
                                 <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color">
                                     Miniatura (.png, .jpg, .jpeg)
                                 </div>
                                 <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
-
-
 
                                 <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>        
                                 <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>                                
