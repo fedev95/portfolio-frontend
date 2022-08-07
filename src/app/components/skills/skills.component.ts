@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Skills } from 'src/app/model/skills.model';
+import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
 	selector: 'app-skills',
@@ -11,40 +13,100 @@ export class SkillsComponent implements OnInit {
 
 	logged = true;
 
-	newSkill = '';
-
-	incomplete = false;
-
-	frontend: string[] = [
-		'HTML / CSS / JS',
-		'Bootstrap',
-		'Angular'
-	];
-
-	backend: string[] = [
-		'SQL'
-	]
-
-	addSkill(type: any, skill: any) {
-		if (skill.length > 0) {
-			type.push(skill);
-			this.newSkill = '';
-			this.incomplete = false;
-		} else {
-			this.incomplete = true;
-		}
+	isActive = false;
+	
+	skillsItems: Skills[] = [];
+	frontend: Skills[] = [];
+	backend: Skills[] = [];
+	
+	createSkillName = '';
+	createSkillType = '';
+	
+	sklToUpdate!: Skills;
+	
+	isFrontend: boolean = false;
+	isBackend: boolean = false;
+	
+	constructor(private skillsService: SkillsService) {
 	}
-
-	removeSkill(type: any[], skill: any) {
-		let i = type.indexOf(skill);
-		if (i !== -1) {
-			type.splice(i, 1);
-		}
-	}
-
-	constructor() { }
 
 	ngOnInit(): void {
+		this.skillsList();
+		
+	}
+	
+	skillsList(): void {
+		this.skillsService.list().subscribe(
+			data => {
+				this.frontend = [];
+				this.backend = [];
+				this.skillsItems = data;
+				this.skillTypeList();
+            }
+		);
+    }
+
+	skillTypeList() {
+		for (let skill of this.skillsItems) {
+			if (skill.skillType == 'frontend') {
+				this.frontend.push(skill);
+			} else {
+				this.backend.push(skill);
+			}
+		}
+	}
+
+
+
+	deleteSkill(id: any) {
+        this.skillsService.delete(id).subscribe(
+            data => {
+                this.skillsList();
+            }
+        );
+    }
+
+	createSkill(): void {
+        const skill = new Skills(this.createSkillName, this.createSkillType);
+        this.skillsService.add(skill).subscribe(
+            data => {
+                this.skillsList();
+            }
+			);
+		this.clearAddForm();  
+    }
+
+	findEducation(id: any) {
+        this.skillsService.detail(id).subscribe(
+            data => {
+                this.sklToUpdate = data;
+            }
+        )
+    }
+
+	update(id: any): void {
+        this.skillsService.update(id, this.sklToUpdate).subscribe(
+            data => {
+                this.skillsList();
+            }
+        )
+    }
+
+	activeFrontendBorder() {
+		this.isFrontend = true;
+		this.isBackend = false;
+	}
+
+	activeBackendBorder() {
+		this.isBackend = true;
+		this.isFrontend = false;
+	}
+
+	clearAddForm() {
+		this.createSkillName = '';
+		this.createSkillType = '';
+		this.isFrontend = false;
+		this.isBackend = false;
 	}
 
 }

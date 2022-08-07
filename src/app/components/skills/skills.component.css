@@ -3,37 +3,28 @@
     gap: 15px;
 }
 
-#frontend-modal-content {
+#add-skill-modal-content,
+#edit-skill-modal-content {
     background-color: var(--base);
     border-radius: 0%;
     color: var(--title);
 }
 
-#frontend-modal-content>div {
+#add-skill-modal-content>div,
+#edit-skill-modal-content>div {
     border: none;
 }
 
-#backend-modal-content {
-    background-color: var(--base);
-    border-radius: 0%;
-    color: var(--title);
+
+.input-border {
+    border-bottom: 1px solid var(--btn);
 }
 
-#backend-modal-content>div {
-    border: none;
+.input-border-active {
+    border-bottom: 1px solid var(--gold);
 }
 
-.my-input {
-    border: 1px solid transparent;
-    outline: none;
-    width: 100%;
-}
 
-.my-input:focus {
-    outline: none;
-    border-bottom: 1px solid var(--gold) ;
-}
 
-.my-input::placeholder {
-    color: var(--text);
-}
+
+

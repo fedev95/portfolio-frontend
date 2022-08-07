@@ -13,69 +13,76 @@
         <div class="row justify-content-evenly">
             <div class="col-sm-6 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">FrontEnd</h4>
-                <div class="my-auto d-flex flex-column skills-gap align-items-center">
-                    <div *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
-                        <p class="subtle-color m-0 p-1">{{skill}}</p>
+                <div class="my-auto d-flex flex-column skills-gap align-items-center">                    
+                    <div data-aos="fade-in"
+                    data-aos-offset="100"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top"
+                     *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
+                        <p class="subtle-color m-0 p-1">{{skill.skillName}}</p>
                         <div *ngIf="logged">
-                            <button (click)="removeSkill(frontend, skill)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
                         </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center" *ngIf="logged">
-                        <button type="button" class="my-btn text-decoration-none border-0 title-color p-1 px-3" data-bs-toggle="modal" data-bs-target="#frontend-modal">
-                            +
-                        </button>
-                        <div class="modal fade" id="frontend-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" id="frontend-modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Add skill</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input class="my-input surface-color title-color p-2" [(ngModel)]="newSkill" type="text" placeholder="New skill">
-                                        <p *ngIf="incomplete" class="mt-4 gold-color">
-                                            Invalid value.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2" data-bs-dismiss="modal">Cancel</button>
-                                        <button (click)="addSkill(frontend, newSkill)" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
             <div class="col-sm-6 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">BackEnd</h4>
                 <div class="my-auto d-flex flex-column skills-gap align-items-center">
-                    <div *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">
-                        <p class="subtle-color m-0 p-1">{{skill}}</p>
+                    <div data-aos="fade-in"
+                    data-aos-offset="100"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top"
+                     *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">                        
+                        <p class="subtle-color m-0 p-1">{{skill.skillName}}</p>
                         <div *ngIf="logged">
-                            <button (click)="removeSkill(backend, skill)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
-                        </div>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
+                        </div>                        
                     </div>
-                    <div class="d-flex align-items-center justify-content-center" *ngIf="logged">
-                        <button type="button" class="my-btn text-decoration-none border-0 title-color p-1 px-3" data-bs-toggle="modal" data-bs-target="#backend-modal">
-                            +
-                        </button>
-                        <div class="modal fade" id="backend-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" id="backend-modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Modal title</h4>
+                </div>
+            </div>
+            <div class="col py-4 d-flex align-items-center justify-content-center">
+                
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 my-4 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
+                    Agregar educación
+                </button>
+
+                <div class="modal fade" id="add-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" id="add-skill-modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Agregar habilidad</h4>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                <form (ngSubmit)="createSkill()" #addSkill="ngForm">
+                                    <div class="form-group d-flex flex-column">                                        
+                                        <fieldset class="">
+                                            <div class="d-flex skills-gap">
+                                                <div class="w-100">
+                                                    <div [class.input-border-active]="isFrontend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="frontendInput.click(); activeFrontendBorder()">Frontend</div>
+                                                    <input #frontendInput [(ngModel)]="createSkillType" value="frontend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
+                                                </div>
+                                                <div class="w-100">
+                                                    <div [class.input-border-active]="isBackend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="backendInput.click(); activeBackendBorder()">Backend</div>
+                                                    <input #backendInput [(ngModel)]="createSkillType" value="backend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
+                                                </div>
+                                            </div>
+                                            <input [(ngModel)]="createSkillName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Habilidad" required>
+                                        </fieldset>
                                     </div>
-                                    <div class="modal-body">
-                                        <input class="my-input surface-color title-color p-2" [(ngModel)]="newSkill" type="text" placeholder="New skill">
-                                        <p *ngIf="incomplete" class="mt-4 gold-color">
-                                            Invalid value.
-                                        </p>
+                                    <div class="mt-4 d-flex flex-row-reverse">
+                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Agregar</button>
+                                        <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" >Cancelar</button>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2" data-bs-dismiss="modal">Cancel</button>
-                                        <button (click)="addSkill(backend, newSkill)" type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 ms-3">Save</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
