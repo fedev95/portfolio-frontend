@@ -36,8 +36,12 @@ export class ProjectsComponent implements OnInit {
         this.createImg = e[0].base64;
     }
 
-    onUpdateImg(a: any) {
-        this.prjToUpdate.img = a[0].base64;
+    clearCreateImg() {
+        this.createImg = '';
+    }
+
+    editCreateImg(item: any) {
+        this.createImg = item.img
     }
 
 	goToLink(url: any) {
