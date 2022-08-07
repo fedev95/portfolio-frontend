@@ -11,7 +11,6 @@ export class EducationService {
 	educationURL = 'http://localhost:8080/portfolio/';
 
 	constructor(private httpClient: HttpClient) {
-
 	}
 
 	public list(): Observable<Education[]> {

@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-	logged = true;
+	sectionTitle = 'habilidades';
 
-	section_title = 'skills';
+	logged = true;
 
 	newSkill = '';
 
