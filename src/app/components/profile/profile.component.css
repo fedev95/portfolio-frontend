@@ -22,15 +22,14 @@ a:hover {
     border: none;
 }
 
-
-
 .gap {
     gap: 30px;
 }
 
 
 @media (max-width: 991px ) {
-    .social-links {
+    .social-links,
+    .edit-info-button {
         justify-content: center;
     }
     

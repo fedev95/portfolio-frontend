@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/model/user.model';
 
 @Component({
 	selector: 'app-profile',
@@ -8,7 +7,7 @@ import { User } from 'src/app/model/user.model';
 })
 export class ProfileComponent implements OnInit {
 
-	logged = false;
+	logged = true;
 
 	socials = [
 		{'socialName': 'GitHub', 'socialLink': 'asdasd'},
