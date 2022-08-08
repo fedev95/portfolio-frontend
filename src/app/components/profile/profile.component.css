@@ -22,6 +22,18 @@ a:hover {
     border: none;
 }
 
+#add-education-modal-content,
+#edit-education-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#add-education-modal-content>div,
+#edit-education-modal-content>div {
+    border: none;
+}
+
 .gap {
     gap: 30px;
 }
