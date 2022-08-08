@@ -6,8 +6,8 @@
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
     data-aos-once="false"
-    data-aos-anchor-placement="top" class="col-md-5 d-flex p-4">
-        <img class="p-2 img-fluid rounded-circle m-auto gradient-bg" src="{{user.img}}" alt="profile picture">
+    data-aos-anchor-placement="top" class="col-lg-5 d-flex p-4">
+        <img class="p-2 img-fluid rounded-circle m-auto gradient-bg" src="assets/imgs/profile.jpg" alt="profile picture">
     </div>
     <div data-aos="fade-in"
     data-aos-offset="100"
@@ -16,13 +16,14 @@
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
     data-aos-once="false"
-    data-aos-anchor-placement="top" class="col-md-5 pt-4">
+    data-aos-anchor-placement="top" class="col-lg-5 pt-4">
         <div class="d-flex flex-column">
-            <h1 id="full-name" class="title-color text-center">{{user.name}} {{user.surname}}</h1>
-            <h3 class="subtle-color text-center my-3">{{user.title}}</h3>
-            <div *ngIf="" class="d-flex justify-content-center mt-4">
-                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-toggle="modal" data-bs-target="#profileModal">
-                    Edit
+            <h1 id="full-name" class="title-color text-center">FEDERICO BURGOS</h1>
+            <h3 class="subtle-color text-center mb-3">Full Stack Developer Jr</h3>
+            <p class="text-color text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
+            <div *ngIf="logged" class="d-flex justify-content-center mt-4">
+                <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    Editar informacion personal
                 </button>
                 <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

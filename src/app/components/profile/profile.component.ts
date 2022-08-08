@@ -8,8 +8,8 @@ import { User } from 'src/app/model/user.model';
 })
 export class ProfileComponent implements OnInit {
 
-	user: User = new User('','','','');
-
+	logged = true;
+		
 	constructor() { }
 
 	ngOnInit(): void {
