@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
                 this.socialList();
             }
 			);
-		// this.clearAddForm();  
+		this.clearAddForm();  
     }
 
 	findSocial(id: any) {
