@@ -16,25 +16,19 @@ textarea {
     letter-spacing: 15px;
 }
 
-#profile-modal-content {
+#edit-profile-modal-content,
+#admin-social-modal-content,
+#add-social-modal-content,
+#edit-social-modal-content {
     background-color: var(--base);
     border-radius: 0%;
     color: var(--title);
 }
 
-#profile-modal-content>div {
-    border: none;
-}
-
-#add-education-modal-content,
-#edit-education-modal-content {
-    background-color: var(--base);
-    border-radius: 0%;
-    color: var(--title);
-}
-
-#add-education-modal-content>div,
-#edit-education-modal-content>div {
+#edit-profile-modal-content>div,
+#admin-social-modal-content>div,
+#add-social-modal-content>div,
+#edit-social-modal-content>div {
     border: none;
 }
 
@@ -60,6 +54,14 @@ textarea {
 
 .input-file-btn:hover {
     background-color: rgba(34, 34, 34, 0.774);
+}
+
+.social-controls {
+    display: none;
+}
+
+.social-item-container:hover>.social-controls {
+    display: none;
 }
 
 @media (max-width: 991px ) {

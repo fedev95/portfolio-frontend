@@ -1,72 +1,154 @@
 <div class="row d-flex justify-content-evenly align-items-center">
-    <div data-aos="fade-in"
-    data-aos-offset="100"
-    data-aos-delay="50"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top" class="col-lg-5 d-flex p-4">
-        <img class="p-1 img-fluid rounded-circle m-auto gradient-bg" src="assets/imgs/profile.jpg" alt="profile picture">
+    <div data-aos="fade-in" data-aos-offset="100" data-aos-delay="50" data-aos-duration="500"
+        data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top"
+        class="col-lg-5 d-flex p-4">
+        <img class="p-1 img-fluid rounded-circle m-auto gradient-bg" src="assets/imgs/profile.jpg"
+            alt="profile picture">
     </div>
-    <div data-aos="fade-in"
-    data-aos-offset="100"
-    data-aos-delay="50"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top" class="col-lg-6 px-4">
+    <div data-aos="fade-in" data-aos-offset="100" data-aos-delay="50" data-aos-duration="500"
+        data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top"
+        class="col-lg-6 px-4">
         <div class="d-flex flex-column personal-info">
             <h1 id="full-name" class="title-color m-0">FEDERICO BURGOS</h1>
             <h3 class="subtle-color m-0">Full Stack Developer Jr</h3>
-            <p class="text-color my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
+            <p class="text-color my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora
+                suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
             <div *ngIf="logged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
-                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">
+                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3"
+                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal">
                     Editar perfil
                 </button>
             </div>
             <div class="d-flex w-100 flex-wrap social-links">
                 <div class="d-flex flex-wrap gap social-links">
-                    <a class="title-color text-decoration-none" *ngFor="let social of socials" [href]="social.socialLink"><h5 class="m-0">{{social.socialName}}</h5></a>
+                    <a *ngFor="let social of socials" class="title-color text-decoration-none"
+                        [href]="social.socialLink">
+                        <h5 class="m-0">{{social.socialName}}</h5>
+                    </a>
                 </div>
+            </div>
+            <div *ngIf="logged" class="mt-3">
+                <button data-bs-toggle="modal" href="#admin-social-modal" class="my-btn border-0 text-decoration-none title-color p-1 px-3">
+                    Administrar redes
+                </button>
             </div>
 
         </div>
     </div>
 </div>
 <!-- modal editar -->
-<div  class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" id="edit-education-modal-content">
+        <div class="modal-content" id="edit-profile-modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Editar perfil</h4>
             </div>
-            <div  class="modal-body d-flex flex-column">
-                <form  #editProfile="ngForm">
+            <div class="modal-body d-flex flex-column">
+                <form #editProfile="ngForm">
                     <div class="form-group">
 
                         <div class="d-flex">
-                            <img (click)="profileImg.click()" class="img-fluid rounded-circle thumbnail-profile m-auto" src="assets/imgs/profile.jpg" alt="" role="button">
+                            <img (click)="profileImg.click()" class="img-fluid rounded-circle thumbnail-profile m-auto"
+                                src="assets/imgs/profile.jpg" alt="" role="button">
                             <input #profileImg type="file" accept="image/jpg, image/png, image/jpeg" class="d-none">
-                        </div>                        
+                        </div>
 
-                        <input  class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName" type="text" placeholder="Nombre" required>
+                        <input class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName"
+                            type="text" placeholder="Nombre" required>
 
-                        <input  class="my-input surface-color title-color p-2 mt-3" name="createLastname" id="createLastname" type="text" placeholder="Apellido" required>
+                        <input class="my-input surface-color title-color p-2 mt-3" name="createLastname"
+                            id="createLastname" type="text" placeholder="Apellido" required>
 
-                        <input  class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
+                        <input class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle"
+                            type="text" placeholder="Título" required>
 
-                        <textarea class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout" id="createAbout"  rows="4" maxlength="150" placeholder="Presentación (opcional)" required></textarea>
-                        <p class="text-color"></p> 
+                        <textarea class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout"
+                            id="createAbout" rows="4" maxlength="150" placeholder="Presentación (opcional)"
+                            required></textarea>
+                        <p class="text-color"></p>
 
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid">Actualizar</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid">
+                            Actualizar
+                        </button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal admin redes -->
+<div class="modal fade" id="admin-social-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="admin-social-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Administrador de redes</h5>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <div *ngFor="let social of socials" class="d-flex mb-3 ps-3 w-100 justify-content-between surface-color">
+                    <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
+                    <div>
+                        <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal">
+                            Editar
+                        </button>
+                        <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color">
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+                <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color w-100" data-bs-target="#add-social-modal" data-bs-toggle="modal">
+                    Añadir una red social
+                </button>
+                <div class="mt-4 d-flex flex-row-reverse">
+                    <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
+                        Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal editar red (individual) -->
+<div class="modal fade" id="edit-social-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="edit-social-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Editar</h5>
+            </div>
+            <div class="modal-body">
+                Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#admin-social-modal" data-bs-toggle="modal">Back to
+                    first
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- agregar red -->
+<div class="modal fade" id="add-social-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="add-social-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Agregar red social</h5>
+            </div>
+            <div class="modal-body">
+                Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#admin-social-modal" data-bs-toggle="modal">Back to
+                    first
+                </button>
             </div>
         </div>
     </div>

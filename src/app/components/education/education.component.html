@@ -34,7 +34,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content" id="edit-education-modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Editar educación</h4>
+                                            <h5 class="modal-title">Editar educación</h5>
                                         </div>
                                         <div *ngIf="edToUpdate" class="modal-body d-flex flex-column">
                                             <form (ngSubmit)="update(edToUpdate.id)"  #editEd="ngForm">
@@ -86,7 +86,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" id="add-education-modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Agregar educación</h4>
+                                <h5 class="modal-title">Agregar educación</h5>
                             </div>
                             <div class="modal-body d-flex flex-column">
                                 <form (ngSubmit)="createEducation()" #addEd="ngForm">

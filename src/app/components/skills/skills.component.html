@@ -25,7 +25,7 @@
                      *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1">{{skill.skillName}}</p>
                         <div *ngIf="logged">
-                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                         </div>
                     </div>                    
                 </div>
@@ -44,7 +44,7 @@
                      *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">                        
                         <p class="subtle-color m-0 p-1">{{skill.skillName}}</p>
                         <div *ngIf="logged">
-                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Delete</button>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                         </div>                        
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" id="add-skill-modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Agregar habilidad</h4>
+                                <h5 class="modal-title">Agregar habilidad</h5>
                             </div>
                             <div class="modal-body d-flex flex-column">
                                 <form (ngSubmit)="createSkill()" #addSkill="ngForm">

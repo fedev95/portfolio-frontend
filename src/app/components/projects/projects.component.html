@@ -55,7 +55,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" id="add-project-modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Agregar proyecto</h4>
+                                <h5 class="modal-title">Agregar proyecto</h5>
                             </div>
                             <div class="modal-body d-flex flex-column">
                                 <form (ngSubmit)="createProject()" #addPrj="ngForm">
@@ -90,7 +90,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content" id="edit-project-modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Editar proyecto</h4>
+                        <h5 class="modal-title">Editar proyecto</h5>
                     </div>
                     <div *ngIf="prjToUpdate" class="modal-body d-flex flex-column">
                         <form (ngSubmit)="updateProject(prjToUpdate.id)" #editPrj="ngForm">

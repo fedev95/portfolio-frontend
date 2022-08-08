@@ -13,7 +13,7 @@
         <div class="row">
 
             <div *ngIf="experienceItems.length < 1" class="col-12 d-flex justify-content-center">
-                <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">Actualmente sin experiencia laboral :(</h4>
+                <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">En busca de mi primer trabajo como desarrollador :)</h4>
             </div>
 
             <div data-aos="fade-in"
@@ -40,7 +40,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content" id="edit-experience-modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Editar experiencia</h4>
+                                            <h5 class="modal-title">Editar experiencia</h5>
                                         </div>
                                         <div *ngIf="expToUpdate" class="modal-body d-flex flex-column">
                                             <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
@@ -95,7 +95,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" id="add-experience-modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Agregar experiencia</h4>
+                                <h5 class="modal-title">Agregar experiencia</h5>
                             </div>
                             <div class="modal-body d-flex flex-column">
                                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
