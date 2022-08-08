@@ -22,7 +22,7 @@
             </div>
             <div class="d-flex w-100 flex-wrap social-links">
                 <div class="d-flex flex-wrap gap social-links">
-                    <a *ngFor="let social of socials" class="title-color text-decoration-none"
+                    <a *ngFor="let social of socialItems" class="title-color text-decoration-none"
                         [href]="social.socialLink">
                         <h5 class="m-0">{{social.socialName}}</h5>
                     </a>
@@ -92,7 +92,7 @@
                 <h5 class="modal-title" id="exampleModalToggleLabel">Administrador de redes</h5>
             </div>
             <div class="modal-body d-flex flex-column">
-                <div *ngFor="let social of socials" class="d-flex mb-3 ps-3 w-100 justify-content-between surface-color">
+                <div *ngFor="let social of socialItems" class="d-flex mb-3 ps-3 w-100 justify-content-between surface-color">
                     <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
                     <div>
                         <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal">

@@ -76,7 +76,7 @@ export class SkillsComponent implements OnInit {
 		this.clearAddForm();  
     }
 
-	findEducation(id: any) {
+	findSkill(id: any) {
         this.skillsService.detail(id).subscribe(
             data => {
                 this.sklToUpdate = data;
