@@ -4,7 +4,7 @@ a {
 
 a:hover {
     border-bottom: 1px solid;
-    color: var(--title);
+    color: var(--gold);
     transition: 0.25s;
 }
 
