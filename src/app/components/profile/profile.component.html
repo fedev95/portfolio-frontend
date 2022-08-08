@@ -21,18 +21,18 @@
             <h1 id="full-name" class="title-color m-0">FEDERICO BURGOS</h1>
             <h3 class="subtle-color m-0">Full Stack Developer Jr</h3>
             <p class="text-color my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
-            <div class="d-flex w-100 flex-wrap social-links">
-                <div class="d-flex flex-wrap gap">
-                    <a class="title-color text-decoration-none" *ngFor="let social of socials" [href]="social.socialLink"><h5 class="m-0">{{social.socialName}}</h5></a>
-                </div>
-            </div>
-
-            <div *ngIf="logged" class="d-flex edit-info-button mt-4">
+            <div *ngIf="logged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">
                     Editar perfil
                 </button>
             </div>
+            <div class="d-flex w-100 flex-wrap social-links">
+                <div class="d-flex flex-wrap gap social-links">
+                    <a class="title-color text-decoration-none" *ngFor="let social of socials" [href]="social.socialLink"><h5 class="m-0">{{social.socialName}}</h5></a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -47,11 +47,19 @@
                 <form  #editProfile="ngForm">
                     <div class="form-group">
 
-                        <input  class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
+                        <div class="d-flex">
+                            <img (click)="profileImg.click()" class="img-fluid rounded-circle thumbnail-profile m-auto" src="assets/imgs/profile.jpg" alt="" role="button">
+                            <input #profileImg type="file" accept="image/jpg, image/png, image/jpeg" class="d-none">
+                        </div>                        
 
-                        <input  class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" required>
+                        <input  class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName" type="text" placeholder="Nombre" required>
 
-                        <input  class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" required>
+                        <input  class="my-input surface-color title-color p-2 mt-3" name="createLastname" id="createLastname" type="text" placeholder="Apellido" required>
+
+                        <input  class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
+
+                        <textarea class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout" id="createAbout"  rows="4" maxlength="150" placeholder="Presentación (opcional)" required></textarea>
+                        <p class="text-color"></p> 
 
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
