@@ -127,7 +127,7 @@
                 <form (ngSubmit)="update(socToUpdate.id)" #editSocial="ngForm">
                     <div class="form-group">
                         <input [(ngModel)]="socToUpdate.socialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Nombre de la red social" required>
-                        <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace" required>
+                        <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
@@ -155,7 +155,7 @@
                     <div class="form-group">
                         <input [(ngModel)]="createSocialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Nombre de la red social" required>
 
-                        <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace" required>
+                        <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Agregar</button>
