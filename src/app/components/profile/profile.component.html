@@ -16,11 +16,16 @@
     data-aos-easing="ease-in-out"
     data-aos-mirror="true"
     data-aos-once="false"
-    data-aos-anchor-placement="top" class="col-lg-5 pt-4">
-        <div class="d-flex flex-column">
-            <h1 id="full-name" class="title-color text-center">FEDERICO BURGOS</h1>
-            <h3 class="subtle-color text-center mb-3">Full Stack Developer Jr</h3>
-            <p class="text-color text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
+    data-aos-anchor-placement="top" class="col-lg-6 pt-4">
+        <div class="d-flex flex-column personal-info">
+            <h1 id="full-name" class="title-color">FEDERICO BURGOS</h1>
+            <h3 class="subtle-color m-0">Full Stack Developer Jr</h3>
+            <p class="text-color my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
+            <div class="d-flex w-100 flex-wrap social-links">
+                <div class="d-flex flex-wrap gap">
+                    <a class="title-color text-decoration-none" *ngFor="let social of socials" [href]="social.socialLink"><h5 class="m-0">{{social.socialName}}</h5></a>
+                </div>
+            </div>
             <div *ngIf="logged" class="d-flex justify-content-center mt-4">
                 <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#profileModal">
                     Editar informacion personal

@@ -8,7 +8,14 @@ import { User } from 'src/app/model/user.model';
 })
 export class ProfileComponent implements OnInit {
 
-	logged = true;
+	logged = false;
+
+	socials = [
+		{'socialName': 'GitHub', 'socialLink': 'asdasd'},
+		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'},
+		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'},
+		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'}
+	]
 		
 	constructor() { }
 

@@ -1,17 +1,3 @@
 #logo-img {
     width: 90px;
 }
-
-#nav-links {
-    gap: 30px;
-}
-
-#nav-links>a {
-    border: 1px solid transparent;
-}
-
-#nav-links>a:hover {
-    border-bottom: 1px solid;
-    color: var(--title);
-    transition: 0.25s;
-}

@@ -1,3 +1,13 @@
+a {
+    border: 1px solid transparent;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+    color: var(--title);
+    transition: 0.25s;
+}
+
 #full-name {
     letter-spacing: 15px;
 }
@@ -10,4 +20,21 @@
 
 #profile-modal-content>div {
     border: none;
+}
+
+
+
+.gap {
+    gap: 30px;
+}
+
+
+@media (max-width: 991px ) {
+    .social-links {
+        justify-content: center;
+    }
+    
+    .personal-info {
+        text-align: center;
+    }
 }
