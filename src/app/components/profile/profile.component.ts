@@ -13,8 +13,7 @@ export class ProfileComponent implements OnInit {
 	socials = [
 		{'socialName': 'GitHub', 'socialLink': 'asdasd'},
 		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'},
-		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'},
-		{'socialName': 'LinkedIn', 'socialLink': 'asdasd'}
+		{'socialName': 'Instagram', 'socialLink': 'asdasd'}
 	]
 		
 	constructor() { }
