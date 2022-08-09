@@ -1,22 +1,28 @@
-<div class="row d-flex justify-content-evenly align-items-center">
-    <div data-aos="fade-in" data-aos-offset="100" data-aos-delay="50" data-aos-duration="500"
-        data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top"
-        class="col-lg-5 d-flex p-4">
-        <img class="p-1 img-fluid rounded-circle m-auto gradient-bg" src="assets/imgs/profile.jpg"
-            alt="profile picture">
+<div *ngIf="profileData" class="row d-flex justify-content-evenly align-items-center">
+    <div data-aos="fade-in"
+    data-aos-offset="100"
+    data-aos-delay="50"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top"
+    class="col-lg-5 d-flex p-4">
+        <div class="d-flex align-items-center justify-content-center rounded-circle profile-pic m-auto">
+            <img class="flex-fill" [src]="profileData.img" alt="" >
+        </div>
     </div>
     <div data-aos="fade-in" data-aos-offset="100" data-aos-delay="50" data-aos-duration="500"
         data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top"
         class="col-lg-6 px-4">
         <div class="d-flex flex-column personal-info">
-            <h1 id="full-name" class="title-color m-0">FEDERICO BURGOS</h1>
-            <h3 class="subtle-color m-0">Full Stack Developer Jr</h3>
-            <p class="text-color my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam et ipsa tempora
-                suscipit nemo quae quibusdam, maxime maiores tenetur cupiditate!</p>
+            <h1 id="full-name" class="title-color m-0">{{profileData.name | uppercase}} {{profileData.lastname | uppercase}}</h1>
+            <h3 class="subtle-color m-0">{{profileData.title}}</h3>
+            <p class="text-color my-4">{{profileData.description}}</p>
             <div *ngIf="logged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3"
-                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal">
+                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id)">
                     Editar perfil
                 </button>
             </div>
@@ -46,31 +52,32 @@
             </div>
             <div class="modal-body d-flex flex-column">
                 <form #editProfile="ngForm">
-                    <div class="form-group">
+                    <div *ngIf="prfToUpdate" class="form-group">
 
                         <div class="d-flex">
-                            <img (click)="profileImg.click()" class="img-fluid rounded-circle thumbnail-profile m-auto"
-                                src="assets/imgs/profile.jpg" alt="" role="button">
-                            <input #profileImg type="file" accept="image/jpg, image/png, image/jpeg" class="d-none">
+                            <div (click)="profileImg.click()" class="d-flex align-items-center justify-content-center rounded-circle thumbnail-profile m-auto" role="button">
+                                <img class="flex-fill" [src]="createImg" alt="" >
+                            </div>
+                            <input #profileImg alife-file-to-base64 (onFileChanged)="onCreateImg($event)" type="file" accept="image/jpg, image/png, image/jpeg" class="d-none">
                         </div>
 
-                        <input class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName"
+                        <input [(ngModel)]="prfToUpdate.name" class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName"
                             type="text" placeholder="Nombre" required>
 
-                        <input class="my-input surface-color title-color p-2 mt-3" name="createLastname"
+                        <input [(ngModel)]="prfToUpdate.lastname" class="my-input surface-color title-color p-2 mt-3" name="createLastname"
                             id="createLastname" type="text" placeholder="Apellido" required>
 
-                        <input class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle"
+                        <input [(ngModel)]="prfToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle"
                             type="text" placeholder="Título" required>
 
-                        <textarea class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout"
+                        <textarea [(ngModel)]="prfToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout"
                             id="createAbout" rows="4" maxlength="150" placeholder="Presentación (opcional)"
                             required></textarea>
-                        <p class="text-color"></p>
+                        <p class="text-color">{{prfToUpdate.description.length}}/150</p>
 
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid">
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid" (click)="updateProfile(prfToUpdate.id)">
                             Actualizar
                         </button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
@@ -124,7 +131,7 @@
                 <h5 class="modal-title" id="exampleModalToggleLabel2">Editar</h5>
             </div>
             <div *ngIf="socToUpdate" class="modal-body">
-                <form (ngSubmit)="update(socToUpdate.id)" #editSocial="ngForm">
+                <form (ngSubmit)="updateSocial(socToUpdate.id)" #editSocial="ngForm">
                     <div class="form-group">
                         <input [(ngModel)]="socToUpdate.socialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Nombre de la red social" required>
                         <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" required>
