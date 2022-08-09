@@ -6,7 +6,8 @@
 .project-img {
     transform: scale(1.1);
     z-index: 0;
-    max-width: 540px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .project-info {
@@ -28,11 +29,6 @@
     transition: 4s;
     z-index: 3;
 }
-
-/* .project-item:hover>.project-info {
-    background-color: var(--overlay);
-    z-index: 4;
-} */
 
 .img-container {
     height: 200px;
