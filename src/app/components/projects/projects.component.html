@@ -69,9 +69,9 @@
                                         </div>
                                         <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg">
 
-                                        <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>
-                                        <input [(ngModel)]="createDate" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>                                        
-                                        <input [(ngModel)]="createPrjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>
+                                        <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>
+                                        <input [(ngModel)]="createDate" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" maxlength="45" required>                                        
+                                        <input [(ngModel)]="createPrjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>
                                         <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
                                         <p class="text-color">{{createDescription.length}}/150</p>
                                     </div>
@@ -104,9 +104,9 @@
                                 </div>
                                 <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
 
-                                <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" required>        
-                                <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" required>                                
-                                <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" required>        
+                                <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>        
+                                <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" maxlength="45" required>                                
+                                <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>        
                                 <textarea [(ngModel)]="prjToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
                                 <p class="text-color">{{prjToUpdate.description.length}}/150</p>        
                             </div>
