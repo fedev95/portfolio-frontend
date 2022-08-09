@@ -53,9 +53,12 @@
             <div class="modal-body d-flex flex-column">
                 <form #editProfile="ngForm">
                     <div *ngIf="prfToUpdate" class="form-group">
-
-                        <div class="d-flex">
-                            <div (click)="profileImg.click()" class="d-flex align-items-center justify-content-center rounded-circle thumbnail-profile m-auto" role="button">
+                        
+                        <div class="d-flex position-relative">
+                            <div (click)="profileImg.value = ''; profileImg.click()" class="position-absolute input-file-button rounded-circle top-50 start-50 translate-middle d-flex p-2" role="button">
+                                <h5 class="m-auto text-center">CAMBIAR IMAGEN</h5>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center rounded-circle thumbnail-profile m-auto" role="button">
                                 <img class="flex-fill" [src]="createImg" alt="" >
                             </div>
                             <input #profileImg alife-file-to-base64 (onFileChanged)="onCreateImg($event)" type="file" accept="image/jpg, image/png, image/jpeg" class="d-none">

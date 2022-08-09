@@ -45,29 +45,38 @@ textarea {
 
 .profile-pic>img {
     height: 350px;
+    width: 350px;
+    object-fit: cover;
 }
 
 .thumbnail-profile {
     overflow: hidden;
     height: 150px;
     width: 150px;
-    border: 2px solid transparent;
-}
-
-.thumbnail-profile:hover {
-    border: 2px solid var(--gold);
+    border: 1px solid transparent;
 }
 
 .thumbnail-profile>img {
     height: 150px;
+    width: 150px;
+    object-fit: cover;
 }
 
-.social-controls {
+.input-file-button {
+    height: 150px;
+    width: 150px;
+    transition: 0.25s;
+}
+.input-file-button:hover {
+    background-color: rgba(0, 0, 0, 0.705);
+}
+
+.input-file-button>h5 {
     display: none;
 }
 
-.social-item-container:hover>.social-controls {
-    display: none;
+.input-file-button:hover>h5 {
+    display: block;
 }
 
 @media (max-width: 991px ) {
@@ -97,12 +106,12 @@ textarea {
 @media (max-width: 320px) {
     .profile-pic {
         overflow: hidden;
-        height: 220px;
-        width: 220px;
+        height: 200px;
+        width: 200px;
         border: 2px solid transparent;
     }
     
     .profile-pic>img {
-        height: 220px;
+        height: 200px;
     }
 }
