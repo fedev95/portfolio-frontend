@@ -68,14 +68,14 @@ textarea {
     transition: 0.25s;
 }
 .input-file-button:hover {
-    background-color: rgba(0, 0, 0, 0.705);
+    background-color: rgba(0, 0, 0, 0.842)
 }
 
-.input-file-button>h5 {
+.input-file-button>h6 {
     display: none;
 }
 
-.input-file-button:hover>h5 {
+.input-file-button:hover>h6 {
     display: block;
 }
 
