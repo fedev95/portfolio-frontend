@@ -11,7 +11,7 @@ import { SocialService } from 'src/app/services/social.service';
 })
 export class ProfileComponent implements OnInit {
 
-	logged = true;
+	logged = false;
 
 	// datos del perfil
 	profileData!: Profile;

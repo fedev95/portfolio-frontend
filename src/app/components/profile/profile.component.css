@@ -93,3 +93,16 @@ textarea {
         height: 250px;
     }
 }
+
+@media (max-width: 320px) {
+    .profile-pic {
+        overflow: hidden;
+        height: 220px;
+        width: 220px;
+        border: 2px solid transparent;
+    }
+    
+    .profile-pic>img {
+        height: 220px;
+    }
+}
