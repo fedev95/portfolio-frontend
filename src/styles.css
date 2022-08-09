@@ -39,6 +39,16 @@ body {
     background-color: var(--base);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 
 /* bg y font colors  */
 .base-color {
@@ -74,7 +84,7 @@ body {
 }
 
 
-/* btn */
+/* btn styles */
 .my-btn {
     background-color: var(--btn);
 }
@@ -94,7 +104,7 @@ body {
 }
 
 
-/* input */
+/* input styles */
 .my-input {
     border: 1px solid transparent;
     outline: none;
