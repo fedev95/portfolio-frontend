@@ -29,7 +29,7 @@
                     <div class="d-flex flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
 
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div *ngIf="logged" class="d-flex justify-content-center align-items-center">
 
                             <!-- boton editar -->
                             <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
