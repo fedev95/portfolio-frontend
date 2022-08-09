@@ -65,17 +65,16 @@
                         </div>
 
                         <input [(ngModel)]="prfToUpdate.name" class="my-input surface-color title-color p-2 mt-3" name="createName" id="createName"
-                            type="text" placeholder="Nombre" required>
+                            type="text" placeholder="Nombre" maxlength="255" required>
 
                         <input [(ngModel)]="prfToUpdate.lastname" class="my-input surface-color title-color p-2 mt-3" name="createLastname"
-                            id="createLastname" type="text" placeholder="Apellido" required>
+                            id="createLastname" type="text" placeholder="Apellido" maxlength="255" required>
 
                         <input [(ngModel)]="prfToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle"
-                            type="text" placeholder="Título" required>
+                            type="text" placeholder="Título" maxlength="255" required>
 
                         <textarea [(ngModel)]="prfToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createAbout"
-                            id="createAbout" rows="4" maxlength="150" placeholder="Presentación"
-                            required></textarea>
+                            id="createAbout" rows="4" maxlength="150" placeholder="Presentación" required></textarea>
                         <p class="text-color">{{prfToUpdate.description.length}}/150</p>
 
                     </div>
@@ -136,8 +135,8 @@
             <div *ngIf="socToUpdate" class="modal-body">
                 <form (ngSubmit)="updateSocial(socToUpdate.id)" #editSocial="ngForm">
                     <div class="form-group">
-                        <input [(ngModel)]="socToUpdate.socialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Nombre de la red social" required>
-                        <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" required>
+                        <input [(ngModel)]="socToUpdate.socialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Red social" maxlength="255" required>
+                        <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
@@ -163,9 +162,9 @@
             <div class="modal-body">
                 <form (ngSubmit)="createSocial()" #addSocial="ngForm">
                     <div class="form-group">
-                        <input [(ngModel)]="createSocialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Nombre de la red social" required>
+                        <input [(ngModel)]="createSocialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Red social" maxlength="255" required>
 
-                        <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" required>
+                        <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Agregar</button>

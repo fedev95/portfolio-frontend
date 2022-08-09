@@ -15,8 +15,8 @@
 
 * {
     font-family: 'Inconsolata', monospace;
-    scrollbar-width: thin;
-    scrollbar-color: #6e6a86 var(--base);
+    scrollbar-width:unset;
+    scrollbar-color: var(--btn) var(--base);
 }
 
 *::-webkit-scrollbar {
@@ -24,7 +24,11 @@
 }
 
 *::-webkit-scrollbar-thumb  {
-    background-color: var(--overlay);
+    background-color: var(--btn);
+}
+
+*::-webkit-scrollbar-thumb:hover  {
+    background-color: var(--btn-hover);
 }
 
 *::-webkit-scrollbar-track {
