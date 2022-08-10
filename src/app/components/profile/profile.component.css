@@ -36,14 +36,7 @@ textarea {
     gap: 30px;
 }
 
-.profile-pic {
-    overflow: hidden;
-    height: 350px;
-    width: 350px;
-    border: 2px solid transparent;
-}
-
-.profile-pic>img {
+.profile-img {
     height: 350px;
     width: 350px;
     object-fit: cover;
@@ -68,7 +61,7 @@ textarea {
     transition: 0.25s;
 }
 .input-file-button:hover {
-    background-color: rgba(0, 0, 0, 0.842)
+    background-color: rgba(0, 0, 0, 0.685)
 }
 
 .input-file-button>h6 {
@@ -91,27 +84,16 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    .profile-pic {
-        overflow: hidden;
+    .profile-img {
         height: 250px;
         width: 250px;
-        border: 2px solid transparent;
-    }
-    
-    .profile-pic>img {
-        height: 250px;
+        
     }
 }
 
 @media (max-width: 320px) {
-    .profile-pic {
-        overflow: hidden;
+    .profile-img {
         height: 200px;
         width: 200px;
-        border: 2px solid transparent;
-    }
-    
-    .profile-pic>img {
-        height: 200px;
     }
 }
