@@ -1,5 +1,5 @@
-.experience-item {
-    gap: 10px;
+textarea {
+    resize: none;
 }
 
 #add-experience-modal-content,
@@ -14,6 +14,6 @@
     border: none;
 }
 
-textarea {
-    resize: none;
+.experience-item {
+    gap: 10px;
 }
