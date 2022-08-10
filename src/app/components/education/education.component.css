@@ -1,3 +1,15 @@
+#add-education-modal-content,
+#edit-education-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#add-education-modal-content>div,
+#edit-education-modal-content>div {
+    border: none;
+}
+
 .education-item {
     gap: 10px;
 }
@@ -10,16 +22,4 @@
     border-bottom: 1px solid;
     color: var(--gold);
     transition: 0.25s;
-}
-
-#add-education-modal-content,
-#edit-education-modal-content {
-    background-color: var(--base);
-    border-radius: 0%;
-    color: var(--title);
-}
-
-#add-education-modal-content>div,
-#edit-education-modal-content>div {
-    border: none;
 }
