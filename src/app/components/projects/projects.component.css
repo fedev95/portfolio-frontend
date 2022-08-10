@@ -1,3 +1,23 @@
+textarea {
+    resize: none;
+}
+
+#add-project-modal-content,
+#edit-project-modal-content {
+    background-color: var(--base);
+    border-radius: 0%;
+    color: var(--title);
+}
+
+#add-project-modal-content>div,
+#edit-project-modal-content>div {
+    border: none;
+}
+
+#imgInput {
+    cursor: pointer;
+}
+
 .project-item {
     border: 2px solid transparent;
     overflow: hidden;
@@ -8,6 +28,7 @@
     z-index: 0;
     height: 200px;
     object-fit: cover;
+    pointer-events: none;
 }
 
 .project-info {
@@ -35,26 +56,7 @@
     overflow: hidden;
 }
 
-#add-project-modal-content,
-#edit-project-modal-content {
-    background-color: var(--base);
-    border-radius: 0%;
-    color: var(--title);
-}
-
-#add-project-modal-content>div,
-#edit-project-modal-content>div {
-    border: none;
-}
-
-textarea {
-    resize: none;
-}
-
-#imgInput {
-    cursor: pointer;
-}
-
 .thumbnail-preview {
     max-height: 200px;
+    pointer-events: none;
 }
