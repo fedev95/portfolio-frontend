@@ -8,7 +8,19 @@
     data-aos-once="false"
     data-aos-anchor-placement="top" class="container">
         <div class="row">
-            <h3 class="pb-3 title-color">{{sectionTitle | uppercase}}</h3>
+            <div class="d-flex flex-wrap align-items-start justify-content-between">
+                <h3 class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
+                <button *ngIf="logged" data-aos="fade-in"
+                data-aos-offset="100"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
+                    Agregar habilidad
+                </button>
+            </div>
         </div>
         <div class="row justify-content-evenly">
             <div class="col-sm-6 py-4 d-flex flex-column align-items-center">
@@ -49,51 +61,38 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="logged" class="col py-4 d-flex align-items-center justify-content-center">
-                
-                <button data-aos="fade-in"
-                data-aos-offset="100"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" type="button" class="my-btn border-0 text-decoration-none p-1 px-3 my-4 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
-                    Agregar habilidad
-                </button>
+        </div>
+    </div>
+</div>
 
-                <div class="modal fade" id="add-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" id="add-skill-modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Agregar habilidad</h5>
+<div *ngIf="logged" class="modal fade" id="add-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="add-skill-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar habilidad</h5>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <form (ngSubmit)="createSkill()" #addSkill="ngForm">
+                    <div class="form-group d-flex flex-column">                                        
+                        <fieldset class="">
+                            <div class="d-flex skills-gap">
+                                <div class="w-100">
+                                    <div [class.input-border-active]="isFrontend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="frontendInput.click(); activeFrontendBorder()">Frontend</div>
+                                    <input #frontendInput [(ngModel)]="createSkillType" value="frontend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
+                                </div>
+                                <div class="w-100">
+                                    <div [class.input-border-active]="isBackend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="backendInput.click(); activeBackendBorder()">Backend</div>
+                                    <input #backendInput [(ngModel)]="createSkillType" value="backend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
+                                </div>
                             </div>
-                            <div class="modal-body d-flex flex-column">
-                                <form (ngSubmit)="createSkill()" #addSkill="ngForm">
-                                    <div class="form-group d-flex flex-column">                                        
-                                        <fieldset class="">
-                                            <div class="d-flex skills-gap">
-                                                <div class="w-100">
-                                                    <div [class.input-border-active]="isFrontend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="frontendInput.click(); activeFrontendBorder()">Frontend</div>
-                                                    <input #frontendInput [(ngModel)]="createSkillType" value="frontend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
-                                                </div>
-                                                <div class="w-100">
-                                                    <div [class.input-border-active]="isBackend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="backendInput.click(); activeBackendBorder()">Backend</div>
-                                                    <input #backendInput [(ngModel)]="createSkillType" value="backend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
-                                                </div>
-                                            </div>
-                                            <input [(ngModel)]="createSkillName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Habilidad"  maxlength="45" required>
-                                        </fieldset>
-                                    </div>
-                                    <div class="mt-4 d-flex flex-row-reverse">
-                                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Agregar</button>
-                                        <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" >Cancelar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                            <input [(ngModel)]="createSkillName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Habilidad"  maxlength="45" required>
+                        </fieldset>
                     </div>
-                </div>
+                    <div class="mt-4 d-flex flex-row-reverse">
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Agregar</button>
+                        <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" >Cancelar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

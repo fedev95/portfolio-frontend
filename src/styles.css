@@ -103,6 +103,12 @@ input[type=number] {
     color: var(--btn-disabled-text);
 }
 
+@media (max-width: 375px) {
+    .add-btn {
+        width: 100%;
+    }
+}
+
 
 /* input styles */
 .my-input {
