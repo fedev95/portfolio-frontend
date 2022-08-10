@@ -9,16 +9,20 @@ export class HeaderComponent implements OnInit {
 
 	pageLogoSrc = 'assets/imgs/ap-logo.png';
 
-	socialNetworks: any[];
+	logged = true;
 	
 	constructor() { 
-		this.socialNetworks = [
-			{name: 'LinkedIn', url: 'https://ar.linkedin.com'},
-			{name: 'GitHub', url: 'https://github.com/altoPancho'}
-		]
 	}
 
 	ngOnInit(): void {
+	}
+
+	alternar() {
+		if (this.logged == true) {
+			this.logged = false;
+		} else {
+			this.logged = true;
+		}
 	}
 
 }
