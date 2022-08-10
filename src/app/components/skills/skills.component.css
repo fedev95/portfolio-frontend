@@ -1,8 +1,3 @@
-.skill-item,
-.skills-gap {
-    gap: 15px;
-}
-
 #add-skill-modal-content,
 #edit-skill-modal-content {
     background-color: var(--base);
@@ -15,6 +10,10 @@
     border: none;
 }
 
+.skill-item,
+.skills-gap {
+    gap: 15px;
+}
 
 .input-border {
     border-bottom: 1px solid var(--btn);
@@ -23,8 +22,3 @@
 .input-border-active {
     border-bottom: 1px solid var(--gold);
 }
-
-
-
-
-
