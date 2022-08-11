@@ -18,7 +18,7 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
-                    Agregar experiencia
+                    Nueva experiencia
                 </button>
             </div>
         </div>
@@ -84,7 +84,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-experience-modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar experiencia</h5>
+                <h5 class="modal-title">Nueva experiencia</h5>
             </div>
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
@@ -103,7 +103,7 @@
 
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Agregar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
