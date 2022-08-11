@@ -18,8 +18,8 @@ export class ExperienceComponent implements OnInit {
 
 	// variables para crear un nuevo item
 	createRol: String = '';
-	createStartYear: number = NaN;
-	createEndYear: number = NaN;
+	createStartYear: any = undefined;
+	createEndYear: any = undefined;
 	createCompany: String = '';
 	createDescription: String = '';
 
@@ -52,8 +52,8 @@ export class ExperienceComponent implements OnInit {
 
 	clearForm() {
         this.createRol = '';
-		this.createStartYear = NaN;
-		this.createEndYear = NaN;
+		this.createStartYear = undefined;
+		this.createEndYear = undefined;
         this.createCompany = '';
         this.createDescription = '';
     }
