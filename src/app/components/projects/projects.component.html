@@ -18,7 +18,7 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-project-modal" (click)="clearCreateImg()">
-                    Agregar proyecto
+                    Nuevo proyecto
                 </button>
             </div>
         </div>
@@ -59,7 +59,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-project-modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar proyecto</h5>
+                <h5 class="modal-title">Nuevo proyecto</h5>
             </div>
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createProject()" #addPrj="ngForm">
@@ -78,7 +78,7 @@
                         <p class="text-color">{{createDescription.length}}/150</p>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || createImg.length <= 0">Agregar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || createImg.length <= 0">Añadir</button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
