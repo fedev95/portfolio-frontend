@@ -18,7 +18,7 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
-                    Agregar habilidad
+                    Nueva habilidad
                 </button>
             </div>
         </div>
@@ -69,7 +69,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-skill-modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar habilidad</h5>
+                <h5 class="modal-title">Nueva habilidad</h5>
             </div>
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createSkill()" #addSkill="ngForm">
@@ -89,7 +89,7 @@
                         </fieldset>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Agregar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Añadir</button>
                         <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" >Cancelar</button>
                     </div>
                 </form>
