@@ -1,6 +1,6 @@
 <div class="container-fluid py-5 surface-color">
     <div data-aos="fade-in"
-    data-aos-offset="100"
+    data-aos-offset="50"
     data-aos-delay="50"
     data-aos-duration="500"
     data-aos-easing="ease-in-out"
@@ -9,9 +9,17 @@
     data-aos-anchor-placement="top" class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
-                <h3 class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="logged" data-aos="fade-in"
-                data-aos-offset="100"
+                <h3 data-aos="fade-in"
+                data-aos-offset="50"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
+                <button *ngIf="logged" 
+                data-aos="fade-in"
+                data-aos-offset="50"
                 data-aos-delay="50"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
@@ -27,7 +35,7 @@
                 <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">En busca de mi primer empleo como desarrollador :)</h4>
             </div>
             <div data-aos="fade-in"
-            data-aos-offset="100"
+            data-aos-offset="50"
             data-aos-delay="50"
             data-aos-duration="500"
             data-aos-easing="ease-in-out"
@@ -39,36 +47,9 @@
                     <div class="d-flex flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
                         <div *ngIf="logged" class="d-flex justify-content-center align-items-center">
-                            <!-- boton editar -->
                             <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
                                 Editar
-                            </button>
-                            <!-- modal editar -->
-                            <div  class="modal fade" id="edit-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content" id="edit-experience-modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Editar experiencia</h5>
-                                        </div>
-                                        <div *ngIf="expToUpdate" class="modal-body d-flex flex-column">
-                                            <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
-                                                <div class="form-group">            
-                                                    <input [(ngModel)]="expToUpdate.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto de trabajo" maxlength="45" required>
-                                                    <input [(ngModel)]="expToUpdate.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" placeholder="Año de ingreso" min="1900" max="2100" required>
-                                                    <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de salida" min="1900" max="2100" required>            
-                                                    <input [(ngModel)]="expToUpdate.company" class="my-input surface-color title-color p-2 mt-3" name="company" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
-                                                    <textarea [(ngModel)]="expToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                                                    <p class="text-color">{{expToUpdate.description.length}}/150</p>            
-                                                </div>
-                                                <div class="mt-4 d-flex flex-row-reverse">
-                                                    <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Actualizar</button>
-                                                    <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                            
+                            </button>                                                        
                             <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                         </div>
                     </div>
@@ -79,7 +60,32 @@
         </div>
     </div>
 </div>
-
+<!-- modales -->
+<div *ngIf="logged" class="modal fade" id="edit-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="edit-experience-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar experiencia</h5>
+            </div>
+            <div *ngIf="expToUpdate" class="modal-body d-flex flex-column">
+                <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
+                    <div class="form-group">            
+                        <input [(ngModel)]="expToUpdate.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto de trabajo" maxlength="45" required>
+                        <input [(ngModel)]="expToUpdate.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" placeholder="Año de ingreso" min="1900" max="2100" required>
+                        <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de salida" min="1900" max="2100" required>            
+                        <input [(ngModel)]="expToUpdate.company" class="my-input surface-color title-color p-2 mt-3" name="company" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
+                        <textarea [(ngModel)]="expToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                        <p class="text-color">{{expToUpdate.description.length}}/150</p>            
+                    </div>
+                    <div class="mt-4 d-flex flex-row-reverse">
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Actualizar</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div *ngIf="logged" class="modal fade" id="add-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-experience-modal-content">
@@ -89,18 +95,12 @@
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
                     <div class="form-group">
-
                         <input [(ngModel)]="createRol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" maxlength="45" required>
-
-                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de ingreso" required>
-                        
-                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de salida" required>
-                        
+                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de ingreso" required>                        
+                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de salida" required>                        
                         <input [(ngModel)]="createCompany" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
-
                         <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
                         <p class="text-color">{{createDescription.length}}/150</p>
-
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>
