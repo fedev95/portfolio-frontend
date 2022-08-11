@@ -36,33 +36,9 @@
                     <div class="d-flex flex-row flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.title}}</h5>                        
                         <div *ngIf="logged" class="d-flex justify-content-center align-items-center">
-                            <!-- boton editar -->
                             <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-education-modal" (click)="findEducation(item.id)">
                                 Editar
-                            </button>
-                            <!-- modal editar -->
-                            <div  class="modal fade" id="edit-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content" id="edit-education-modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Editar educación</h5>
-                                        </div>
-                                        <div *ngIf="edToUpdate" class="modal-body d-flex flex-column">
-                                            <form (ngSubmit)="update(edToUpdate.id)"  #editEd="ngForm">
-                                                <div class="form-group">            
-                                                    <input [(ngModel)]="edToUpdate.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>            
-                                                    <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="45" required>            
-                                                    <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" maxlength="255" required>            
-                                                </div>
-                                                <div class="mt-4 d-flex flex-row-reverse">
-                                                    <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">Actualizar</button>
-                                                    <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
+                            </button>                            
                             <button (click)="deleteEducation(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                         </div>
                     </div>
@@ -75,6 +51,32 @@
         </div>
     </div>
 </div>
+
+
+<div *ngIf="logged" class="modal fade" id="edit-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="edit-education-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar educación</h5>
+            </div>
+            <div *ngIf="edToUpdate" class="modal-body d-flex flex-column">
+                <form (ngSubmit)="update(edToUpdate.id)" #editEd="ngForm">
+                    <div class="form-group">            
+                        <input [(ngModel)]="edToUpdate.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>            
+                        <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="255" required>            
+                        <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" maxlength="255" required>            
+                    </div>
+                    <div class="mt-4 d-flex flex-row-reverse">
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">
+                            Guardar cambios
+                        </button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
 
 <div *ngIf="logged" class="modal fade" id="add-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
