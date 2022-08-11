@@ -159,7 +159,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" id="add-social-modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Agregar red social</h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Nueva red social</h5>
                 </div>
                 <div class="modal-body">
                     <form (ngSubmit)="createSocial()" #addSocial="ngForm">
@@ -169,7 +169,7 @@
                             <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Agregar</button>
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Añadir</button>
                             <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearAddForm()">Cancelar</button>
                         </div>
                     </form>
