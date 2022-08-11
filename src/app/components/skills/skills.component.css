@@ -20,5 +20,6 @@
 }
 
 .input-border-active {
+    background-color: var(--btn-hover);
     border-bottom: 1px solid var(--gold);
 }
