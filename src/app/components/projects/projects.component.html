@@ -1,6 +1,6 @@
 <div class="base-color container-fluid py-5">
     <div data-aos="fade-in"
-    data-aos-offset="100"
+    data-aos-offset="50"
     data-aos-delay="50"
     data-aos-duration="500"
     data-aos-easing="ease-in-out"
@@ -9,9 +9,19 @@
     data-aos-anchor-placement="top" class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
-                <h3 class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="logged" data-aos="fade-in"
-                data-aos-offset="100"
+                <h3 data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top"
+                    class="title-color m-0 pb-3">{{sectionTitle | uppercase}}
+                </h3>
+                <button *ngIf="logged" 
+                data-aos="fade-in"
+                data-aos-offset="50"
                 data-aos-delay="50"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
@@ -24,7 +34,7 @@
         </div>
         <div class="row justify-content-center py-4 px-2">
             <div data-aos="fade-in"
-            data-aos-offset="100"
+            data-aos-offset="50"
             data-aos-delay="50"
             data-aos-duration="500"
             data-aos-easing="ease-in-out"
@@ -54,7 +64,7 @@
         </div>
     </div>
 </div>
-
+<!-- modales -->
 <div *ngIf="logged" class="modal fade" id="add-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-project-modal-content">
