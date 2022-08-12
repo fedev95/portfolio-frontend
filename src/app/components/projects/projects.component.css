@@ -51,6 +51,10 @@ textarea {
     z-index: 3;
 }
 
+.project-item:hover>.prj-item-card>.project-info {
+    background-color: var(--overlay);
+}
+
 .img-container {
     height: 200px;
     overflow: hidden;
