@@ -1,6 +1,11 @@
+.login-container {
+    width: 466px;
+    max-width: 100%;
+}
+
 .login-input {
     outline: none;
-    border: 1px solid transparent;
+    border: 1px solid transparent ;
 }
 
 .login-input:focus {
