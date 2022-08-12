@@ -96,8 +96,10 @@
                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
                     <div class="form-group">
                         <input [(ngModel)]="createRol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" maxlength="45" required>
-                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de ingreso" required>                        
-                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de salida" required>                        
+                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de ingreso" required>   
+                        <p *ngIf="createStartYear < 1900 || createStartYear > 2100" class="gold-color">El año de ingreso tiene que ser valido.</p>                     
+                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de finalización" required>
+                        <p *ngIf="createEndYear < 1900 || createEndYear > 2100" class="gold-color">El año de finalización tiene que ser valido.</p>  
                         <input [(ngModel)]="createCompany" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
                         <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
                         <p class="text-color">{{createDescription.length}}/150</p>
