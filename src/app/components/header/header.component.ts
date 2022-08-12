@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
 	pageLogoSrc = 'assets/imgs/ap-logo.png';
 
-	logged = true;
+	logged = false;
 	
 	constructor() { 
 	}
