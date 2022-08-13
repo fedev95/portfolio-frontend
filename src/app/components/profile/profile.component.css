@@ -62,7 +62,7 @@ textarea {
     transition: 0.25s;
 }
 .input-file-button:hover {
-    background-color: rgba(0, 0, 0, 0.685)
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .input-file-button>h6 {
