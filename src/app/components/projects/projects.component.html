@@ -19,7 +19,7 @@
                     data-aos-anchor-placement="top"
                     class="title-color m-0 pb-3">{{sectionTitle | uppercase}}
                 </h3>
-                <button *ngIf="logged" 
+                <button *ngIf="isLogged" 
                 data-aos="fade-in"
                 data-aos-offset="50"
                 data-aos-delay="50"
@@ -53,7 +53,7 @@
                             <p class="text-color">{{item.description}}</p>
                         </div>
                     </div>
-                    <div *ngIf="logged" class="d-flex flex-column">
+                    <div *ngIf="isLogged" class="d-flex flex-column">
                         <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)" (click)="editCreateImg(item.img)">
                             Editar
                         </button>                                           
@@ -65,7 +65,7 @@
     </div>
 </div>
 <!-- modales -->
-<div *ngIf="logged" class="modal fade" id="add-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isLogged" class="modal fade" id="add-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-project-modal-content">
             <div class="modal-header">
@@ -96,7 +96,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="logged" class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isLogged" class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="edit-project-modal-content">
             <div class="modal-header">

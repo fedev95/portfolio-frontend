@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Projects } from 'src/app/model/projects.model';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
 	selector: 'app-projects',
@@ -12,7 +13,7 @@ export class ProjectsComponent implements OnInit {
 
 	sectionTitle = 'proyectos';
 
-    logged = true;
+    isLogged = false;
 
 	projectsItems: Projects[] = [];
 
@@ -25,11 +26,16 @@ export class ProjectsComponent implements OnInit {
 
 	prjToUpdate!: Projects;
 
-	constructor(private projectsService: ProjectsService) {
+	constructor(private projectsService: ProjectsService, private tokenService: TokenService) {
 	}
 
 	ngOnInit(): void {
 		this.projectsList();
+        if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
 	}
 
     onCreateImg(e: any) {
