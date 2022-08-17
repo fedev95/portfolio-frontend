@@ -1,4 +1,4 @@
-export class Profile {
+export class Login {
 
     nombreUsuario: String;
     password: String;
