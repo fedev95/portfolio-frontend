@@ -17,7 +17,7 @@
             <h1 id="full-name" class="title-color m-0">{{profileData.name | uppercase}} {{profileData.lastname | uppercase}}</h1>
             <h3 class="subtle-color m-0">{{profileData.title}}</h3>
             <p class="text-color my-4">{{profileData.description}}</p>
-            <div *ngIf="logged" class="d-flex edit-info-button mb-4">
+            <div *ngIf="isLogged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3"
                     data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id)">
@@ -32,7 +32,7 @@
                     </a>
                 </div>
             </div>
-            <div *ngIf="logged" class="mt-3">
+            <div *ngIf="isLogged" class="mt-3">
                 <button data-bs-toggle="modal" href="#admin-social-modal" class="my-btn border-0 text-decoration-none title-color p-1 px-3">
                     Administrar redes
                 </button>
@@ -42,7 +42,7 @@
 </div>
 
 <!-- modales -->
-<div *ngIf="logged">
+<div *ngIf="isLogged">
     
     <!-- modal editar perfil -->
     <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

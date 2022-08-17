@@ -3,6 +3,7 @@ import { Profile } from 'src/app/model/profile.model';
 import { Social } from 'src/app/model/social.model';
 import { ProfileService } from 'src/app/services/profile.service';
 import { SocialService } from 'src/app/services/social.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
 	selector: 'app-profile',
@@ -11,7 +12,7 @@ import { SocialService } from 'src/app/services/social.service';
 })
 export class ProfileComponent implements OnInit {
 
-	logged = true;
+	isLogged = false;
 
 	// datos del perfil
 	profileData!: Profile;
@@ -24,12 +25,17 @@ export class ProfileComponent implements OnInit {
 	createSocialLink: String = '';
 	socToUpdate!: Social;	
 		
-	constructor(private socialService: SocialService, private profileService: ProfileService) {
+	constructor(private socialService: SocialService, private profileService: ProfileService, private tokenService: TokenService) {
 	}
 
 	ngOnInit(): void {
 		this.findProfile(1)
 		this.socialList();
+		if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
 	}
 
 	// ============================== profile data ==============================
