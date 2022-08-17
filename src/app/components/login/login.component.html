@@ -1,5 +1,13 @@
 <div class="container-fluid d-flex flex-column justify-content-center vh-100 base-color">
-    <div class="login-container m-auto text-color">
+    <div data-aos="fade-in"
+    data-aos-offset="50"
+    data-aos-delay="50"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top"
+    class="login-container m-auto text-color">
         <h4 class="title-color">Acceder</h4>
 
         <form #loginFrom="ngForm" (ngSubmit)="onLogin()" novalidate> 
