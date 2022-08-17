@@ -3,7 +3,7 @@
         <img id="logo-img" class="img-fluid" [src]="pageLogoSrc" alt="page logo">
     </div>
     <div id="login" class="col-auto d-flex align-items-center justify-content-evenly">
-        <button (click)="alternar()" *ngIf="!logged" class="title-color text-decoration-none my-btn border-0 p-1 px-3" routerLink="/login">Log In</button>
-        <button (click)="alternar()" *ngIf="logged" class="title-color text-decoration-none my-btn border-0 p-1 px-3">Salir</button>
+        <button *ngIf="!isLogged" class="title-color text-decoration-none my-btn border-0 p-1 px-3" routerLink="/login">Acceder</button>
+        <button *ngIf="isLogged" (click)="onLogOut()" class="title-color text-decoration-none my-btn border-0 p-1 px-3">Salir</button>
     </div>
 </div>

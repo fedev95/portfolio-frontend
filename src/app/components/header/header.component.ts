@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
 	selector: 'app-header',
@@ -9,20 +10,22 @@ export class HeaderComponent implements OnInit {
 
 	pageLogoSrc = 'assets/imgs/ap-logo.png';
 
-	logged = false;
+	isLogged = false;
 	
-	constructor() { 
+	constructor(private tokenService: TokenService) { 
 	}
 
 	ngOnInit(): void {
+		if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
 	}
 
-	alternar() {
-		if (this.logged == true) {
-			this.logged = false;
-		} else {
-			this.logged = true;
-		}
+	onLogOut(): void {
+		this.tokenService.logOut();
+		window.location.reload();
 	}
 
 }
