@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/model/experience.model';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
 	selector: 'app-experience',
@@ -12,7 +13,7 @@ export class ExperienceComponent implements OnInit {
 
 	sectionTitle = 'experiencia';
 
-	logged = true;
+	isLogged = false;
 
 	experienceItems: Experience[] = [];
 
@@ -25,11 +26,16 @@ export class ExperienceComponent implements OnInit {
 
 	expToUpdate!: Experience;
 
-	constructor(private experienceService: ExperienceService) {
+	constructor(private experienceService: ExperienceService, private tokenService: TokenService) {
 	}
 
 	ngOnInit(): void {
 		this.experienceList();
+        if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
 	}
 
 	experienceList(): void {
