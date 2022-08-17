@@ -17,7 +17,7 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top" class="m-0 pb-3 title-color">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="logged" data-aos="fade-in"
+                <button *ngIf="isLogged" data-aos="fade-in"
                 data-aos-offset="50"
                 data-aos-delay="50"
                 data-aos-duration="500"
@@ -42,7 +42,7 @@
                 <div class="education-item d-flex flex-column align-items-start my-4">
                     <div class="d-flex flex-row flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.title}}</h5>                        
-                        <div *ngIf="logged" class="d-flex justify-content-center align-items-center">
+                        <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
                             <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-education-modal" (click)="findEducation(item.id)">
                                 Editar
                             </button>                            
@@ -60,7 +60,7 @@
 </div>
 
 
-<div *ngIf="logged" class="modal fade" id="edit-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isLogged" class="modal fade" id="edit-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="edit-education-modal-content">
             <div class="modal-header">
@@ -85,7 +85,7 @@
     </div>
 </div> 
 
-<div *ngIf="logged" class="modal fade" id="add-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isLogged" class="modal fade" id="add-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-education-modal-content">
             <div class="modal-header">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from 'src/app/model/education.model';
 import { EducationService } from 'src/app/services/education.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
     selector: 'app-education',
@@ -11,7 +12,7 @@ export class EducationComponent implements OnInit {
 
     sectionTitle = 'educación';
 
-    logged = true;
+    isLogged = false;
 
     educationItems: Education[] = [];
 
@@ -22,11 +23,16 @@ export class EducationComponent implements OnInit {
 
     edToUpdate!: Education;
 
-    constructor(private educationService: EducationService) {
+    constructor(private educationService: EducationService, private tokenService: TokenService) {
     }
 
     ngOnInit(): void {
         this.educationList();
+        if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
     }
 
     educationList(): void {
