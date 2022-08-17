@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Skills } from 'src/app/model/skills.model';
 import { SkillsService } from 'src/app/services/skills.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
 	selector: 'app-skills',
@@ -11,7 +12,7 @@ export class SkillsComponent implements OnInit {
 
 	sectionTitle = 'habilidades';
 
-	logged = true;
+	isLogged = false;
 
 	isActive = false;
 	
@@ -27,12 +28,16 @@ export class SkillsComponent implements OnInit {
 	isFrontend: boolean = false;
 	isBackend: boolean = false;
 	
-	constructor(private skillsService: SkillsService) {
+	constructor(private skillsService: SkillsService, private tokenService: TokenService) {
 	}
 
 	ngOnInit(): void {
 		this.skillsList();
-		
+		if (this.tokenService.getToken()) {
+			this.isLogged = true;
+		} else {
+			this.isLogged = false;
+		}
 	}
 	
 	skillsList(): void {
