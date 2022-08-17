@@ -16,7 +16,8 @@
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
                 data-aos-once="false"
-                data-aos-anchor-placement="top" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
+                data-aos-anchor-placement="top"
+                *ngIf="experienceItems.length >= 1" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
                 <button *ngIf="isLogged" 
                 data-aos="fade-in"
                 data-aos-offset="50"
@@ -25,7 +26,7 @@
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
                 data-aos-once="false"
-                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
+                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none ms-auto p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
                     Nueva experiencia
                 </button>
             </div>
