@@ -14,6 +14,8 @@ export class EducationComponent implements OnInit {
 
     isLogged = false;
 
+    isLoadding = true;
+
     educationItems: Education[] = [];
 
     // variables para crear un nuevo item
@@ -39,6 +41,7 @@ export class EducationComponent implements OnInit {
         this.educationService.list().subscribe(
             data => {
                 this.educationItems = data;
+                this.isLoadding = false;
             }
         );
     }

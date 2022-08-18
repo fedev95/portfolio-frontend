@@ -1,12 +1,18 @@
 <div id="skills" class="container-fluid surface-color py-5">
-    <div data-aos="fade-in"
-    data-aos-offset="50"
-    data-aos-delay="50"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top" class="container">
+    <div *ngIf="isLoadding" class="d-flex">
+        <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div
+        *ngIf="!isLoadding"
+        data-aos="fade-in"
+        data-aos-offset="50"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
+        class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
                 <h3 data-aos="fade-in"

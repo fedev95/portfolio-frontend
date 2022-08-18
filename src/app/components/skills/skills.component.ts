@@ -14,6 +14,8 @@ export class SkillsComponent implements OnInit {
 
 	isLogged = false;
 
+	isLoadding = true;
+
 	isActive = false;
 	
 	skillsItems: Skills[] = [];
@@ -47,6 +49,7 @@ export class SkillsComponent implements OnInit {
 				this.backend = [];
 				this.skillsItems = data;
 				this.skillTypeList();
+				this.isLoadding = false;
             }
 		);
     }

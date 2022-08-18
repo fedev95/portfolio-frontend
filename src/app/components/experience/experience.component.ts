@@ -15,6 +15,8 @@ export class ExperienceComponent implements OnInit {
 
 	isLogged = false;
 
+    isLoadding = true;
+
 	experienceItems: Experience[] = [];
 
 	// variables para crear un nuevo item
@@ -42,6 +44,7 @@ export class ExperienceComponent implements OnInit {
         this.experienceService.list().subscribe(
             data => {
                 this.experienceItems = data;
+                this.isLoadding = false;
             }
         );
     }

@@ -15,6 +15,8 @@ export class ProjectsComponent implements OnInit {
 
     isLogged = false;
 
+    isLoadding = true;
+
 	projectsItems: Projects[] = [];
 
 	// variables para crear un nuevo item
@@ -58,6 +60,7 @@ export class ProjectsComponent implements OnInit {
         this.projectsService.list().subscribe(
             data => {
                 this.projectsItems = data;
+                this.isLoadding = false;
             }
         );
     }

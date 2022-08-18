@@ -1,4 +1,7 @@
-<div *ngIf="profileData" class="row d-flex justify-content-evenly align-items-center">
+<div *ngIf="isLoadding" class="d-flex">
+    <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+</div>
+<div *ngIf="!isLoadding" class="row d-flex justify-content-evenly align-items-center">
     <div data-aos="fade-in"
     data-aos-offset="50"
     data-aos-delay="50"

@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
 
 	isLogged = false;
 
+	isLoadding = true;
+
 	// datos del perfil
 	profileData!: Profile;
 	prfToUpdate!: Profile;
@@ -43,6 +45,7 @@ export class ProfileComponent implements OnInit {
         this.profileService.detail(id).subscribe(
             data => {
                 this.profileData = data;
+				this.isLoadding = false;
             }
 			)
 		}
