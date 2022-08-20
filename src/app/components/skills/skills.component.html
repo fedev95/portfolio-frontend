@@ -15,23 +15,27 @@
         class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
-                <h3 data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="isLogged" 
-                data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
+                <h3 
+                    data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top" class="title-color m-0 pb-3">
+                    {{sectionTitle | uppercase}}
+                </h3>
+                <button
+                    *ngIf="isLogged" 
+                    data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-skill-modal">
                     Nueva habilidad
                 </button>
             </div>
@@ -49,15 +53,16 @@
                 data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">FrontEnd</h4>
                 <div class="my-auto d-flex flex-column skills-gap align-items-center">                    
-                    <div data-aos="fade-in"
-                    data-aos-offset="50"
-                    data-aos-delay="50"
-                    data-aos-duration="500"
-                    data-aos-easing="ease-in-out"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-anchor-placement="top"
-                     *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
+                    <div 
+                        data-aos="fade-in"
+                        data-aos-offset="50"
+                        data-aos-delay="50"
+                        data-aos-duration="500"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top"
+                        *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
                         <div *ngIf="isLogged">
                             <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
@@ -77,15 +82,16 @@
                 data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">BackEnd</h4>
                 <div class="my-auto d-flex flex-column skills-gap align-items-center">
-                    <div data-aos="fade-in"
-                    data-aos-offset="50"
-                    data-aos-delay="50"
-                    data-aos-duration="500"
-                    data-aos-easing="ease-in-out"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-anchor-placement="top"
-                     *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">                        
+                    <div
+                        data-aos="fade-in"
+                        data-aos-offset="50"
+                        data-aos-delay="50"
+                        data-aos-duration="500"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top"
+                        *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
                         <div *ngIf="isLogged">
                             <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
