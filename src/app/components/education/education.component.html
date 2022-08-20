@@ -15,36 +15,41 @@
         class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
-                <h3 data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" class="m-0 pb-3 title-color">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="isLogged" data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-education-modal">
+                <h3
+                    data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top" class="m-0 pb-3 title-color">
+                    {{sectionTitle | uppercase}}
+                </h3>
+                <button
+                    *ngIf="isLogged" data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-education-modal">
                     Nueva educación
                 </button>
             </div>
         </div>
         <div class="row">
-            <div data-aos="fade-in"
-            data-aos-offset="50"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-            data-aos-once="false"
-            data-aos-anchor-placement="top"
-             *ngFor="let item of educationItems; let i = index" class="col-lg-6">
+            <div
+                data-aos="fade-in"
+                data-aos-offset="50"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top"
+                *ngFor="let item of educationItems; let i = index" class="col-lg-6">
                 <div class="education-item d-flex flex-column align-items-start my-4">
                     <div class="d-flex flex-row flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.title}}</h5>                        
