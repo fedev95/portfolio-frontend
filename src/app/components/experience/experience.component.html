@@ -16,24 +16,28 @@
         class="container">
         <div class="row">
             <div class="d-flex flex-wrap align-items-start justify-content-between">
-                <h3 data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top"
-                *ngIf="experienceItems.length >= 1 || isLogged" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
-                <button *ngIf="isLogged" 
-                data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none ms-auto p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
+                <h3
+                    data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top"
+                    *ngIf="experienceItems.length >= 1 || isLogged" class="title-color m-0 pb-3">
+                    {{sectionTitle | uppercase}}
+                </h3>
+                <button
+                    *ngIf="isLogged" 
+                    data-aos="fade-in"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="500"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top" type="button" class="add-btn my-btn border-0 text-decoration-none ms-auto p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-experience-modal">
                     Nueva experiencia
                 </button>
             </div>
@@ -42,15 +46,16 @@
             <div *ngIf="experienceItems.length < 1" class="col-12 d-flex justify-content-center">
                 <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">En busca de mi primer empleo como desarrollador :)</h4>
             </div>
-            <div data-aos="fade-in"
-            data-aos-offset="50"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-            data-aos-once="false"
-            data-aos-anchor-placement="top"
-             *ngFor="let item of experienceItems; let i = index" class="col-lg-6">
+            <div
+                data-aos="fade-in"
+                data-aos-offset="50"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top"
+                *ngFor="let item of experienceItems; let i = index" class="col-lg-6">
                 <div class="experience-item my-4 d-flex flex-column align-items-start">
                     <div class="d-flex flex-wrap justify-content-between w-100">
                         <h5 class="title-color">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
