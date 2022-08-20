@@ -2,19 +2,27 @@
     <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
 </div>
 <div *ngIf="!isLoadding" class="row d-flex justify-content-evenly align-items-center">
-    <div data-aos="fade-in"
-    data-aos-offset="50"
-    data-aos-delay="50"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top"
-    class="col-lg-5 d-flex p-4">
+    <div
+        data-aos="fade-in"
+        data-aos-offset="50"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
+        class="col-lg-5 d-flex p-4">
         <img class="m-auto rounded-circle profile-img" [src]="profileData.img" alt="profile image">
     </div>
-    <div data-aos="fade-in" data-aos-offset="100" data-aos-delay="50" data-aos-duration="500"
-        data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top"
+    <div
+        data-aos="fade-in"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
         class="col-lg-6 px-4">
         <div class="d-flex flex-column personal-info">
             <h1 id="full-name" class="title-color m-0">{{profileData.name | uppercase}} {{profileData.lastname | uppercase}}</h1>
