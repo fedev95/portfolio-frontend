@@ -37,14 +37,16 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div data-aos="fade-in"
-            data-aos-offset="50"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-            data-aos-once="false"
-            data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
+            <div
+                *ngIf="frontend.length > 0"
+                data-aos="fade-in"
+                data-aos-offset="50"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">FrontEnd</h4>
                 <div class="my-auto d-flex flex-column skills-gap align-items-center">                    
                     <div data-aos="fade-in"
@@ -63,14 +65,16 @@
                     </div>                    
                 </div>
             </div>
-            <div data-aos="fade-in"
-            data-aos-offset="50"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-            data-aos-once="false"
-            data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
+            <div
+                *ngIf="backend.length > 0"
+                data-aos="fade-in"
+                data-aos-offset="50"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top" class="col-md-5 py-4 d-flex flex-column align-items-center">
                 <h4 class="mb-4 title-color">BackEnd</h4>
                 <div class="my-auto d-flex flex-column skills-gap align-items-center">
                     <div data-aos="fade-in"
