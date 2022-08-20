@@ -24,7 +24,7 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top"
-                *ngIf="experienceItems.length >= 1" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
+                *ngIf="experienceItems.length >= 1 || isLogged" class="title-color m-0 pb-3">{{sectionTitle | uppercase}}</h3>
                 <button *ngIf="isLogged" 
                 data-aos="fade-in"
                 data-aos-offset="50"
