@@ -106,7 +106,7 @@
                 <form (ngSubmit)="createEducation()" #addEd="ngForm">
                     <div class="form-group">
                         <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>
-                        <input [(ngModel)]="createAcademyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="45" required>
+                        <input [(ngModel)]="createAcademyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="255" required>
                         <input [(ngModel)]="createCertificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Link del certificado" maxlength="255" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
