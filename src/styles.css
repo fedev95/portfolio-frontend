@@ -49,6 +49,26 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.animated-alert {
+    animation-name: breathing;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes breathing {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 50%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 
 /* bg y font colors  */
 .base-color {
