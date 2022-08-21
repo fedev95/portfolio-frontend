@@ -91,10 +91,10 @@
 
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid" (click)="updateProfile(prfToUpdate.id)">
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid" (click)="updateProfile(prfToUpdate.id)">
                                 Guardar cambios
                             </button>
-                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
+                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">
                                 Cancelar
                             </button>
                         </div>
@@ -116,19 +116,19 @@
                     <div *ngFor="let social of socialItems" class="d-flex mb-3 ps-2 w-100 justify-content-between surface-color">
                         <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
                         <div>
-                            <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id)">
+                            <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id)">
                                 Editar
                             </button>
-                            <button (click)="deleteSocial(social.id)" class="my-btn border-0 text-decoration-none p-1 px-2 title-color">
+                            <button (click)="deleteSocial(social.id)" class="my-btn border-0 text-decoration-none p-1 px-3 title-color">
                                 Eliminar
                             </button>
                         </div>
                     </div>
-                    <button class="my-btn border-0 text-decoration-none p-1 px-2 title-color w-100" data-bs-target="#add-social-modal" data-bs-toggle="modal" (click)="clearAddForm()">
+                    <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color w-100" data-bs-target="#add-social-modal" data-bs-toggle="modal" (click)="clearAddForm()">
                         Añadir una red social
                     </button>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">
                             Salir
                         </button>
                     </div>
@@ -152,10 +152,10 @@
                             <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
                                 Guardar cambios
                             </button>
-                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal">
+                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">
                                 Cancelar
                             </button>
                         </div>
@@ -181,8 +181,8 @@
                             <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Añadir</button>
-                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearAddForm()">Cancelar</button>
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Añadir</button>
+                            <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearAddForm()">Cancelar</button>
                         </div>
                     </form>
                 </div>
