@@ -51,19 +51,17 @@
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-anchor-placement="top"
-                *ngFor="let item of experienceItems; let i = index" class="col-lg-6">
-                <div class="experience-item my-4 d-flex flex-column align-items-start">
-                    <div class="d-flex flex-wrap justify-content-between w-100">
-                        <h5 class="title-color">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
-                        <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
-                            <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
-                                Editar
-                            </button>                                                        
-                            <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
-                        </div>
+                *ngFor="let item of experienceItems; let i = index" class="col-lg-6 m-auto">
+                <div class="experience-item my-4 d-flex flex-column align-items-center">
+                    <h5 class="title-color m-0 text-center">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
+                    <p class="subtle-color m-0 text-center">{{item.company}}</p>
+                    <p class="text-color mb-0 text-center">{{item.description}}</p>
+                    <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
+                        <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-2 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
+                            Editar
+                        </button>                                                        
+                        <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
                     </div>
-                    <p class="subtle-color m-0">{{item.company}}</p>
-                    <p class="text-color mb-0">{{item.description}}</p>
                 </div>
             </div>
         </div>
