@@ -81,7 +81,7 @@
                         *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
                         <div *ngIf="isLogged">
-                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
                         </div>
                     </div>                    
                 </div>
@@ -110,7 +110,7 @@
                         *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">
                         <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
                         <div *ngIf="isLogged">
-                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
+                            <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
                         </div>                        
                     </div>
                 </div>
@@ -143,8 +143,8 @@
                         </fieldset>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Añadir</button>
-                        <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" >Cancelar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Añadir</button>
+                        <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" >Cancelar</button>
                     </div>
                 </form>
             </div>
