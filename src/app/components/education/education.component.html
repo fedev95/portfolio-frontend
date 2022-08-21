@@ -1,9 +1,9 @@
-<div id="education" class="container-fluid base-color py-5">
-    <div class="d-flex">
-        <div *ngIf="isLoadding" class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
-    </div>
+<div *ngIf="isLoadding" class="d-flex">
+    <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div *ngIf="educationItems.length > 0 || isLogged" id="education" class="container-fluid surface-color py-5">
     <div
-        *ngIf="!isLoadding"
         data-aos="fade-in"
         data-aos-offset="50"
         data-aos-delay="50"

@@ -1,9 +1,9 @@
-<div id="skills" class="container-fluid surface-color py-5">
-    <div *ngIf="isLoadding" class="d-flex">
-        <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
-    </div>
+<div *ngIf="isLoadding" class="d-flex surface-color py-5">
+    <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div *ngIf="skillsItems.length > 0 || isLogged" class="container-fluid surface-color py-5">
     <div
-        *ngIf="!isLoadding"
         data-aos="fade-in"
         data-aos-offset="50"
         data-aos-delay="50"

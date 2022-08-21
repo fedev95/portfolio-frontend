@@ -1,10 +1,9 @@
-<div class="container-fluid py-5 surface-color">
+<div *ngIf="isLoadding" class="d-flex surface-color py-5">
+    <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+</div>
 
-    <div *ngIf="isLoadding" class="d-flex">
-        <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
-    </div>
+<div *ngIf="experienceItems.length > 0 || isLogged" class="container-fluid py-5 surface-color">
     <div
-        *ngIf="!isLoadding"
         data-aos="fade-in"
         data-aos-offset="50"
         data-aos-delay="50"
@@ -25,7 +24,7 @@
                     data-aos-mirror="true"
                     data-aos-once="false"
                     data-aos-anchor-placement="top"
-                    *ngIf="experienceItems.length >= 1 || isLogged" class="title-color m-0 pb-3">
+                    class="title-color m-0 pb-3">
                     {{sectionTitle | uppercase}}
                 </h3>
                 <button
@@ -43,9 +42,6 @@
             </div>
         </div>
         <div class="row">
-            <div *ngIf="experienceItems.length < 1" class="col-12 d-flex justify-content-center">
-                <h4 class="text-color text-center my-4 d-flex flex-column align-items-start">En busca de mi primer empleo como desarrollador :)</h4>
-            </div>
             <div
                 data-aos="fade-in"
                 data-aos-offset="50"
