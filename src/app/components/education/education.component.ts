@@ -85,7 +85,13 @@ export class EducationComponent implements OnInit {
             }
         )
     }
-    
 
+    clearEdToUpdate() {
+        if (this.edToUpdate) {
+            this.edToUpdate.title = '';
+            this.edToUpdate.academyName = '';
+            this.edToUpdate.certificationLink = '';
+        }
+    }
         
 }
