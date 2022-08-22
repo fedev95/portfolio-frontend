@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EMPTY, empty, NEVER } from 'rxjs';
 import { Projects } from 'src/app/model/projects.model';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -81,6 +82,13 @@ export class ProjectsComponent implements OnInit {
 		this.createDate = '';
         this.createDescription = '';
         this.createPrjLink = '';
+    }
+
+    clearPrjToUpdate() {
+        this.prjToUpdate.title = '';
+        this.prjToUpdate.date = '';
+        this.prjToUpdate.description = '';
+        this.prjToUpdate.prjLink = '';
     }
 
 	deleteProject(id: any) {

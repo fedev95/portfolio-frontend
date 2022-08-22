@@ -1,6 +1,6 @@
-<div *ngIf="isLoadding" class="d-flex base-color py-5">
+<!-- <div *ngIf="isLoadding" class="d-flex base-color py-5">
     <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
-</div>
+</div> -->
 
 <div *ngIf="projectsItems.length > 0 || isLogged" class="base-color container-fluid py-5">
     <div
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div *ngIf="isLogged" class="d-flex flex-column">
-                        <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)" (click)="editCreateImg(item.img)">
+                        <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id); clearPrjToUpdate()" (click)="editCreateImg(item.img)">
                             Editar
                         </button>                                           
                         <button (click)="deleteProject(item.id)" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
@@ -125,11 +125,14 @@
 </div>
 <div *ngIf="isLogged" class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" id="edit-project-modal-content">
+        <div *ngIf="!prjToUpdate || prjToUpdate.title.length <= 0" class="d-flex m-auto py-5">
+            <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <div *ngIf="prjToUpdate.title.length > 0" class="modal-content" id="edit-project-modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar proyecto</h5>
             </div>
-            <div *ngIf="prjToUpdate" class="modal-body d-flex flex-column">
+            <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="updateProject(prjToUpdate.id)" #editPrj="ngForm">
                     <div class="form-group">        
                         <div class="d-flex">
@@ -147,7 +150,7 @@
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Guardar cambios</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
