@@ -104,7 +104,7 @@
                         <div class="d-flex">
                             <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
                         </div>
-                        <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color">
+                        <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-3 title-color">
                             Miniatura (.png, .jpg, .jpeg)
                         </div>
                         <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg">
@@ -115,8 +115,8 @@
                         <p class="text-color">{{createDescription.length}}/150</p>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || createImg.length <= 0">Añadir</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || createImg.length <= 0">Añadir</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -135,7 +135,7 @@
                         <div class="d-flex">
                             <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
                         </div>
-                        <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-2 title-color">
+                        <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-3 title-color">
                             Miniatura (.png, .jpg, .jpeg)
                         </div>
                         <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
@@ -146,8 +146,8 @@
                         <p class="text-color">{{prjToUpdate.description.length}}/150</p>        
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-2 title-color ms-3" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Guardar cambios</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-2 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Guardar cambios</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
             </div>
