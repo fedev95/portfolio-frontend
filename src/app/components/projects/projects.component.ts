@@ -85,10 +85,12 @@ export class ProjectsComponent implements OnInit {
     }
 
     clearPrjToUpdate() {
-        this.prjToUpdate.title = '';
-        this.prjToUpdate.date = '';
-        this.prjToUpdate.description = '';
-        this.prjToUpdate.prjLink = '';
+        if (this.prjToUpdate) {
+            this.prjToUpdate.title = '';
+            this.prjToUpdate.date = '';
+            this.prjToUpdate.description = '';
+            this.prjToUpdate.prjLink = '';
+        }
     }
 
 	deleteProject(id: any) {
