@@ -56,27 +56,31 @@
             </p>
         </div>
         <div class="row">
-            <div
-                data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top"
-                *ngFor="let item of educationItems; let i = index" class="col-lg-6 m-auto">
-                <div class="education-item d-flex flex-column align-items-center my-4">
-                    <h5 class="text-center title-color text-center m-0">{{item.title}}</h5>                        
-                    <p class="gold-color text-decoration-none m-0 text-center">{{item.academyName}}</p>
-                    <a class="gold-color text-decoration-none text-center" [href]="item.certificationLink" target="_blank">
-                        > Certificación
-                    </a>
-                    <div *ngIf="isLogged" class="d-flex">
-                        <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-3" data-bs-toggle="modal" data-bs-target="#edit-education-modal" (click)="findEducation(item.id)">
-                            Editar
-                        </button>                            
-                        <button (click)="deleteEducation(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
+            <div class="col-10 m-auto">
+                <div class="row">
+                    <div
+                        data-aos="fade-in"
+                        data-aos-offset="50"
+                        data-aos-delay="50"
+                        data-aos-duration="500"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top"
+                        *ngFor="let item of educationItems; let i = index" class="col-lg-6 mx-auto">
+                        <div class="education-item d-flex flex-column align-items-center my-4">
+                            <h5 class="text-center title-color text-center m-0">{{item.title}}</h5>                        
+                            <p class="gold-color text-decoration-none m-0 text-center">{{item.academyName}}</p>
+                            <a class="gold-color text-decoration-none text-center" [href]="item.certificationLink" target="_blank">
+                                > Certificación
+                            </a>
+                            <div *ngIf="isLogged" class="d-flex">
+                                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-1" data-bs-toggle="modal" data-bs-target="#edit-education-modal" (click)="findEducation(item.id)">
+                                    Editar
+                                </button>                            
+                                <button (click)="deleteEducation(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,7 +103,7 @@
                         <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Enalce al certificado" maxlength="255" required>            
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editEd.form.invalid">
                             Guardar cambios
                         </button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">Cancelar</button>
@@ -124,7 +128,7 @@
                         <input [(ngModel)]="createCertificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Enalce al certificado" maxlength="255" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addEd.form.invalid">Añadir</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addEd.form.invalid">Añadir</button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
