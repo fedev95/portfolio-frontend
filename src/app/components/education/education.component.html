@@ -97,7 +97,7 @@
         <div *ngIf="!edToUpdate || edToUpdate.title == ''" class="d-flex m-auto py-5">
             <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div class="modal-content" id="edit-education-modal-content">
+        <div *ngIf="edToUpdate && edToUpdate.title" class="modal-content" id="edit-education-modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar educación</h5>
             </div>
