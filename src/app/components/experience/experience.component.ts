@@ -67,6 +67,14 @@ export class ExperienceComponent implements OnInit {
         this.createDescription = '';
     }
 
+    clearExpToUpdate() {
+        if (this.expToUpdate) {
+            this.expToUpdate.rol = '';
+            this.expToUpdate.company = '';
+            this.expToUpdate.description = '';
+        }
+    }
+
 	deleteExperience(id: any) {
         this.experienceService.delete(id).subscribe(
             data => {
