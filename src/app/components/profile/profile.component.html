@@ -68,7 +68,6 @@
                 <div class="modal-body d-flex flex-column">
                     <form #editProfile="ngForm">
                         <div *ngIf="prfToUpdate" class="form-group">
-                            
                             <div class="d-flex position-relative">
                                 <div (click)="profileImg.value = ''; profileImg.click()" class="position-absolute input-file-button rounded-circle top-50 start-50 translate-middle d-flex p-2" role="button">
                                     <h6 class="m-auto text-center">CAMBIAR IMAGEN</h6>
@@ -119,7 +118,7 @@
                     <div *ngFor="let social of socialItems" class="d-flex mb-3 ps-2 w-100 justify-content-between surface-color">
                         <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
                         <div>
-                            <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id)">
+                            <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id); clearSocToUpdate()">
                                 Editar
                             </button>
                             <button (click)="deleteSocial(social.id)" class="my-btn border-0 text-decoration-none p-1 px-3 title-color">
@@ -144,7 +143,10 @@
     <div class="modal fade" id="edit-social-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
         tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" id="edit-social-modal-content">
+            <div *ngIf="!socToUpdate || socToUpdate.socialName == ''" class="d-flex m-auto py-5">
+                <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div *ngIf="socToUpdate && socToUpdate.socialName" class="modal-content" id="edit-social-modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalToggleLabel2">Editar</h5>
                 </div>

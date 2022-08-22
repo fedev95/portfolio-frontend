@@ -131,4 +131,11 @@ export class ProfileComponent implements OnInit {
 		this.createSocialLink = '';
 	}
 
+	clearSocToUpdate() {
+		if (this.socToUpdate) {
+            this.socToUpdate.socialName = '';
+            this.socToUpdate.socialLink = '';
+        }
+	}
+
 }
