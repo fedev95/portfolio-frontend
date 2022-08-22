@@ -73,6 +73,15 @@ export class ProfileComponent implements OnInit {
         this.createImg = e[0].base64;
     }
 
+	clearPrfToUpdate() {
+		if (this.prfToUpdate) {
+            this.prfToUpdate.name = '';
+            this.prfToUpdate.lastname = '';
+            this.prfToUpdate.title = '';
+            this.prfToUpdate.description = '';
+        }
+	}
+
 
 	// ============================== social ==============================
 	socialList(): void {

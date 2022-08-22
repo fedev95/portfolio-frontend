@@ -31,7 +31,7 @@
             <div *ngIf="isLogged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3"
-                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id)">
+                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id); clearPrfToUpdate()">
                     Editar perfil
                 </button>
             </div>
@@ -58,7 +58,10 @@
     <!-- modal editar perfil -->
     <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" id="edit-profile-modal-content">
+            <div *ngIf="!prfToUpdate || prfToUpdate.name == ''" class="d-flex m-auto py-5">
+                <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div *ngIf="prfToUpdate && prfToUpdate.title" class="modal-content" id="edit-profile-modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Editar perfil</h5>
                 </div>
