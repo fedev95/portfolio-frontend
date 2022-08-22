@@ -91,7 +91,7 @@
 
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid" (click)="updateProfile(prfToUpdate.id)">
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editProfile.form.invalid" (click)="updateProfile(prfToUpdate.id)">
                                 Guardar cambios
                             </button>
                             <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">
@@ -152,7 +152,7 @@
                             <input [(ngModel)]="socToUpdate.socialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editSocial.form.invalid">
                                 Guardar cambios
                             </button>
                             <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">
@@ -181,7 +181,7 @@
                             <input [(ngModel)]="createSocialLink" class="my-input surface-color title-color p-2 mt-3" name="createSocialLink" id="createSocialLink" type="text" placeholder="Enlace al perfil" maxlength="255" required>
                         </div>
                         <div class="mt-4 d-flex flex-row-reverse">
-                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Añadir</button>
+                            <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addSocial.form.invalid">Añadir</button>
                             <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearAddForm()">Cancelar</button>
                         </div>
                     </form>
