@@ -129,8 +129,8 @@
                 <form (ngSubmit)="createSkill()" #addSkill="ngForm">
                     <div class="form-group d-flex flex-column">                                        
                         <fieldset class="">
-                            <div class="d-flex skills-gap">
-                                <div class="w-100">
+                            <div class="d-flex">
+                                <div class="w-100 me-1">
                                     <div [class.input-border-active]="isFrontend" role="button" class="my-btn input-border text-decoration-none p-1 px-2 title-color text-center w-100" (click)="frontendInput.click(); activeFrontendBorder()">Frontend</div>
                                     <input #frontendInput [(ngModel)]="createSkillType" value="frontend" class="d-none" name="skill-type" id="frontendSkill" type="radio" required>
                                 </div>
@@ -143,7 +143,7 @@
                         </fieldset>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Añadir</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addSkill.form.invalid">Añadir</button>
                         <button (click)="clearAddForm()" type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" >Cancelar</button>
                     </div>
                 </form>
