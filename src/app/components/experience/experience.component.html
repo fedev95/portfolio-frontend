@@ -58,25 +58,29 @@
             </p>
         </div>
         <div class="row">
-            <div
-                data-aos="fade-in"
-                data-aos-offset="50"
-                data-aos-delay="50"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-anchor-placement="top"
-                *ngFor="let item of experienceItems; let i = index" class="col-lg-6 m-auto">
-                <div class="experience-item my-4 d-flex flex-column align-items-center">
-                    <h5 class="title-color m-0 text-center">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
-                    <p class="subtle-color m-0 text-center">{{item.company}}</p>
-                    <p class="text-color mb-0 text-center">{{item.description}}</p>
-                    <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
-                        <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-3" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
-                            Editar
-                        </button>                                                        
-                        <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
+            <div class="col-10 m-auto">
+                <div class="row">
+                    <div
+                        data-aos="fade-in"
+                        data-aos-offset="50"
+                        data-aos-delay="50"
+                        data-aos-duration="500"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top"
+                        *ngFor="let item of experienceItems; let i = index" class="col-lg-6 mx-auto">
+                        <div class="experience-item my-4 d-flex flex-column align-items-center">
+                            <h5 class="title-color m-0 text-center">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
+                            <p class="subtle-color m-0 text-center">{{item.company}}</p>
+                            <p class="text-color mb-0 text-center">{{item.description}}</p>
+                            <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
+                                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-1" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
+                                    Editar
+                                </button>                                                        
+                                <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +107,7 @@
                         <p class="text-color">{{expToUpdate.description.length}}/150</p>            
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Guardar cambios</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Guardar cambios</button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
@@ -130,7 +134,7 @@
                         <p class="text-color">{{createDescription.length}}/150</p>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-3" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>
                         <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
                     </div>
                 </form>
