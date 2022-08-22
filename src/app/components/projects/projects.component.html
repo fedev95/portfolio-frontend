@@ -129,10 +129,10 @@
 </div>
 <div *ngIf="isLogged" class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div *ngIf="!prjToUpdate || prjToUpdate.title.length <= 0" class="d-flex m-auto py-5">
+        <div *ngIf="!prjToUpdate || prjToUpdate.title == ''" class="d-flex m-auto py-5">
             <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div *ngIf="prjToUpdate.title.length > 0" class="modal-content" id="edit-project-modal-content">
+        <div *ngIf="prjToUpdate && prjToUpdate.title" class="modal-content" id="edit-project-modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar proyecto</h5>
             </div>
