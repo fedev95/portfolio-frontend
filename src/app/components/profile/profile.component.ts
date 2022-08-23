@@ -22,17 +22,18 @@ export class ProfileComponent implements OnInit {
 	profileData!: Profile;
 	prfToUpdate!: Profile;
 	createImg: String = '';
-	updatingProfile = false;
+	updatingProfileAlert = false;
+	loaddingForProfileUpdate = false;
 	
 	// redes sociales
 	socialItems: Social[] = [];
 	createSocialName: String = '';
 	createSocialLink: String = '';
 	socToUpdate!: Social;
-
-	uploadingSoc = false;
-	updatingSoc = false;
-	deletingSoc = false;
+	uploadingSocAlert = false;
+	updatingSocAlert = false;
+	deletingSocAlert = false;
+	loaddingForSocUpdate = false;
 
 		
 	constructor(private socialService: SocialService, private profileService: ProfileService, private tokenService: TokenService) {
@@ -54,23 +55,25 @@ export class ProfileComponent implements OnInit {
             data => {
                 this.profileData = data;
 				this.isLoadding = false;
-				this.updatingProfile = false;
+				this.updatingProfileAlert = false;
             }
 		)
 	}
 		
 
 	findProfileToUpdate(id: any) {
+		this.loaddingForProfileUpdate = true;
         this.profileService.detail(id).subscribe(
             data => {
                 this.prfToUpdate = data;
 				this.createImg = this.profileData.img;
+				this.loaddingForProfileUpdate = false;
             }
         )
     }
 
 	updateProfile(id: any): void {
-		this.updatingProfile = true;
+		this.updatingProfileAlert = true;
 		this.prfToUpdate.img = this.createImg;
         this.profileService.update(id, this.prfToUpdate).subscribe(
             data => {
@@ -83,30 +86,21 @@ export class ProfileComponent implements OnInit {
         this.createImg = e[0].base64;
     }
 
-	clearPrfToUpdate() {
-		if (this.prfToUpdate) {
-            this.prfToUpdate.name = '';
-            this.prfToUpdate.lastname = '';
-            this.prfToUpdate.title = '';
-            this.prfToUpdate.description = '';
-        }
-	}
-
 
 	// ============================== social ==============================
 	socialList(): void {
 		this.socialService.list().subscribe(
 			data => {
 				this.socialItems = data;
-				this.uploadingSoc = false;
-				this.updatingSoc = false;
-				this.deletingSoc = false;
+				this.uploadingSocAlert= false;
+				this.updatingSocAlert= false;
+				this.deletingSocAlert= false;
             }
 		);
 	}
 
 	deleteSocial(id: any) {
-		this.deletingSoc = true;
+		this.deletingSocAlert = true;
         this.socialService.delete(id).subscribe(
             data => {
                 this.socialList();
@@ -115,7 +109,7 @@ export class ProfileComponent implements OnInit {
     }
 
 	createSocial(): void {
-		this.uploadingSoc = true;
+		this.uploadingSocAlert= true;
         const skill = new Social(this.createSocialName, this.createSocialLink);
         this.socialService.add(skill).subscribe(
             data => {
@@ -126,15 +120,17 @@ export class ProfileComponent implements OnInit {
     }
 
 	findSocial(id: any) {
+		this.loaddingForSocUpdate = true;
         this.socialService.detail(id).subscribe(
             data => {
                 this.socToUpdate = data;
+				this.loaddingForSocUpdate = false;
             }
         )
     }
 
 	updateSocial(id: any): void {
-		this.updatingSoc = true;
+		this.updatingSocAlert = true;
         this.socialService.update(id, this.socToUpdate).subscribe(
             data => {
                 this.socialList();
@@ -145,13 +141,6 @@ export class ProfileComponent implements OnInit {
 	clearAddForm() {
 		this.createSocialName = '';
 		this.createSocialLink = '';
-	}
-
-	clearSocToUpdate() {
-		if (this.socToUpdate) {
-            this.socToUpdate.socialName = '';
-            this.socToUpdate.socialLink = '';
-        }
 	}
 
 }

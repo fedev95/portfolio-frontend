@@ -25,7 +25,7 @@
         data-aos-anchor-placement="top"
         class="col-lg-6 px-4">
         <div class="d-flex flex-column personal-info">
-            <p *ngIf="updatingProfile && isLogged" class="text-color m-0 d-flex align-items-center animated-alert">
+            <p *ngIf="updatingProfileAlert && isLogged" class="text-color m-0 d-flex align-items-center animated-alert">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -38,7 +38,7 @@
             <div *ngIf="isLogged" class="d-flex edit-info-button mb-4">
                 <!-- boton editar -->
                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3"
-                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id); clearPrfToUpdate()">
+                    data-bs-toggle="modal" data-bs-target="#edit-profile-modal" (click)="findProfileToUpdate(profileData.id)">
                     Editar perfil
                 </button>
             </div>
@@ -51,14 +51,14 @@
                 </div>
             </div>
             <div *ngIf="isLogged" class="mt-3">
-                <p *ngIf="uploadingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                <p *ngIf="uploadingSocAlert" class="text-color mb-3 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Añadiendo...
                 </p>
-                <p *ngIf="updatingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                <p *ngIf="updatingSocAlert" class="text-color mb-3 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -79,16 +79,16 @@
     <!-- modal editar perfil -->
     <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div *ngIf="!prfToUpdate || prfToUpdate.name == ''" class="d-flex m-auto py-5">
+            <div *ngIf="!prfToUpdate || loaddingForProfileUpdate" class="d-flex m-auto py-5">
                 <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
             </div>
-            <div *ngIf="prfToUpdate && prfToUpdate.title" class="modal-content" id="edit-profile-modal-content">
+            <div *ngIf="prfToUpdate && !loaddingForProfileUpdate" class="modal-content" id="edit-profile-modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Editar perfil</h5>
                 </div>
                 <div class="modal-body d-flex flex-column">
                     <form #editProfile="ngForm">
-                        <div *ngIf="prfToUpdate" class="form-group">
+                        <div class="form-group">
                             <div class="d-flex position-relative">
                                 <div (click)="profileImg.value = ''; profileImg.click()" class="position-absolute input-file-button rounded-circle top-50 start-50 translate-middle d-flex p-2" role="button">
                                     <h6 class="m-auto text-center">CAMBIAR IMAGEN</h6>
@@ -136,7 +136,7 @@
                     <h5 class="modal-title" id="exampleModalToggleLabel">Administrador de redes</h5>
                 </div>
                 <div class="modal-body d-flex flex-column">
-                    <p *ngIf="deletingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                    <p *ngIf="deletingSocAlert" class="text-color mb-3 d-flex align-items-center animated-alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -147,7 +147,7 @@
                         <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
                         
                         <div>
-                            <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id); clearSocToUpdate()">
+                            <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id)">
                                 Editar
                             </button>
                             <button (click)="deleteSocial(social.id)" class="my-btn border-0 text-decoration-none p-1 px-3 title-color">
@@ -172,14 +172,14 @@
     <div class="modal fade" id="edit-social-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
         tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div *ngIf="!socToUpdate || socToUpdate.socialName == ''" class="d-flex m-auto py-5">
+            <div *ngIf="!socToUpdate || loaddingForSocUpdate" class="d-flex m-auto py-5">
                 <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
             </div>
-            <div *ngIf="socToUpdate && socToUpdate.socialName" class="modal-content" id="edit-social-modal-content">
+            <div *ngIf="socToUpdate && !loaddingForSocUpdate" class="modal-content" id="edit-social-modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalToggleLabel2">Editar</h5>
                 </div>
-                <div *ngIf="socToUpdate" class="modal-body">
+                <div class="modal-body">
                     <form (ngSubmit)="updateSocial(socToUpdate.id)" #editSocial="ngForm">
                         <div class="form-group">
                             <input [(ngModel)]="socToUpdate.socialName" class="my-input surface-color title-color p-2" name="createSocialName" id="createSocialName" type="text" placeholder="Red social" maxlength="45" required>
