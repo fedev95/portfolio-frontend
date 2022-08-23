@@ -17,6 +17,9 @@ export class SkillsComponent implements OnInit {
 	isLoadding = true;
 
 	isActive = false;
+
+	uploading = false;
+	deleting = false;
 	
 	skillsItems: Skills[] = [];
 	frontend: Skills[] = [];
@@ -50,6 +53,8 @@ export class SkillsComponent implements OnInit {
 				this.skillsItems = data;
 				this.skillTypeList();
 				this.isLoadding = false;
+				this.uploading = false;
+				this.deleting = false;
             }
 		);
     }
@@ -65,7 +70,7 @@ export class SkillsComponent implements OnInit {
 	}
 
 	deleteSkill(id: any) {
-		this.isLoadding = true;
+		this.deleting = true;
         this.skillsService.delete(id).subscribe(
             data => {
                 this.skillsList();
@@ -74,7 +79,7 @@ export class SkillsComponent implements OnInit {
     }
 
 	createSkill(): void {
-		this.isLoadding = true;
+		this.uploading = true;
         const skill = new Skills(this.createSkillName, this.createSkillType);
         this.skillsService.add(skill).subscribe(
             data => {
