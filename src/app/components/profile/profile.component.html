@@ -25,6 +25,13 @@
         data-aos-anchor-placement="top"
         class="col-lg-6 px-4">
         <div class="d-flex flex-column personal-info">
+            <p *ngIf="updatingProfile && isLogged" class="text-color m-0 d-flex align-items-center animated-alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+                Actualizando el perfil...
+            </p>
             <h1 id="full-name" class="title-color m-0">{{profileData.name | uppercase}} {{profileData.lastname | uppercase}}</h1>
             <h3 class="subtle-color m-0">{{profileData.title}}</h3>
             <p class="text-color my-4">{{profileData.description}}</p>
@@ -44,6 +51,20 @@
                 </div>
             </div>
             <div *ngIf="isLogged" class="mt-3">
+                <p *ngIf="uploadingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Añadiendo...
+                </p>
+                <p *ngIf="updatingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Actualizando...
+                </p>
                 <button data-bs-toggle="modal" href="#admin-social-modal" class="my-btn border-0 text-decoration-none title-color p-1 px-3">
                     Administrar redes
                 </button>
@@ -115,8 +136,16 @@
                     <h5 class="modal-title" id="exampleModalToggleLabel">Administrador de redes</h5>
                 </div>
                 <div class="modal-body d-flex flex-column">
+                    <p *ngIf="deletingSoc" class="text-color mb-3 d-flex align-items-center animated-alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        Eliminando...
+                    </p>
                     <div *ngFor="let social of socialItems" class="d-flex mb-3 ps-2 w-100 justify-content-between surface-color">
                         <p class="m-0 align-items-center d-flex">{{social.socialName}}</p>
+                        
                         <div>
                             <button class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-target="#edit-social-modal" data-bs-toggle="modal" (click)="findSocial(social.id); clearSocToUpdate()">
                                 Editar

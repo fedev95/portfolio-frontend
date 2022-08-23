@@ -16,16 +16,24 @@ export class ProfileComponent implements OnInit {
 
 	isLoadding = true;
 
+	
+	
 	// datos del perfil
 	profileData!: Profile;
 	prfToUpdate!: Profile;
 	createImg: String = '';
-
+	updatingProfile = false;
+	
 	// redes sociales
 	socialItems: Social[] = [];
 	createSocialName: String = '';
 	createSocialLink: String = '';
-	socToUpdate!: Social;	
+	socToUpdate!: Social;
+
+	uploadingSoc = false;
+	updatingSoc = false;
+	deletingSoc = false;
+
 		
 	constructor(private socialService: SocialService, private profileService: ProfileService, private tokenService: TokenService) {
 	}
@@ -46,9 +54,10 @@ export class ProfileComponent implements OnInit {
             data => {
                 this.profileData = data;
 				this.isLoadding = false;
+				this.updatingProfile = false;
             }
-			)
-		}
+		)
+	}
 		
 
 	findProfileToUpdate(id: any) {
@@ -61,6 +70,7 @@ export class ProfileComponent implements OnInit {
     }
 
 	updateProfile(id: any): void {
+		this.updatingProfile = true;
 		this.prfToUpdate.img = this.createImg;
         this.profileService.update(id, this.prfToUpdate).subscribe(
             data => {
@@ -88,11 +98,15 @@ export class ProfileComponent implements OnInit {
 		this.socialService.list().subscribe(
 			data => {
 				this.socialItems = data;
+				this.uploadingSoc = false;
+				this.updatingSoc = false;
+				this.deletingSoc = false;
             }
 		);
 	}
 
 	deleteSocial(id: any) {
+		this.deletingSoc = true;
         this.socialService.delete(id).subscribe(
             data => {
                 this.socialList();
@@ -101,6 +115,7 @@ export class ProfileComponent implements OnInit {
     }
 
 	createSocial(): void {
+		this.uploadingSoc = true;
         const skill = new Social(this.createSocialName, this.createSocialLink);
         this.socialService.add(skill).subscribe(
             data => {
@@ -119,6 +134,7 @@ export class ProfileComponent implements OnInit {
     }
 
 	updateSocial(id: any): void {
+		this.updatingSoc = true;
         this.socialService.update(id, this.socToUpdate).subscribe(
             data => {
                 this.socialList();
