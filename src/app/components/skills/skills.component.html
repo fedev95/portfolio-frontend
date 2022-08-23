@@ -1,7 +1,6 @@
 <div *ngIf="isLoadding && !isLogged" class="d-flex surface-color py-5">
     <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
 </div>
-
 <div *ngIf="skillsItems.length > 0 || isLogged" class="container-fluid surface-color py-5">
     <div
         data-aos="fade-in"
@@ -59,7 +58,7 @@
         <div *ngIf="isLoadding && isLogged" class="d-flex surface-color py-5">
             <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div class="row justify-content-center">
+        <div *ngIf="!isLoadding" class="row justify-content-center">
             <div
                 *ngIf="frontend.length > 0"
                 data-aos="fade-in"
@@ -121,7 +120,6 @@
         </div>
     </div>
 </div>
-
 <div *ngIf="isLogged" class="modal fade" id="add-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="add-skill-modal-content">

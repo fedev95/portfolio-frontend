@@ -64,9 +64,8 @@ export class SkillsComponent implements OnInit {
 		}
 	}
 
-
-
 	deleteSkill(id: any) {
+		this.isLoadding = true;
         this.skillsService.delete(id).subscribe(
             data => {
                 this.skillsList();
@@ -75,6 +74,7 @@ export class SkillsComponent implements OnInit {
     }
 
 	createSkill(): void {
+		this.isLoadding = true;
         const skill = new Skills(this.createSkillName, this.createSkillType);
         this.skillsService.add(skill).subscribe(
             data => {
@@ -88,14 +88,6 @@ export class SkillsComponent implements OnInit {
         this.skillsService.detail(id).subscribe(
             data => {
                 this.sklToUpdate = data;
-            }
-        )
-    }
-
-	update(id: any): void {
-        this.skillsService.update(id, this.sklToUpdate).subscribe(
-            data => {
-                this.skillsList();
             }
         )
     }
