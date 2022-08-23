@@ -47,6 +47,7 @@ export class EducationComponent implements OnInit {
     }
 
     deleteEducation(id: any) {
+        this.isLoadding = true;
         this.educationService.delete(id).subscribe(
             data => {
                 this.educationList();
@@ -55,6 +56,7 @@ export class EducationComponent implements OnInit {
     }
 
     createEducation(): void {
+        this.isLoadding = true;
         const education = new Education(this.createTitle, this.createAcademyName, this.createCertificationLink);
         this.educationService.add(education).subscribe(
             data => {
@@ -79,6 +81,7 @@ export class EducationComponent implements OnInit {
     }
 
     update(id: any): void {
+        this.isLoadding = true;
         this.educationService.update(id, this.edToUpdate).subscribe(
             data => {
                 this.educationList();
