@@ -16,6 +16,10 @@ export class EducationComponent implements OnInit {
 
     isLoadding = true;
 
+    uploading = false;
+    updating = false;
+    deleting = false;
+
     educationItems: Education[] = [];
 
     // variables para crear un nuevo item
@@ -42,12 +46,15 @@ export class EducationComponent implements OnInit {
             data => {
                 this.educationItems = data;
                 this.isLoadding = false;
+                this.uploading = false;
+                this.updating = false;
+                this.deleting = false;
             }
         );
     }
 
     deleteEducation(id: any) {
-        this.isLoadding = true;
+        this.deleting = true;
         this.educationService.delete(id).subscribe(
             data => {
                 this.educationList();
@@ -56,7 +63,7 @@ export class EducationComponent implements OnInit {
     }
 
     createEducation(): void {
-        this.isLoadding = true;
+        this.uploading = true;
         const education = new Education(this.createTitle, this.createAcademyName, this.createCertificationLink);
         this.educationService.add(education).subscribe(
             data => {
@@ -81,7 +88,7 @@ export class EducationComponent implements OnInit {
     }
 
     update(id: any): void {
-        this.isLoadding = true;
+        this.updating = true;
         this.educationService.update(id, this.edToUpdate).subscribe(
             data => {
                 this.educationList();
