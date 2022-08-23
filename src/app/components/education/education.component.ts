@@ -16,9 +16,9 @@ export class EducationComponent implements OnInit {
 
     isLoadding = true;
 
-    uploading = false;
-    updating = false;
-    deleting = false;
+    uploadingAlert = false;
+    updatingAlert = false;
+    deletingAlert = false;
 
     loaddingForUpdate = false;
 
@@ -48,15 +48,15 @@ export class EducationComponent implements OnInit {
             data => {
                 this.educationItems = data;
                 this.isLoadding = false;
-                this.uploading = false;
-                this.updating = false;
-                this.deleting = false;
+                this.uploadingAlert = false;
+                this.updatingAlert = false;
+                this.deletingAlert = false;
             }
         );
     }
 
     deleteEducation(id: any) {
-        this.deleting = true;
+        this.deletingAlert = true;
         this.educationService.delete(id).subscribe(
             data => {
                 this.educationList();
@@ -65,7 +65,7 @@ export class EducationComponent implements OnInit {
     }
 
     createEducation(): void {
-        this.uploading = true;
+        this.uploadingAlert = true;
         const education = new Education(this.createTitle, this.createAcademyName, this.createCertificationLink);
         this.educationService.add(education).subscribe(
             data => {
@@ -92,7 +92,7 @@ export class EducationComponent implements OnInit {
     }
 
     update(id: any): void {
-        this.updating = true;
+        this.updatingAlert = true;
         this.educationService.update(id, this.edToUpdate).subscribe(
             data => {
                 this.educationList();

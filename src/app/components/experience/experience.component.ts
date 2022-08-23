@@ -19,9 +19,9 @@ export class ExperienceComponent implements OnInit {
 
     loaddingForUpdate = false;
 
-    uploading = false;
-    updating = false;
-    deleting = false;
+    uploadingAlert = false;
+    updatingAlert = false;
+    deletingAlert = false;
 
 
 	experienceItems: Experience[] = [];
@@ -52,15 +52,15 @@ export class ExperienceComponent implements OnInit {
             data => {
                 this.experienceItems = data;
                 this.isLoadding = false;
-                this.uploading = false;
-                this.updating = false;
-                this.deleting = false;
+                this.uploadingAlert = false;
+                this.updatingAlert = false;
+                this.deletingAlert = false;
             }
         );
     }
 
 	createExperience(): void {
-        this.uploading = true;
+        this.uploadingAlert = true;
         const experience = new Experience(this.createRol, this.createStartYear, this.createEndYear, this.createCompany, this.createDescription);
         this.experienceService.add(experience).subscribe(
             data => {
@@ -78,16 +78,8 @@ export class ExperienceComponent implements OnInit {
         this.createDescription = '';
     }
 
-    clearExpToUpdate() {
-        if (this.expToUpdate) {
-            this.expToUpdate.rol = '';
-            this.expToUpdate.company = '';
-            this.expToUpdate.description = '';
-        }
-    }
-
 	deleteExperience(id: any) {
-        this.deleting = true;
+        this.deletingAlert = true;
         this.experienceService.delete(id).subscribe(
             data => {
                 this.experienceList();
@@ -106,7 +98,7 @@ export class ExperienceComponent implements OnInit {
     }
 
 	update(id: any): void {
-        this.updating = true;
+        this.updatingAlert = true;
         this.experienceService.update(id, this.expToUpdate).subscribe(
             data => {
                 this.experienceList();
