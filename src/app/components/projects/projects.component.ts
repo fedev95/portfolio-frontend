@@ -20,9 +20,10 @@ export class ProjectsComponent implements OnInit {
 
 	projectsItems: Projects[] = [];
 
-    uploading = false;
-    updating = false;
-    deleting = false;
+    uploadingAlert = false;
+    updatingAlert = false;
+    deletingAlert = false;
+    loaddingForUpdate = false;
 
 	// variables para crear un nuevo item
 	createImg: String = '';
@@ -66,15 +67,15 @@ export class ProjectsComponent implements OnInit {
             data => {
                 this.projectsItems = data;
                 this.isLoadding = false;
-                this.uploading = false;
-                this.updating = false;
-                this.deleting = false;
+                this.uploadingAlert = false;
+                this.updatingAlert = false;
+                this.deletingAlert = false;
             }
         );
     }
 
 	createProject(): void {
-        this.uploading = true;
+        this.uploadingAlert = true;
         const project = new Projects(this.createImg, this.createTitle, this.createDate, this.createDescription, this.createPrjLink);
         this.projectsService.add(project).subscribe(
             data => {
@@ -92,17 +93,8 @@ export class ProjectsComponent implements OnInit {
         this.createPrjLink = '';
     }
 
-    clearPrjToUpdate() {
-        if (this.prjToUpdate) {
-            this.prjToUpdate.title = '';
-            this.prjToUpdate.date = '';
-            this.prjToUpdate.description = '';
-            this.prjToUpdate.prjLink = '';
-        }
-    }
-
 	deleteProject(id: any) {
-        this.deleting = true;
+        this.deletingAlert = true;
         this.projectsService.delete(id).subscribe(
             data => {
                 this.projectsList();
@@ -111,15 +103,17 @@ export class ProjectsComponent implements OnInit {
     }
 
 	findProject(id: any) {
+        this.loaddingForUpdate = true;
         this.projectsService.detail(id).subscribe(
             data => {
                 this.prjToUpdate = data;
+                this.loaddingForUpdate = false;
             }
         )
     }
 
 	updateProject(id: any): void {
-        this.updating = true;
+        this.updatingAlert = true;
         if (this.createImg.length > 0) {
             this.prjToUpdate.img = this.createImg;
             this.createImg = '';
