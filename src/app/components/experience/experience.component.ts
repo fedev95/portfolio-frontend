@@ -17,6 +17,11 @@ export class ExperienceComponent implements OnInit {
 
     isLoadding = true;
 
+    uploading = false;
+    updating = false;
+    deleting = false;
+
+
 	experienceItems: Experience[] = [];
 
 	// variables para crear un nuevo item
@@ -45,12 +50,15 @@ export class ExperienceComponent implements OnInit {
             data => {
                 this.experienceItems = data;
                 this.isLoadding = false;
+                this.uploading = false;
+                this.updating = false;
+                this.deleting = false;
             }
         );
     }
 
 	createExperience(): void {
-        this.isLoadding = true;
+        this.uploading = true;
         const experience = new Experience(this.createRol, this.createStartYear, this.createEndYear, this.createCompany, this.createDescription);
         this.experienceService.add(experience).subscribe(
             data => {
@@ -77,7 +85,7 @@ export class ExperienceComponent implements OnInit {
     }
 
 	deleteExperience(id: any) {
-        this.isLoadding = true;
+        this.deleting = true;
         this.experienceService.delete(id).subscribe(
             data => {
                 this.experienceList();
@@ -94,7 +102,7 @@ export class ExperienceComponent implements OnInit {
     }
 
 	update(id: any): void {
-        this.isLoadding = true;
+        this.updating = true;
         this.experienceService.update(id, this.expToUpdate).subscribe(
             data => {
                 this.experienceList();
