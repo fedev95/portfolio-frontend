@@ -75,7 +75,7 @@
         <div *ngIf="isLoadding && isLogged" class="d-flex base-color py-5">
             <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div class="row justify-content-center py-4 px-2">
+        <div *ngIf="!isLoadding" class="row justify-content-center py-4 px-2">
             <div
                 data-aos="fade-in"
                 data-aos-offset="50"
