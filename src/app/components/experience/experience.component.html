@@ -114,7 +114,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Editar experiencia</h5>
             </div>
-            <div *ngIf="expToUpdate" class="modal-body d-flex flex-column">
+            <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
                     <div class="form-group">            
                         <input [(ngModel)]="expToUpdate.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto de trabajo" maxlength="45" required>
