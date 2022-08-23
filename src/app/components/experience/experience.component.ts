@@ -17,6 +17,8 @@ export class ExperienceComponent implements OnInit {
 
     isLoadding = true;
 
+    loaddingForUpdate = false;
+
     uploading = false;
     updating = false;
     deleting = false;
@@ -94,9 +96,11 @@ export class ExperienceComponent implements OnInit {
     }
 
 	findExperience(id: any) {
+        this.loaddingForUpdate = true;
         this.experienceService.detail(id).subscribe(
             data => {
                 this.expToUpdate = data;
+                this.loaddingForUpdate = false;
             }
         )
     }

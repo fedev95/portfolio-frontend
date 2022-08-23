@@ -92,7 +92,7 @@
                             <p class="subtle-color m-0 text-center">{{item.company}}</p>
                             <p class="text-color mb-0 text-center">{{item.description}}</p>
                             <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
-                                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-1" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id); clearExpToUpdate()">
+                                <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-1" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
                                     Editar
                                 </button>                                                        
                                 <button (click)="deleteExperience(item.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
@@ -107,10 +107,10 @@
 <!-- modales -->
 <div *ngIf="isLogged" class="modal fade" id="edit-experience-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div *ngIf="!expToUpdate || expToUpdate.rol == ''" class="d-flex m-auto py-5">
+        <div *ngIf="!expToUpdate || loaddingForUpdate" class="d-flex m-auto py-5">
             <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div *ngIf="expToUpdate && expToUpdate.rol" class="modal-content" id="edit-experience-modal-content">
+        <div *ngIf="expToUpdate && !loaddingForUpdate" class="modal-content" id="edit-experience-modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar experiencia</h5>
             </div>

@@ -20,6 +20,8 @@ export class EducationComponent implements OnInit {
     updating = false;
     deleting = false;
 
+    loaddingForUpdate = false;
+
     educationItems: Education[] = [];
 
     // variables para crear un nuevo item
@@ -80,9 +82,11 @@ export class EducationComponent implements OnInit {
     }
 
     findEducation(id: any) {
+        this.loaddingForUpdate = true;
         this.educationService.detail(id).subscribe(
             data => {
                 this.edToUpdate = data;
+                this.loaddingForUpdate = false;
             }
         )
     }
@@ -94,14 +98,6 @@ export class EducationComponent implements OnInit {
                 this.educationList();
             }
         )
-    }
-
-    clearEdToUpdate() {
-        if (this.edToUpdate) {
-            this.edToUpdate.title = '';
-            this.edToUpdate.academyName = '';
-            this.edToUpdate.certificationLink = '';
-        }
     }
         
 }
