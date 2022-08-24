@@ -15,7 +15,6 @@
 
 * {
     font-family: 'Inconsolata', monospace;
-    font-size: small;
     scrollbar-width: unset;
     scrollbar-color: var(--btn) var(--base);
 }
