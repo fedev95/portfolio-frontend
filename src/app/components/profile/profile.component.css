@@ -12,10 +12,6 @@ textarea {
     resize: none;
 }
 
-#full-name {
-    letter-spacing: 15px;
-}
-
 #edit-profile-modal-content,
 #admin-social-modal-content,
 #add-social-modal-content,
