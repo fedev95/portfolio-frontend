@@ -9,7 +9,10 @@ import { Login } from '../model/login.model';
 })
 export class AuthService {
 
-	authURL = 'https://fast-sands-10916.herokuapp.com/auth';
+	// local
+	authURL = 'http://localhost:8080/auth';
+
+	// authURL = 'https://fast-sands-10916.herokuapp.com/auth';
 
 	constructor(private httclient: HttpClient) {
 	}

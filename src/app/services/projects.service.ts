@@ -9,7 +9,10 @@ import { Projects } from '../model/projects.model';
 
 export class ProjectsService {
 
-	projectsURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
+	// local
+	projectsURL = 'http://localhost:8080/portfolio/';
+
+	// projectsURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
 
 	constructor(private httpClient: HttpClient) {
 	}

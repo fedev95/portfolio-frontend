@@ -8,7 +8,10 @@ import { Profile } from '../model/profile.model';
 })
 export class ProfileService {
 
-	profileURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
+	// local
+	profileURL = 'http://localhost:8080/portfolio/';
+
+	// profileURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
 
 	constructor(private httpClient: HttpClient) {
 	}

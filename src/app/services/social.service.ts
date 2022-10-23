@@ -8,7 +8,10 @@ import { Social } from '../model/social.model';
 })
 export class SocialService {
 
-	socialURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
+	// local
+	socialURL = 'http://localhost:8080/portfolio/';
+
+	// socialURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
 
 	constructor(private httpClient: HttpClient) {
 	}

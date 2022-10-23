@@ -8,7 +8,10 @@ import { Skills } from '../model/skills.model';
 })
 export class SkillsService {
 
-	skillsURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
+	// local
+	skillsURL = 'http://localhost:8080/portfolio/';
+
+	// skillsURL = 'https://fast-sands-10916.herokuapp.com/portfolio/';
 
 	constructor(private httpClient: HttpClient) {
 	}
