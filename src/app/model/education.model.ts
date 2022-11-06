@@ -1,4 +1,5 @@
 export class Education {
+
     id?: number;
     title: String;
     academyName: String;

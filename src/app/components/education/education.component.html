@@ -2,7 +2,7 @@
     <div class="lds-ring m-auto"><div></div><div></div><div></div><div></div></div>
 </div>
 
-<div *ngIf="educationItems.length > 0 || isLogged" id="education" class="container-fluid surface-color py-5">
+<div *ngIf="educationList.length > 0 || isLogged" id="education" class="container-fluid surface-color py-5">
     <div
         data-aos="fade-in"
         data-aos-offset="50"
@@ -39,28 +39,28 @@
                 </button>
             </div>
             <div *ngIf="isLogged">
-                <p *ngIf="educationItems.length < 1 && !isLoadding" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="educationList.length < 1 && !isLoadding" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Esta sección no será visible fuera de la sesión.
                 </p>
-                <p *ngIf="uploadingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.uploading" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Añadiendo educación...
                 </p>
-                <p *ngIf="updatingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.updating" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Actualizando educación...
                 </p>
-                <p *ngIf="deletingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.deleting" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -84,10 +84,10 @@
                         data-aos-mirror="true"
                         data-aos-once="false"
                         data-aos-anchor-placement="top"
-                        *ngFor="let item of educationItems; let i = index" class="col-lg-6 mx-auto">
+                        *ngFor="let item of educationList; let i = index" class="col-lg-6 mx-auto">
                         <div class="education-item d-flex flex-column align-items-center my-4">
-                            <h5 class="text-center title-color text-center m-0">{{item.title}}</h5>                        
-                            <p class="gold-color text-decoration-none m-0 text-center">{{item.academyName}}</p>
+                            <h5 class="m-0 text-center title-color text-center text-break">{{item.title}}</h5>                        
+                            <p class="m-0 gold-color text-decoration-none text-center text-break">{{item.academyName}}</p>
                             <a class="gold-color text-decoration-none text-center" [href]="item.certificationLink" target="_blank">
                                 > Certificación
                             </a>
@@ -115,10 +115,10 @@
                 <h5 class="modal-title">Editar educación</h5>
             </div>
             <div class="modal-body d-flex flex-column">
-                <form (ngSubmit)="update(edToUpdate.id)" #editEd="ngForm">
+                <form (ngSubmit)="updateEducation(edToUpdate.id)" #editEd="ngForm">
                     <div class="form-group">            
-                        <input [(ngModel)]="edToUpdate.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="255" required>            
-                        <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="255" required>            
+                        <input [(ngModel)]="edToUpdate.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="150" required>            
+                        <input [(ngModel)]="edToUpdate.academyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="150" required>            
                         <input [(ngModel)]="edToUpdate.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Enalce al certificado" maxlength="255" required>            
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
@@ -142,13 +142,13 @@
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createEducation()" #addEd="ngForm">
                     <div class="form-group">
-                        <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="255" required>
-                        <input [(ngModel)]="createAcademyName" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="255" required>
-                        <input [(ngModel)]="createCertificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Enalce al certificado" maxlength="255" required>
+                        <input [(ngModel)]="newEducationInputs.title" class="my-input surface-color title-color p-2" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="150" required>
+                        <input [(ngModel)]="newEducationInputs.academy" class="my-input surface-color title-color p-2 mt-3" name="createAcademyName" id="createAcademyName" type="text" placeholder="Institución" maxlength="150" required>
+                        <input [(ngModel)]="newEducationInputs.certificationLink" class="my-input surface-color title-color p-2 mt-3" name="createCertificationLink" id="createCertificationLink" type="text" placeholder="Enalce al certificado" maxlength="255" required>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addEd.form.invalid">Añadir</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearNewEducation()">Cancelar</button>
                     </div>
                 </form>
             </div>

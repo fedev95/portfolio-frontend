@@ -87,9 +87,9 @@
                         data-aos-mirror="true"
                         data-aos-once="false"
                         data-aos-anchor-placement="top"
-                        *ngFor="let skill of frontend" class="d-flex skill-item align-items-center justify-content-center">
-                        <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
-                        <div *ngIf="isLogged">
+                        *ngFor="let skill of frontend" class="d-flex w-100">
+                        <p class="subtle-color m-auto p-1 text-center text-break">{{skill.skillName}}</p>
+                        <div class="ms-3" *ngIf="isLogged">
                             <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
                         </div>
                     </div>                    
@@ -116,9 +116,9 @@
                         data-aos-mirror="true"
                         data-aos-once="false"
                         data-aos-anchor-placement="top"
-                        *ngFor="let skill of backend" class="d-flex skill-item align-items-center justify-content-center">
-                        <p class="subtle-color m-0 p-1 text-center">{{skill.skillName}}</p>
-                        <div *ngIf="isLogged">
+                        *ngFor="let skill of backend" class="d-flex w-100">
+                        <p class="subtle-color m-auto p-1 text-center text-break">{{skill.skillName}}</p>
+                        <div class="ms-3" *ngIf="isLogged">
                             <button (click)="deleteSkill(skill.id)" class="my-btn border-0 text-decoration-none title-color p-1 px-3">Eliminar</button>
                         </div>                        
                     </div>
