@@ -48,21 +48,21 @@
                     </svg>
                     Esta sección no será visible fuera de la sesión.
                 </p>
-                <p *ngIf="uploadingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.uploading" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Añadiendo experiencia...
                 </p>
-                <p *ngIf="updatingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.updating" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Actualizando experiencia...
                 </p>
-                <p *ngIf="deletingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.deleting" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -88,9 +88,9 @@
                         data-aos-anchor-placement="top"
                         *ngFor="let item of experienceItems" class="col-lg-6 mx-auto">
                         <div class="experience-item my-4 d-flex flex-column align-items-center">
-                            <h5 class="title-color m-0 text-center">{{item.rol}} {{item.startYear}} - {{item.endYear}}</h5>
-                            <p class="subtle-color m-0 text-center">{{item.company}}</p>
-                            <p class="text-color mb-0 text-center">{{item.description}}</p>
+                            <h5 class="title-color m-0 text-center text-break">{{item.rol}}</h5>
+                            <p class="subtle-color m-0 text-center text-break">{{item.company}} {{item.startYear}} - {{item.endYear}}</p>
+                            <p class="text-color mb-0 text-center text-break">{{item.description}}</p>
                             <div *ngIf="isLogged" class="d-flex justify-content-center align-items-center">
                                 <button type="button" class="my-btn border-0 text-decoration-none title-color p-1 px-3 me-1" data-bs-toggle="modal" data-bs-target="#edit-experience-modal" (click)="findExperience(item.id)">
                                     Editar
@@ -144,18 +144,18 @@
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
                     <div class="form-group">
-                        <input [(ngModel)]="createRol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" maxlength="45" required>
-                        <input [(ngModel)]="createStartYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de inicio" required>   
-                        <p *ngIf="createStartYear < 1900 || createStartYear > 2100" class="gold-color p-0 m-0">El año de inicio tiene que ser valido.</p>
-                        <input [(ngModel)]="createEndYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de finalización" required>
-                        <p *ngIf="createEndYear < 1900 || createEndYear > 2100" class="gold-color p-0 m-0">El año de finalización tiene que ser valido.</p>
-                        <input [(ngModel)]="createCompany" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
-                        <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                        <p class="text-color">{{createDescription.length}}/150</p>
+                        <input [(ngModel)]="newExperienceInputs.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" maxlength="45" required>
+                        <input [(ngModel)]="newExperienceInputs.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de inicio" required>   
+                        <p *ngIf="newExperienceInputs.startYear < 1900 || newExperienceInputs.startYear > 2100" class="gold-color p-0 m-0">El año de inicio tiene que ser valido.</p>
+                        <input [(ngModel)]="newExperienceInputs.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de finalización" required>
+                        <p *ngIf="newExperienceInputs.endYear < 1900 || newExperienceInputs.endYear > 2100" class="gold-color p-0 m-0">El año de finalización tiene que ser valido.</p>
+                        <input [(ngModel)]="newExperienceInputs.company" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
+                        <textarea [(ngModel)]="newExperienceInputs.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                        <p class="text-color">{{newExperienceInputs.description.length}}/150</p>
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearNewExperienceInputs()">Cancelar</button>
                     </div>
                 </form>
             </div>

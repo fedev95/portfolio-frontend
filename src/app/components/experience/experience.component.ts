@@ -12,34 +12,32 @@ import { TokenService } from 'src/app/services/token.service';
 export class ExperienceComponent implements OnInit {
 
 	sectionTitle = 'experiencia';
-
 	isLogged = false;
-
     isLoadding = true;
-
     loaddingForUpdate = false;
 
-    uploadingAlert = false;
-    updatingAlert = false;
-    deletingAlert = false;
+    alerts = {
+        "uploading": false,
+        "updating": false,
+        "deleting": false
+    }
 
+    newExperienceInputs = {
+        "rol": "",
+        "startYear": NaN,
+        "endYear": NaN,
+        "company": "",
+        "description": ""
+    }
 
 	experienceItems: Experience[] = [];
-
-	// variables para crear un nuevo item
-	createRol: String = '';
-	createStartYear: any = undefined;
-	createEndYear: any = undefined;
-	createCompany: String = '';
-	createDescription: String = '';
-
 	expToUpdate!: Experience;
 
 	constructor(private experienceService: ExperienceService, private tokenService: TokenService) {
 	}
 
 	ngOnInit(): void {
-		this.experienceList();
+		this.getExperienceList();
         if (this.tokenService.getToken()) {
 			this.isLogged = true;
 		} else {
@@ -47,63 +45,65 @@ export class ExperienceComponent implements OnInit {
 		}
 	}
 
-	experienceList(): void {
+	getExperienceList(): void {
         this.experienceService.list().subscribe(
             data => {
                 this.experienceItems = data;
                 this.isLoadding = false;
-                this.uploadingAlert = false;
-                this.updatingAlert = false;
-                this.deletingAlert = false;
+                this.alerts.uploading = false;
+                this.alerts.updating = false;
+                this.alerts.deleting = false;
             }
         );
     }
 
-	createExperience(): void {
-        this.uploadingAlert = true;
-        const experience = new Experience(this.createRol, this.createStartYear, this.createEndYear, this.createCompany, this.createDescription);
-        this.experienceService.add(experience).subscribe(
-            data => {
-                this.experienceList();
-            }
-        );
-        this.clearForm();        
-    }
-
-	clearForm() {
-        this.createRol = '';
-		this.createStartYear = undefined;
-		this.createEndYear = undefined;
-        this.createCompany = '';
-        this.createDescription = '';
-    }
-
-	deleteExperience(id: any) {
-        this.deletingAlert = true;
+    deleteExperience(id: any) {
+        this.alerts.deleting = true;
         this.experienceService.delete(id).subscribe(
             data => {
-                this.experienceList();
+                this.getExperienceList();
             }
         );
     }
 
-	findExperience(id: any) {
+    // =================== CREATE EXPERIENCE ===================
+	createExperience(): void {
+        this.alerts.uploading = true;
+        let experience = new Experience(this.newExperienceInputs.rol, this.newExperienceInputs.startYear, this.newExperienceInputs.endYear, this.newExperienceInputs.company, this.newExperienceInputs.description);
+        this.experienceService.add(experience).subscribe(
+            data => {
+                this.getExperienceList();
+            }
+        );
+        this.clearNewExperienceInputs();        
+    }
+
+	clearNewExperienceInputs() {
+        this.newExperienceInputs.rol = '';
+		this.newExperienceInputs.startYear = NaN;
+		this.newExperienceInputs.endYear = NaN;
+        this.newExperienceInputs.company = '';
+        this.newExperienceInputs.description = '';
+    }
+
+    // =================== UPDATE EXPERIENCE ===================
+    findExperience(id: any) {
         this.loaddingForUpdate = true;
         this.experienceService.detail(id).subscribe(
             data => {
                 this.expToUpdate = data;
                 this.loaddingForUpdate = false;
             }
-        )
+        );
     }
 
 	update(id: any): void {
-        this.updatingAlert = true;
+        this.alerts.updating = true;
         this.experienceService.update(id, this.expToUpdate).subscribe(
             data => {
-                this.experienceList();
+                this.getExperienceList();
             }
-        )
-    }
+        );
+    }	
 
 }
