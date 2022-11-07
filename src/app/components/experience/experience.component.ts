@@ -23,10 +23,10 @@ export class ExperienceComponent implements OnInit {
         "deleting": false
     }
 
-    newExperienceInputs = {
+    newExperienceInputs: any = {
         "rol": "",
-        "startYear": 2022,
-        "endYear": 2022,
+        "startYear": undefined,
+        "endYear": undefined,
         "company": "",
         "description": ""
     }
@@ -81,8 +81,8 @@ export class ExperienceComponent implements OnInit {
 
 	clearNewExperienceInputs() {
         this.newExperienceInputs.rol = '';
-		this.newExperienceInputs.startYear = 2022;
-		this.newExperienceInputs.endYear = 2022;
+		this.newExperienceInputs.startYear = undefined;
+		this.newExperienceInputs.endYear = undefined;
         this.newExperienceInputs.company = '';
         this.newExperienceInputs.description = '';
     }
