@@ -116,15 +116,21 @@
             </div>
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="update(expToUpdate.id)"  #editExp="ngForm">
-                    <div class="form-group">            
+                    <div class="form-group">  
+
                         <input [(ngModel)]="expToUpdate.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto de trabajo" maxlength="45" required>
+
                         <input [(ngModel)]="expToUpdate.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" placeholder="Año de inicio" min="1900" max="2100" required>
                         <p *ngIf="expToUpdate.startYear < 1900 || expToUpdate.startYear > 2100" class="gold-color m-0 p-0">El año de inicio tiene que ser valido.</p>
-                        <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de finalización" min="1900" max="2100" required>
-                        <p *ngIf="expToUpdate.endYear < 1900 || expToUpdate.endYear > 2100" class="gold-color m-0 p-0">El año de finalización tiene que ser valido.</p>
+
+                        <input [(ngModel)]="expToUpdate.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" placeholder="Año de finalización" [min]="expToUpdate.startYear || 1900" max="2100" required>
+                        <p *ngIf="expToUpdate.endYear < 1900 || expToUpdate.endYear > 2100  || expToUpdate.endYear < expToUpdate.startYear" class="gold-color m-0 p-0">El año de finalización tiene que ser valido.</p>
+
                         <input [(ngModel)]="expToUpdate.company" class="my-input surface-color title-color p-2 mt-3" name="company" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
+
                         <textarea [(ngModel)]="expToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                        <p class="text-color">{{expToUpdate.description.length}}/150</p>            
+                        <p class="text-color">{{expToUpdate.description.length}}/150</p>
+
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editExp.form.invalid">Guardar cambios</button>
@@ -144,14 +150,20 @@
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createExperience()" #addExp="ngForm">
                     <div class="form-group">
+                        
                         <input [(ngModel)]="newExperienceInputs.rol" class="my-input surface-color title-color p-2" name="createRol" id="createRol" type="text" placeholder="Puesto" maxlength="45" required>
-                        <input [(ngModel)]="newExperienceInputs.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de inicio" required>   
+                        
+                        <input [(ngModel)]="newExperienceInputs.startYear" class="my-input surface-color title-color p-2 mt-3" name="createStarYear" id="createStarYear" type="number" min="1900" max="2100" placeholder="Año de inicio" required>
                         <p *ngIf="newExperienceInputs.startYear < 1900 || newExperienceInputs.startYear > 2100" class="gold-color p-0 m-0">El año de inicio tiene que ser valido.</p>
-                        <input [(ngModel)]="newExperienceInputs.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" min="1900" max="2100" placeholder="Año de finalización" required>
-                        <p *ngIf="newExperienceInputs.endYear < 1900 || newExperienceInputs.endYear > 2100" class="gold-color p-0 m-0">El año de finalización tiene que ser valido.</p>
+
+                        <input [(ngModel)]="newExperienceInputs.endYear" class="my-input surface-color title-color p-2 mt-3" name="createEndYear" id="createEndYear" type="number" [min]="newExperienceInputs.startYear || 1900" max="2100" placeholder="Año de finalización" required>
+                        <p *ngIf="newExperienceInputs.endYear < 1900 || newExperienceInputs.endYear > 2100 || newExperienceInputs.endYear < newExperienceInputs.startYear" class="gold-color p-0 m-0">El año de finalización tiene que ser valido.</p>
+                        
                         <input [(ngModel)]="newExperienceInputs.company" class="my-input surface-color title-color p-2 mt-3" name="createCompany" id="createCompany" type="text" placeholder="Compañia" maxlength="45" required>
+
                         <textarea [(ngModel)]="newExperienceInputs.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
                         <p class="text-color">{{newExperienceInputs.description.length}}/150</p>
+
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addExp.form.invalid">Añadir</button>

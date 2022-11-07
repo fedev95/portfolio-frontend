@@ -1,3 +1,4 @@
+import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/model/experience.model';
 import { ExperienceService } from 'src/app/services/experience.service';
@@ -24,8 +25,8 @@ export class ExperienceComponent implements OnInit {
 
     newExperienceInputs = {
         "rol": "",
-        "startYear": NaN,
-        "endYear": NaN,
+        "startYear": 2022,
+        "endYear": 2022,
         "company": "",
         "description": ""
     }
@@ -48,7 +49,7 @@ export class ExperienceComponent implements OnInit {
 	getExperienceList(): void {
         this.experienceService.list().subscribe(
             data => {
-                this.experienceItems = data;
+                this.experienceItems = data.sort((a, b) => b.startYear - a.startYear);
                 this.isLoadding = false;
                 this.alerts.uploading = false;
                 this.alerts.updating = false;
@@ -80,8 +81,8 @@ export class ExperienceComponent implements OnInit {
 
 	clearNewExperienceInputs() {
         this.newExperienceInputs.rol = '';
-		this.newExperienceInputs.startYear = NaN;
-		this.newExperienceInputs.endYear = NaN;
+		this.newExperienceInputs.startYear = 2022;
+		this.newExperienceInputs.endYear = 2022;
         this.newExperienceInputs.company = '';
         this.newExperienceInputs.description = '';
     }
