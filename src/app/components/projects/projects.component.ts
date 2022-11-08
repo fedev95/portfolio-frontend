@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPTY, empty, NEVER } from 'rxjs';
 import { Projects } from 'src/app/model/projects.model';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -13,25 +12,25 @@ import { TokenService } from 'src/app/services/token.service';
 export class ProjectsComponent implements OnInit {
 
 	sectionTitle = 'proyectos';
-
     isLogged = false;
-
     isLoadding = true;
-
-	projectsItems: Projects[] = [];
-
-    uploadingAlert = false;
-    updatingAlert = false;
-    deletingAlert = false;
     loaddingForUpdate = false;
 
-	// variables para crear un nuevo item
-	createImg: String = '';
-	createTitle: String = '';
-	createDate: String = '';
-	createDescription: String = '';
-	createPrjLink: String = '';
+    alerts = {
+        "uploading" : false,
+        "updating" : false,
+        "deleting" : false
+    }
 
+    newProjectInput: any = {
+        "img": "",
+        "title": "",
+        "date": undefined,
+        "description": "",
+        "prjLink": ""
+    }
+
+	projectsItems: Projects[] = [];
 	prjToUpdate!: Projects;
 
 	constructor(private projectsService: ProjectsService, private tokenService: TokenService) {
@@ -46,16 +45,16 @@ export class ProjectsComponent implements OnInit {
 		}
 	}
 
-    onCreateImg(e: any) {
-        this.createImg = e[0].base64;
+    createInputImg(e: any) {
+        this.newProjectInput.img = e[0].base64;
     }
 
-    clearCreateImg() {
-        this.createImg = '';
+    clearInputImg() {
+        this.newProjectInput.img = "";
     }
 
-    editCreateImg(itemImg: any) {
-        this.createImg = itemImg;
+    editInputImg(itemImg: any) {
+        this.newProjectInput.img = itemImg;
     }
 
 	goToLink(url: any) {
@@ -65,43 +64,45 @@ export class ProjectsComponent implements OnInit {
 	projectsList(): void {
         this.projectsService.list().subscribe(
             data => {
-                this.projectsItems = data;
+                this.projectsItems = data.sort((a, b) => b.date - a.date);
                 this.isLoadding = false;
-                this.uploadingAlert = false;
-                this.updatingAlert = false;
-                this.deletingAlert = false;
+                this.alerts.uploading = false;
+                this.alerts.updating = false;
+                this.alerts.deleting = false;
             }
         );
     }
 
-	createProject(): void {
-        this.uploadingAlert = true;
-        const project = new Projects(this.createImg, this.createTitle, this.createDate, this.createDescription, this.createPrjLink);
-        this.projectsService.add(project).subscribe(
-            data => {
-                this.projectsList();
-            }
-        );
-        this.clearForm();        
-    }
-
-	clearForm() {
-        this.createImg = '';
-		this.createTitle = '';
-		this.createDate = '';
-        this.createDescription = '';
-        this.createPrjLink = '';
-    }
-
-	deleteProject(id: any) {
-        this.deletingAlert = true;
+    deleteProject(id: any) {
+        this.alerts.deleting = true;
         this.projectsService.delete(id).subscribe(
             data => {
                 this.projectsList();
             }
         );
     }
+    
+    // =================== CREATE PROJECT ===================
+	createProject(): void {
+        this.alerts.uploading = true;
+        const project = new Projects(this.newProjectInput.img, this.newProjectInput.title, this.newProjectInput.date, this.newProjectInput.description, this.newProjectInput.prjLink);
+        this.projectsService.add(project).subscribe(
+            data => {
+                this.projectsList();
+            }
+        );
+        this.clearNewProjectInput();        
+    }
 
+	clearNewProjectInput() {
+        this.newProjectInput.img = "";
+		this.newProjectInput.title = "";
+		this.newProjectInput.date = undefined;
+        this.newProjectInput.description = "";
+        this.newProjectInput.prjLink = "";
+    }
+
+    // =================== EDIT PROJECT ===================
 	findProject(id: any) {
         this.loaddingForUpdate = true;
         this.projectsService.detail(id).subscribe(
@@ -109,20 +110,20 @@ export class ProjectsComponent implements OnInit {
                 this.prjToUpdate = data;
                 this.loaddingForUpdate = false;
             }
-        )
+        );
     }
 
 	updateProject(id: any): void {
-        this.updatingAlert = true;
-        if (this.createImg.length > 0) {
-            this.prjToUpdate.img = this.createImg;
-            this.createImg = '';
+        this.alerts.updating = true;
+        if (this.newProjectInput.img.length > 0) {
+            this.prjToUpdate.img = this.newProjectInput.img;
+            this.newProjectInput.img = "";
         }
         this.projectsService.update(id, this.prjToUpdate).subscribe(
             data => {
                 this.projectsList();
             }
-        )
+        );
     }
 
 }

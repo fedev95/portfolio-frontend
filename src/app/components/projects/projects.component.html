@@ -37,7 +37,7 @@
                     data-aos-mirror="true"
                     data-aos-once="false"
                     data-aos-anchor-placement="top" 
-                    type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-project-modal" (click)="clearCreateImg()">
+                    type="button" class="add-btn my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-toggle="modal" data-bs-target="#add-project-modal" (click)="clearInputImg()">
                     Nuevo proyecto
                 </button>
             </div>
@@ -49,21 +49,21 @@
                     </svg>
                     Esta sección no será visible fuera de la sesión.
                 </p>
-                <p *ngIf="uploadingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.uploading" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Añadiendo proyecto...
                 </p>
-                <p *ngIf="updatingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.updating" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                     </svg>
                     Actualizando proyecto...
                 </p>
-                <p *ngIf="deletingAlert" class="text-color m-0 d-flex align-items-center animated-alert">
+                <p *ngIf="alerts.deleting" class="text-color m-0 d-flex align-items-center animated-alert">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -92,13 +92,13 @@
                             <img class="project-img flex-fill" [src]="item.img" alt="miniatura de proyecto">
                         </div>                
                         <div class="project-info flex-fill surface-color p-3">
-                            <h5 class="title-color">{{item.title}}</h5>
-                            <p class="subtle-color">{{item.date}}</p>
-                            <p class="text-color">{{item.description}}</p>
+                            <h5 class="title-color text-break">{{item.title}}</h5>
+                            <p class="subtle-color text-break">{{item.date}}</p>
+                            <p class="text-color text-break">{{item.description}}</p>
                         </div>
                     </div>
                     <div *ngIf="isLogged" class="d-flex flex-column">
-                        <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)" (click)="editCreateImg(item.img)">
+                        <button type="button" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2" data-bs-toggle="modal" data-bs-target="#edit-project-modal" (click)="findProject(item.id)" (click)="editInputImg(item.img)">
                             Editar
                         </button>                                           
                         <button (click)="deleteProject(item.id)" class="my-btn flex-fill border-0 text-decoration-none title-color p-1 px-2">Eliminar</button>
@@ -108,6 +108,7 @@
         </div>
     </div>
 </div>
+
 <!-- modales -->
 <div *ngIf="isLogged" class="modal fade" id="add-project-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -118,22 +119,31 @@
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="createProject()" #addPrj="ngForm">
                     <div class="form-group">
+
                         <div class="d-flex">
-                            <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
+                            <img *ngIf="newProjectInput.img != ''" class="thumbnail-preview img-fluid m-auto" [src]="newProjectInput.img" alt="miniatura de proyecto">
                         </div>
+
                         <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-3 title-color">
                             Vista previa (.png, .jpg, .jpeg)
                         </div>
-                        <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg">
-                        <input [(ngModel)]="createTitle" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>
-                        <input [(ngModel)]="createDate" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" maxlength="45" required>                                        
-                        <input [(ngModel)]="createPrjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>
-                        <textarea [(ngModel)]="createDescription" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                        <p class="text-color">{{createDescription.length}}/150</p>
+
+                        <input #variable alife-file-to-base64 (onFileChanged)="createInputImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg">
+
+                        <input [(ngModel)]="newProjectInput.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>
+
+                        <input [(ngModel)]="newProjectInput.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="number" placeholder="Año de creación" min="1900" max="2100" required>
+                        <p *ngIf="newProjectInput.date < 1900" class="gold-color m-0 p-0">El año tiene que ser valido.</p>
+
+                        <input [(ngModel)]="newProjectInput.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>
+
+                        <textarea [(ngModel)]="newProjectInput.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
+                        <p class="text-color">{{newProjectInput.description.length}}/150</p>
+
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
-                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || createImg.length <= 0">Añadir</button>
-                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearForm()">Cancelar</button>
+                        <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="addPrj.form.invalid || newProjectInput.img.length <= 0">Añadir</button>
+                        <button type="button" class="my-btn border-0 text-decoration-none p-1 px-3 title-color" data-bs-dismiss="modal" (click)="clearNewProjectInput()">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -151,19 +161,28 @@
             </div>
             <div class="modal-body d-flex flex-column">
                 <form (ngSubmit)="updateProject(prjToUpdate.id)" #editPrj="ngForm">
-                    <div class="form-group">        
+                    <div class="form-group">
+
                         <div class="d-flex">
-                            <img *ngIf="createImg != ''" class="thumbnail-preview img-fluid m-auto" [src]="createImg" alt="miniatura de proyecto">
+                            <img *ngIf="newProjectInput.img != ''" class="thumbnail-preview img-fluid m-auto" [src]="newProjectInput.img" alt="miniatura de proyecto">
                         </div>
+
                         <div (click)="variable.click()" id="imgInput" class="my-btn w-100 border-0 text-decoration-none p-1 px-3 title-color">
                             Vista previa (.png, .jpg, .jpeg)
                         </div>
-                        <input #variable alife-file-to-base64 (onFileChanged)="onCreateImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
-                        <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>        
-                        <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="text" placeholder="Fecha" maxlength="45" required>                                
-                        <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>        
+
+                        <input #variable alife-file-to-base64 (onFileChanged)="createInputImg($event); variable.value=''" type="file" class="w-100 file-input d-none" accept="image/jpg, image/png, image/jpeg" name="createImg" id="createImg" required>
+
+                        <input [(ngModel)]="prjToUpdate.title" class="my-input surface-color title-color p-2 mt-3" name="createTitle" id="createTitle" type="text" placeholder="Título" maxlength="45" required>
+
+                        <input [(ngModel)]="prjToUpdate.date" class="my-input surface-color title-color p-2 mt-3" name="createDate" id="createDate" type="number" placeholder="Fecha" min="1900" max="2100" required>
+                        <p *ngIf="prjToUpdate.date < 1900" class="gold-color m-0 p-0">El año tiene que ser valido.</p>
+
+                        <input [(ngModel)]="prjToUpdate.prjLink" class="my-input surface-color title-color p-2 mt-3" name="createPrjLink" id="createPrjLink" type="text" placeholder="Enlace" maxlength="255" required>
+
                         <textarea [(ngModel)]="prjToUpdate.description" class="w-100 my-input surface-color title-color p-2 mt-3" name="createDescription" id="createDescription"  rows="4" maxlength="150" placeholder="Descripción" required></textarea>
-                        <p class="text-color">{{prjToUpdate.description.length}}/150</p>        
+                        <p class="text-color">{{prjToUpdate.description.length}}/150</p>
+
                     </div>
                     <div class="mt-4 d-flex flex-row-reverse">
                         <button type="submit" class="my-btn border-0 text-decoration-none p-1 px-3 title-color ms-1" data-bs-dismiss="modal" [disabled]="editPrj.form.invalid">Guardar cambios</button>
@@ -174,6 +193,3 @@
         </div>
     </div>
 </div>
-
-
-

@@ -23,7 +23,7 @@ export class ExperienceComponent implements OnInit {
         "deleting": false
     }
 
-    newExperienceInputs: any = {
+    newExperienceInput: any = {
         "rol": "",
         "startYear": undefined,
         "endYear": undefined,
@@ -70,21 +70,21 @@ export class ExperienceComponent implements OnInit {
     // =================== CREATE EXPERIENCE ===================
 	createExperience(): void {
         this.alerts.uploading = true;
-        let experience = new Experience(this.newExperienceInputs.rol, this.newExperienceInputs.startYear, this.newExperienceInputs.endYear, this.newExperienceInputs.company, this.newExperienceInputs.description);
+        let experience = new Experience(this.newExperienceInput.rol, this.newExperienceInput.startYear, this.newExperienceInput.endYear, this.newExperienceInput.company, this.newExperienceInput.description);
         this.experienceService.add(experience).subscribe(
             data => {
                 this.getExperienceList();
             }
         );
-        this.clearNewExperienceInputs();        
+        this.clearNewExperienceInput();        
     }
 
-	clearNewExperienceInputs() {
-        this.newExperienceInputs.rol = '';
-		this.newExperienceInputs.startYear = undefined;
-		this.newExperienceInputs.endYear = undefined;
-        this.newExperienceInputs.company = '';
-        this.newExperienceInputs.description = '';
+	clearNewExperienceInput() {
+        this.newExperienceInput.rol = '';
+		this.newExperienceInput.startYear = undefined;
+		this.newExperienceInput.endYear = undefined;
+        this.newExperienceInput.company = '';
+        this.newExperienceInput.description = '';
     }
 
     // =================== UPDATE EXPERIENCE ===================
