@@ -13,29 +13,31 @@ import { TokenService } from 'src/app/services/token.service';
 export class ProfileComponent implements OnInit {
 
 	isLogged = false;
-
-	isLoadding = true;
-
+	isLoadding = true;	
 	
-	
-	// datos del perfil
+	// ============================== PROFILE ==============================
 	profileData!: Profile;
 	prfToUpdate!: Profile;
-	createImg: String = '';
+	createImg: String = "";
 	updatingProfileAlert = false;
 	loaddingForProfileUpdate = false;
 	
-	// redes sociales
-	socialItems: Social[] = [];
-	createSocialName: String = '';
-	createSocialLink: String = '';
-	socToUpdate!: Social;
-	uploadingSocAlert = false;
-	updatingSocAlert = false;
-	deletingSocAlert = false;
-	loaddingForSocUpdate = false;
+	// ============================== SOCIAL ==============================
+	newSocialInput = {
+		"name": "", // createSocialName: String = '';
+		"link": "" // createSocialLink: String = '';
+	}
 
-		
+	socialAlerts = {
+		"uploading": false, // uploadingSocAlert = false;
+		"updating": false, // updatingSocAlert = false;
+		"deleting": false // deletingSocAlert = false;
+	}
+
+	socialItems: Social[] = [];
+	socToUpdate!: Social;
+	findSocialLoading = false;
+
 	constructor(private socialService: SocialService, private profileService: ProfileService, private tokenService: TokenService) {
 	}
 
@@ -49,7 +51,7 @@ export class ProfileComponent implements OnInit {
 		}
 	}
 
-	// ============================== profile data ==============================
+	// ============================== PROFILE ==============================
 	findProfile(id: any) {
         this.profileService.detail(id).subscribe(
             data => {
@@ -57,9 +59,8 @@ export class ProfileComponent implements OnInit {
 				this.isLoadding = false;
 				this.updatingProfileAlert = false;
             }
-		)
+		);
 	}
-		
 
 	findProfileToUpdate(id: any) {
 		this.loaddingForProfileUpdate = true;
@@ -69,7 +70,7 @@ export class ProfileComponent implements OnInit {
 				this.createImg = this.profileData.img;
 				this.loaddingForProfileUpdate = false;
             }
-        )
+        );
     }
 
 	updateProfile(id: any): void {
@@ -79,28 +80,27 @@ export class ProfileComponent implements OnInit {
             data => {
                 this.findProfile(id);
             }
-        )
+        );
     }
 
 	onCreateImg(e: any) {
         this.createImg = e[0].base64;
     }
 
-
-	// ============================== social ==============================
+	// ============================== SOCIAL ==============================
 	socialList(): void {
 		this.socialService.list().subscribe(
 			data => {
 				this.socialItems = data;
-				this.uploadingSocAlert= false;
-				this.updatingSocAlert= false;
-				this.deletingSocAlert= false;
+				this.socialAlerts.uploading = false;
+				this.socialAlerts.updating = false;
+				this.socialAlerts.deleting = false;
             }
 		);
 	}
 
 	deleteSocial(id: any) {
-		this.deletingSocAlert = true;
+		this.socialAlerts.deleting = true;
         this.socialService.delete(id).subscribe(
             data => {
                 this.socialList();
@@ -109,38 +109,38 @@ export class ProfileComponent implements OnInit {
     }
 
 	createSocial(): void {
-		this.uploadingSocAlert= true;
-        const skill = new Social(this.createSocialName, this.createSocialLink);
+		this.socialAlerts.uploading = true;
+        let skill = new Social(this.newSocialInput.name, this.newSocialInput.link);
         this.socialService.add(skill).subscribe(
             data => {
                 this.socialList();
             }
-			);
-		this.clearAddForm();  
+		);
+		this.clearAddSocialForm();  
     }
 
 	findSocial(id: any) {
-		this.loaddingForSocUpdate = true;
+		this.findSocialLoading = true;
         this.socialService.detail(id).subscribe(
             data => {
                 this.socToUpdate = data;
-				this.loaddingForSocUpdate = false;
+				this.findSocialLoading = false;
             }
-        )
+        );
     }
 
 	updateSocial(id: any): void {
-		this.updatingSocAlert = true;
+		this.socialAlerts.updating = true;
         this.socialService.update(id, this.socToUpdate).subscribe(
             data => {
                 this.socialList();
             }
-        )
+        );
     }
 
-	clearAddForm() {
-		this.createSocialName = '';
-		this.createSocialLink = '';
+	clearAddSocialForm() {
+		this.newSocialInput.name = "";
+		this.newSocialInput.link = "";
 	}
 
 }
