@@ -16,6 +16,10 @@ export class ProfileService {
 	constructor(private httpClient: HttpClient) {
 	}
 
+	public exists(id: number) {
+		return this.httpClient.get<boolean>(this.profileURL + `prf-exists/${id}`);
+	}
+
 	public detail(id: number): Observable<Profile> {
 		return this.httpClient.get<Profile>(this.profileURL + `prf-detail/${id}`);
 	}

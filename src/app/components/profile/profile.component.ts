@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
 	isLoadding = true;	
 	
 	// ============================== PROFILE ==============================
+	exists!: boolean;
 	profileData!: Profile;
 	prfToUpdate!: Profile;
 	createImg: String = "";
@@ -42,7 +43,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.findProfile(1)
+		this.existsProfile(1);
 		this.socialList();
 		if (this.tokenService.getToken()) {
 			this.isLogged = true;
@@ -52,6 +53,27 @@ export class ProfileComponent implements OnInit {
 	}
 
 	// ============================== PROFILE ==============================
+	existsProfile(id: number) {
+		this.profileService.exists(id).subscribe(
+			data => {
+				if (data) {
+					this.findProfile(1);
+				} else {
+					this.createProfile(1);
+				}
+			}
+		);
+	}
+
+	createProfile(id: number) {
+		let profile = new Profile("/assets/imgs/prf.jpg", "John", "Doe", "Desarrollador Web", "Sobre mí...");
+		this.profileService.add(profile).subscribe(
+			data => {
+				this.findProfile(id);
+			}
+		);
+	}
+
 	findProfile(id: any) {
         this.profileService.detail(id).subscribe(
             data => {
