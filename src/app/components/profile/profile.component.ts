@@ -66,7 +66,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	createProfile(id: number) {
-		let profile = new Profile("/assets/imgs/prf.jpg", "John", "Doe", "Desarrollador Web", "Sobre mí...");
+		let profile = new Profile("/assets/imgs/profile-default.jpg", "John", "Doe", "Desarrollador Web", "Sobre mí...");
 		this.profileService.add(profile).subscribe(
 			data => {
 				this.findProfile(id);
